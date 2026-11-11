@@ -1,0 +1,501 @@
+topic,topic_id,replicate,n_papers,median_popularity,median_influence,median_impulse,median_cc,pct_pop_top10,pct_inf_top10,pct_imp_top10,pct_cc_top10
+Research Data Management Practices,T11937,0,154,1.683513E-9,2.174628E-9,0,0,13.6,7.8,11.0,6.5
+Research Data Management Practices,T11937,1,154,1.683513E-9,2.174628E-9,0,0,13.6,9.1,11.7,7.8
+Research Data Management Practices,T11937,2,154,1.683513E-9,2.174628E-9,0,0,16.2,5.8,13.0,8.4
+Research Data Management Practices,T11937,3,154,1.683513E-9,2.174628E-9,0,0,15.6,6.5,13.6,7.1
+Research Data Management Practices,T11937,4,154,1.683513E-9,2.174628E-9,0,0,16.2,9.1,14.3,9.7
+Research Data Management Practices,T11937,5,154,1.944044E-9,2.174628E-9,0,0,20.1,10.4,14.3,7.1
+Research Data Management Practices,T11937,6,154,1.823697E-9,2.174628E-9,0,0,14.3,10.4,12.3,7.1
+Research Data Management Practices,T11937,7,154,1.683513E-9,2.174628E-9,0,0,14.3,8.4,10.4,6.5
+Research Data Management Practices,T11937,8,154,1.728663E-9,2.174628E-9,0,0,18.2,9.7,11.0,8.4
+Research Data Management Practices,T11937,9,154,1.683513E-9,2.174628E-9,0,0,14.3,7.8,13.6,9.7
+Research Data Management Practices,T11937,10,154,1.944044E-9,2.174628E-9,0,0,17.5,6.5,13.0,8.4
+Research Data Management Practices,T11937,11,154,1.683513E-9,2.174628E-9,0,0,13.0,9.1,10.4,6.5
+Research Data Management Practices,T11937,12,154,1.756421E-9,2.174628E-9,0,0,16.9,8.4,13.6,7.1
+Research Data Management Practices,T11937,13,154,1.940873E-9,2.174628E-9,0,0,19.5,9.7,10.4,7.8
+Research Data Management Practices,T11937,14,154,1.716805E-9,2.174628E-9,0,0,14.3,8.4,12.3,5.8
+Research Data Management Practices,T11937,15,154,1.683513E-9,2.174628E-9,0,0,13.6,8.4,11.0,7.8
+Research Data Management Practices,T11937,16,154,1.683513E-9,2.174628E-9,0,0,17.5,7.1,13.0,9.7
+Research Data Management Practices,T11937,17,154,1.734923E-9,2.174628E-9,0,0,20.8,11.0,14.9,11.7
+Research Data Management Practices,T11937,18,154,1.683513E-9,2.174628E-9,0,0,15.6,11.0,13.6,8.4
+Research Data Management Practices,T11937,19,154,1.683513E-9,2.174628E-9,0,0,16.9,7.8,13.6,6.5
+Research Data Management Practices,T11937,20,154,1.683513E-9,2.174628E-9,0,0,14.3,7.8,12.3,5.8
+Research Data Management Practices,T11937,21,154,1.683513E-9,2.174628E-9,0,0,14.9,8.4,14.3,9.1
+Research Data Management Practices,T11937,22,154,1.683513E-9,2.174628E-9,0,0,14.3,8.4,13.0,9.1
+Research Data Management Practices,T11937,23,154,1.683513E-9,2.174628E-9,0,0,12.3,6.5,8.4,5.2
+Research Data Management Practices,T11937,24,154,1.683513E-9,2.174628E-9,0,0,12.3,6.5,9.1,5.8
+Research Data Management Practices,T11937,25,154,1.683513E-9,2.174628E-9,0,0,16.9,7.8,14.9,9.7
+Research Data Management Practices,T11937,26,154,1.842856E-9,2.174628E-9,0,0,21.4,9.7,15.6,10.4
+Research Data Management Practices,T11937,27,154,1.683513E-9,2.174628E-9,0,0,14.9,5.2,10.4,6.5
+Research Data Management Practices,T11937,28,154,1.832909E-9,2.174628E-9,0,0,19.5,13.6,16.2,11.0
+Research Data Management Practices,T11937,29,154,1.717753E-9,2.174628E-9,0,0,17.5,9.7,11.0,7.1
+Research Data Management Practices,T11937,30,154,1.683513E-9,2.174628E-9,0,0,13.0,6.5,7.8,3.2
+Research Data Management Practices,T11937,31,154,1.927991E-9,2.174628E-9,0,0,20.1,7.1,14.3,7.8
+Research Data Management Practices,T11937,32,154,1.683513E-9,2.174628E-9,0,0,14.9,9.1,12.3,6.5
+Research Data Management Practices,T11937,33,154,1.683513E-9,2.174628E-9,0,0,18.2,7.1,12.3,9.1
+Research Data Management Practices,T11937,34,154,1.715594E-9,2.174628E-9,0,0,14.9,6.5,14.9,7.1
+Research Data Management Practices,T11937,35,154,1.683513E-9,2.174628E-9,0,0,19.5,7.1,12.3,5.2
+Research Data Management Practices,T11937,36,154,1.683513E-9,2.174628E-9,0,0,16.2,12.3,12.3,9.1
+Research Data Management Practices,T11937,37,154,1.683513E-9,2.174628E-9,0,0,12.3,7.8,9.1,8.4
+Research Data Management Practices,T11937,38,154,1.683513E-9,2.174628E-9,0,0,11.7,9.1,9.7,7.8
+Research Data Management Practices,T11937,39,154,1.683513E-9,2.174628E-9,0,0,11.7,6.5,11.7,6.5
+Research Data Management Practices,T11937,40,154,1.683513E-9,2.174628E-9,0,0,17.5,8.4,13.6,7.8
+Research Data Management Practices,T11937,41,154,1.683513E-9,2.174628E-9,0,0,13.0,8.4,10.4,8.4
+Research Data Management Practices,T11937,42,154,1.683513E-9,2.174628E-9,0,0,17.5,9.1,13.6,8.4
+Research Data Management Practices,T11937,43,154,1.922098E-9,2.174628E-9,0,0,18.2,8.4,14.3,7.8
+Research Data Management Practices,T11937,44,154,1.792441E-9,2.174628E-9,0,0,19.5,11.7,14.9,11.7
+Research Data Management Practices,T11937,45,154,1.683513E-9,2.174628E-9,0,0,17.5,9.7,13.0,9.1
+Research Data Management Practices,T11937,46,154,1.683513E-9,2.174628E-9,0,0,13.6,10.4,13.6,7.1
+Research Data Management Practices,T11937,47,154,1.944044E-9,2.174628E-9,0,0,21.4,7.8,12.3,7.1
+Research Data Management Practices,T11937,48,154,1.683513E-9,2.174628E-9,0,0,16.9,9.1,13.6,8.4
+Research Data Management Practices,T11937,49,154,1.683513E-9,2.174628E-9,0,0,14.3,7.1,11.7,6.5
+Research Data Management Practices,T11937,50,154,1.683513E-9,2.174628E-9,0,0,14.9,6.5,10.4,6.5
+Research Data Management Practices,T11937,51,154,1.782434E-9,2.174628E-9,0,0,17.5,10.4,15.6,9.7
+Research Data Management Practices,T11937,52,154,1.683513E-9,2.174628E-9,0,0,20.1,9.7,16.9,9.7
+Research Data Management Practices,T11937,53,154,1.683513E-9,2.174628E-9,0,0,12.3,5.8,9.1,5.8
+Research Data Management Practices,T11937,54,154,1.944044E-9,2.174628E-9,0,0,18.2,12.3,14.9,8.4
+Research Data Management Practices,T11937,55,154,1.684827E-9,2.174628E-9,0,0,17.5,11.7,13.0,9.7
+Research Data Management Practices,T11937,56,154,1.683513E-9,2.174628E-9,0,0,11.0,10.4,9.7,8.4
+Research Data Management Practices,T11937,57,154,1.683513E-9,2.174628E-9,0,0,19.5,8.4,15.6,7.8
+Research Data Management Practices,T11937,58,154,1.683513E-9,2.174628E-9,0,0,14.3,11.0,11.0,9.7
+Research Data Management Practices,T11937,59,154,1.906854E-9,2.174628E-9,0,0,12.3,7.1,8.4,4.5
+Research Data Management Practices,T11937,60,154,1.683513E-9,2.174628E-9,0,0,13.6,7.1,11.7,4.5
+Research Data Management Practices,T11937,61,154,1.934567E-9,2.174628E-9,0,0,17.5,9.7,13.6,9.1
+Research Data Management Practices,T11937,62,154,1.683513E-9,2.174628E-9,0,0,16.2,9.7,12.3,8.4
+Research Data Management Practices,T11937,63,154,1.683513E-9,2.174628E-9,0,0,16.9,7.8,10.4,8.4
+Research Data Management Practices,T11937,64,154,1.683513E-9,2.174628E-9,0,0,13.0,8.4,11.7,8.4
+Research Data Management Practices,T11937,65,154,1.683513E-9,2.174628E-9,0,0,11.0,3.9,5.8,3.2
+Research Data Management Practices,T11937,66,154,1.683513E-9,2.174628E-9,0,0,15.6,5.8,12.3,5.8
+Research Data Management Practices,T11937,67,154,1.799119E-9,2.174628E-9,0,0,16.9,10.4,11.0,9.1
+Research Data Management Practices,T11937,68,154,1.944044E-9,2.174628E-9,0,0,19.5,11.0,17.5,10.4
+Research Data Management Practices,T11937,69,154,1.918385E-9,2.174628E-9,0,0,16.2,12.3,15.6,11.0
+Research Data Management Practices,T11937,70,154,1.919102E-9,2.174628E-9,0,0,18.8,12.3,16.9,12.3
+Research Data Management Practices,T11937,71,154,1.683513E-9,2.174628E-9,0,0,18.2,9.7,12.3,8.4
+Research Data Management Practices,T11937,72,154,1.683513E-9,2.174628E-9,0,0,18.8,8.4,13.6,9.7
+Research Data Management Practices,T11937,73,154,1.683513E-9,2.174628E-9,0,0,15.6,10.4,13.0,8.4
+Research Data Management Practices,T11937,74,154,1.790735E-9,2.174628E-9,0,0,15.6,12.3,13.6,9.1
+Research Data Management Practices,T11937,75,154,1.683513E-9,2.174628E-9,0,0,20.8,9.7,15.6,8.4
+Research Data Management Practices,T11937,76,154,1.683513E-9,2.174628E-9,0,0,13.6,8.4,11.7,8.4
+Research Data Management Practices,T11937,77,154,1.728882E-9,2.174628E-9,0,0,15.6,8.4,13.0,8.4
+Research Data Management Practices,T11937,78,154,1.683513E-9,2.174628E-9,0,0,14.9,8.4,12.3,8.4
+Research Data Management Practices,T11937,79,154,1.908381E-9,2.174628E-9,0,0,16.2,4.5,11.0,5.8
+Research Data Management Practices,T11937,80,154,1.721176E-9,2.174628E-9,0,0,18.8,12.3,17.5,11.7
+Research Data Management Practices,T11937,81,154,1.944044E-9,2.174628E-9,0,0,21.4,10.4,15.6,10.4
+Research Data Management Practices,T11937,82,154,1.944044E-9,2.174628E-9,0,0,16.9,10.4,13.6,9.7
+Research Data Management Practices,T11937,83,154,1.944044E-9,2.174628E-9,0,0,18.2,11.7,13.6,11.7
+Research Data Management Practices,T11937,84,154,1.683513E-9,2.174628E-9,0,0,15.6,9.1,13.6,10.4
+Research Data Management Practices,T11937,85,154,1.683513E-9,2.174628E-9,0,0,14.3,6.5,12.3,8.4
+Research Data Management Practices,T11937,86,154,1.683513E-9,2.174628E-9,0,0,14.9,11.7,14.3,7.1
+Research Data Management Practices,T11937,87,154,1.706201E-9,2.174628E-9,0,0,16.2,8.4,11.7,4.5
+Research Data Management Practices,T11937,88,154,1.683513E-9,2.174628E-9,0,0,15.6,7.8,11.0,5.2
+Research Data Management Practices,T11937,89,154,1.683513E-9,2.174628E-9,0,0,16.9,8.4,13.0,6.5
+Research Data Management Practices,T11937,90,154,1.727227E-9,2.174628E-9,0,0,17.5,9.1,14.3,8.4
+Research Data Management Practices,T11937,91,154,1.683513E-9,2.174628E-9,0,0,16.2,9.1,14.9,8.4
+Research Data Management Practices,T11937,92,154,1.683513E-9,2.174628E-9,0,0,16.2,12.3,13.0,8.4
+Research Data Management Practices,T11937,93,154,1.683513E-9,2.174628E-9,0,0,13.6,10.4,10.4,7.8
+Research Data Management Practices,T11937,94,154,1.683513E-9,2.174628E-9,0,0,15.6,7.8,12.3,9.1
+Research Data Management Practices,T11937,95,154,1.683513E-9,2.174628E-9,0,0,13.6,7.1,9.1,7.1
+Research Data Management Practices,T11937,96,154,1.683513E-9,2.174628E-9,0,0,14.9,10.4,10.4,9.1
+Research Data Management Practices,T11937,97,154,1.683513E-9,2.174628E-9,0,0,14.9,7.8,11.0,7.1
+Research Data Management Practices,T11937,98,154,1.683513E-9,2.174628E-9,0,0,12.3,6.5,11.0,5.8
+Research Data Management Practices,T11937,99,154,1.683513E-9,2.174628E-9,0,0,13.6,7.8,10.4,6.5
+Genomics and Phylogenetic Studies,T10015,0,113,2.117158E-9,2.174628E-9,0,0,31.9,12.4,24.8,21.2
+Genomics and Phylogenetic Studies,T10015,1,113,1.944044E-9,2.174628E-9,0,0,26.5,8.8,20.4,15.0
+Genomics and Phylogenetic Studies,T10015,2,113,1.944044E-9,2.174628E-9,0,0,22.1,7.1,17.7,12.4
+Genomics and Phylogenetic Studies,T10015,3,113,1.944044E-9,2.174628E-9,0,0,31.0,9.7,19.5,15.9
+Genomics and Phylogenetic Studies,T10015,4,113,2.048052E-9,2.174628E-9,0,0,31.9,10.6,24.8,20.4
+Genomics and Phylogenetic Studies,T10015,5,113,1.944044E-9,2.174628E-9,0,0,29.2,8.8,26.5,15.9
+Genomics and Phylogenetic Studies,T10015,6,113,1.944044E-9,2.174628E-9,0,0,29.2,8.0,20.4,15.0
+Genomics and Phylogenetic Studies,T10015,7,113,2.067574E-9,2.174628E-9,0,0,34.5,13.3,30.1,23.0
+Genomics and Phylogenetic Studies,T10015,8,113,1.944044E-9,2.174628E-9,0,0,29.2,11.5,21.2,17.7
+Genomics and Phylogenetic Studies,T10015,9,113,1.957980E-9,2.185288E-9,0,1,32.7,8.0,25.7,16.8
+Genomics and Phylogenetic Studies,T10015,10,113,2.111993E-9,2.174628E-9,0,0,33.6,11.5,25.7,16.8
+Genomics and Phylogenetic Studies,T10015,11,113,2.201664E-9,2.185045E-9,0,1,34.5,6.2,28.3,17.7
+Genomics and Phylogenetic Studies,T10015,12,113,1.944044E-9,2.174628E-9,0,0,31.9,8.0,19.5,13.3
+Genomics and Phylogenetic Studies,T10015,13,113,1.944044E-9,2.174628E-9,0,0,31.9,8.8,23.0,12.4
+Genomics and Phylogenetic Studies,T10015,14,113,2.162506E-9,2.174628E-9,0,0,36.3,10.6,24.8,18.6
+Genomics and Phylogenetic Studies,T10015,15,113,1.944044E-9,2.174628E-9,0,0,31.9,13.3,23.0,15.9
+Genomics and Phylogenetic Studies,T10015,16,113,1.944044E-9,2.174628E-9,0,0,28.3,12.4,22.1,17.7
+Genomics and Phylogenetic Studies,T10015,17,113,1.944044E-9,2.174628E-9,0,0,25.7,5.3,17.7,12.4
+Genomics and Phylogenetic Studies,T10015,18,113,1.944044E-9,2.174628E-9,0,0,30.1,8.8,22.1,15.9
+Genomics and Phylogenetic Studies,T10015,19,113,1.944044E-9,2.174628E-9,0,0,25.7,7.1,18.6,14.2
+Genomics and Phylogenetic Studies,T10015,20,113,2.249780E-9,2.174628E-9,0,0,30.1,8.8,21.2,15.9
+Genomics and Phylogenetic Studies,T10015,21,113,1.944044E-9,2.174628E-9,0,0,35.4,15.0,25.7,20.4
+Genomics and Phylogenetic Studies,T10015,22,113,1.944044E-9,2.174628E-9,0,0,28.3,5.3,22.1,17.7
+Genomics and Phylogenetic Studies,T10015,23,113,2.117158E-9,2.174628E-9,0,0,32.7,11.5,28.3,16.8
+Genomics and Phylogenetic Studies,T10015,24,113,2.064773E-9,2.185288E-9,0,1,37.2,8.8,25.7,16.8
+Genomics and Phylogenetic Studies,T10015,25,113,1.944044E-9,2.174628E-9,0,0,30.1,8.0,23.9,14.2
+Genomics and Phylogenetic Studies,T10015,26,113,2.249780E-9,2.174628E-9,0,0,34.5,14.2,29.2,19.5
+Genomics and Phylogenetic Studies,T10015,27,113,1.944044E-9,2.174628E-9,0,0,27.4,8.0,20.4,12.4
+Genomics and Phylogenetic Studies,T10015,28,113,1.944044E-9,2.174628E-9,0,0,31.9,9.7,23.0,17.7
+Genomics and Phylogenetic Studies,T10015,29,113,1.944044E-9,2.174628E-9,0,0,31.0,10.6,26.5,18.6
+Genomics and Phylogenetic Studies,T10015,30,113,2.249780E-9,2.174628E-9,0,0,31.9,6.2,22.1,16.8
+Genomics and Phylogenetic Studies,T10015,31,113,1.944044E-9,2.174628E-9,0,0,31.0,12.4,26.5,20.4
+Genomics and Phylogenetic Studies,T10015,32,113,1.944044E-9,2.174628E-9,0,0,31.0,9.7,24.8,16.8
+Genomics and Phylogenetic Studies,T10015,33,113,2.111993E-9,2.174628E-9,0,0,32.7,7.1,26.5,15.0
+Genomics and Phylogenetic Studies,T10015,34,113,1.944044E-9,2.174628E-9,0,0,23.9,7.1,19.5,12.4
+Genomics and Phylogenetic Studies,T10015,35,113,1.944044E-9,2.174628E-9,0,0,24.8,8.0,22.1,11.5
+Genomics and Phylogenetic Studies,T10015,36,113,1.944044E-9,2.174628E-9,0,0,31.0,9.7,22.1,15.9
+Genomics and Phylogenetic Studies,T10015,37,113,1.944044E-9,2.174628E-9,0,0,30.1,4.4,23.0,11.5
+Genomics and Phylogenetic Studies,T10015,38,113,1.944044E-9,2.174628E-9,0,0,28.3,8.8,23.9,12.4
+Genomics and Phylogenetic Studies,T10015,39,113,1.944044E-9,2.174628E-9,0,0,29.2,10.6,23.0,15.9
+Genomics and Phylogenetic Studies,T10015,40,113,1.944044E-9,2.174628E-9,0,0,27.4,9.7,20.4,15.9
+Genomics and Phylogenetic Studies,T10015,41,113,1.944044E-9,2.174628E-9,0,0,33.6,8.8,27.4,22.1
+Genomics and Phylogenetic Studies,T10015,42,113,1.944044E-9,2.174628E-9,0,0,27.4,8.0,21.2,15.0
+Genomics and Phylogenetic Studies,T10015,43,113,1.944044E-9,2.174628E-9,0,0,33.6,8.8,26.5,18.6
+Genomics and Phylogenetic Studies,T10015,44,113,1.944044E-9,2.174628E-9,0,0,31.0,8.8,22.1,15.9
+Genomics and Phylogenetic Studies,T10015,45,113,1.944044E-9,2.174628E-9,0,0,31.9,11.5,26.5,21.2
+Genomics and Phylogenetic Studies,T10015,46,113,1.944044E-9,2.174628E-9,0,0,30.1,4.4,22.1,16.8
+Genomics and Phylogenetic Studies,T10015,47,113,1.944044E-9,2.174628E-9,0,0,28.3,8.0,23.0,16.8
+Genomics and Phylogenetic Studies,T10015,48,113,2.098232E-9,2.192186E-9,1,1,36.3,8.8,26.5,17.7
+Genomics and Phylogenetic Studies,T10015,49,113,1.944044E-9,2.174628E-9,0,0,25.7,7.1,19.5,14.2
+Genomics and Phylogenetic Studies,T10015,50,113,2.249780E-9,2.180704E-9,0,1,36.3,9.7,28.3,20.4
+Genomics and Phylogenetic Studies,T10015,51,113,1.944044E-9,2.174628E-9,0,0,29.2,8.8,21.2,14.2
+Genomics and Phylogenetic Studies,T10015,52,113,1.944044E-9,2.174628E-9,0,0,26.5,8.8,19.5,15.0
+Genomics and Phylogenetic Studies,T10015,53,113,1.944044E-9,2.174628E-9,0,0,24.8,7.1,15.9,10.6
+Genomics and Phylogenetic Studies,T10015,54,113,1.944044E-9,2.191618E-9,1,1,35.4,8.8,25.7,13.3
+Genomics and Phylogenetic Studies,T10015,55,113,1.944044E-9,2.174628E-9,0,0,29.2,8.8,20.4,15.0
+Genomics and Phylogenetic Studies,T10015,56,113,1.944044E-9,2.174628E-9,0,0,34.5,9.7,27.4,15.9
+Genomics and Phylogenetic Studies,T10015,57,113,1.944044E-9,2.174628E-9,0,0,34.5,11.5,27.4,16.8
+Genomics and Phylogenetic Studies,T10015,58,113,1.977893E-9,2.174628E-9,0,0,34.5,11.5,27.4,15.9
+Genomics and Phylogenetic Studies,T10015,59,113,1.944044E-9,2.174628E-9,0,0,32.7,18.6,29.2,23.0
+Genomics and Phylogenetic Studies,T10015,60,113,1.944044E-9,2.174628E-9,0,0,23.0,9.7,15.9,9.7
+Genomics and Phylogenetic Studies,T10015,61,113,1.944044E-9,2.174628E-9,0,0,27.4,7.1,23.9,18.6
+Genomics and Phylogenetic Studies,T10015,62,113,1.944044E-9,2.174628E-9,0,0,29.2,7.1,21.2,16.8
+Genomics and Phylogenetic Studies,T10015,63,113,1.944044E-9,2.174628E-9,0,0,26.5,11.5,23.9,15.9
+Genomics and Phylogenetic Studies,T10015,64,113,1.944044E-9,2.174628E-9,0,0,30.1,10.6,23.0,19.5
+Genomics and Phylogenetic Studies,T10015,65,113,1.944044E-9,2.174628E-9,0,0,31.9,10.6,23.9,15.9
+Genomics and Phylogenetic Studies,T10015,66,113,1.944044E-9,2.174628E-9,0,0,33.6,8.8,27.4,18.6
+Genomics and Phylogenetic Studies,T10015,67,113,1.944044E-9,2.174628E-9,0,0,31.9,8.0,21.2,15.9
+Genomics and Phylogenetic Studies,T10015,68,113,2.249780E-9,2.174628E-9,0,0,31.9,11.5,25.7,20.4
+Genomics and Phylogenetic Studies,T10015,69,113,1.944044E-9,2.174628E-9,0,0,25.7,8.8,21.2,12.4
+Genomics and Phylogenetic Studies,T10015,70,113,1.944044E-9,2.174628E-9,0,0,32.7,9.7,23.9,15.9
+Genomics and Phylogenetic Studies,T10015,71,113,1.944044E-9,2.174628E-9,0,0,34.5,7.1,25.7,18.6
+Genomics and Phylogenetic Studies,T10015,72,113,1.944044E-9,2.174628E-9,0,0,28.3,8.0,21.2,16.8
+Genomics and Phylogenetic Studies,T10015,73,113,2.249780E-9,2.189895E-9,0,1,34.5,9.7,23.9,16.8
+Genomics and Phylogenetic Studies,T10015,74,113,2.048052E-9,2.174628E-9,0,0,34.5,14.2,28.3,23.0
+Genomics and Phylogenetic Studies,T10015,75,113,1.944044E-9,2.174628E-9,0,0,28.3,7.1,18.6,14.2
+Genomics and Phylogenetic Studies,T10015,76,113,2.249780E-9,2.174628E-9,0,0,32.7,9.7,25.7,15.0
+Genomics and Phylogenetic Studies,T10015,77,113,2.249780E-9,2.174628E-9,0,0,33.6,9.7,25.7,20.4
+Genomics and Phylogenetic Studies,T10015,78,113,1.944044E-9,2.174628E-9,0,0,27.4,6.2,18.6,13.3
+Genomics and Phylogenetic Studies,T10015,79,113,1.944044E-9,2.174628E-9,0,0,24.8,6.2,22.1,12.4
+Genomics and Phylogenetic Studies,T10015,80,113,1.944044E-9,2.174628E-9,0,0,32.7,9.7,22.1,16.8
+Genomics and Phylogenetic Studies,T10015,81,113,1.944044E-9,2.174628E-9,0,0,30.1,8.8,23.9,18.6
+Genomics and Phylogenetic Studies,T10015,82,113,2.249780E-9,2.174628E-9,0,0,32.7,10.6,27.4,16.8
+Genomics and Phylogenetic Studies,T10015,83,113,1.944044E-9,2.174628E-9,0,0,23.9,7.1,21.2,15.9
+Genomics and Phylogenetic Studies,T10015,84,113,2.249780E-9,2.174628E-9,0,0,40.7,15.9,33.6,24.8
+Genomics and Phylogenetic Studies,T10015,85,113,1.944044E-9,2.174628E-9,0,0,28.3,6.2,22.1,14.2
+Genomics and Phylogenetic Studies,T10015,86,113,1.944044E-9,2.174628E-9,0,0,28.3,6.2,21.2,15.9
+Genomics and Phylogenetic Studies,T10015,87,113,1.944044E-9,2.174628E-9,0,0,30.1,8.8,21.2,15.0
+Genomics and Phylogenetic Studies,T10015,88,113,2.249780E-9,2.174628E-9,0,0,35.4,12.4,32.7,23.0
+Genomics and Phylogenetic Studies,T10015,89,113,1.944044E-9,2.174628E-9,0,0,26.5,6.2,19.5,12.4
+Genomics and Phylogenetic Studies,T10015,90,113,1.950618E-9,2.196112E-9,0,1,33.6,7.1,23.0,17.7
+Genomics and Phylogenetic Studies,T10015,91,113,1.944044E-9,2.174628E-9,0,0,29.2,8.8,20.4,16.8
+Genomics and Phylogenetic Studies,T10015,92,113,2.249780E-9,2.197384E-9,1,1,37.2,8.0,23.0,15.9
+Genomics and Phylogenetic Studies,T10015,93,113,2.201664E-9,2.186073E-9,1,1,34.5,14.2,27.4,21.2
+Genomics and Phylogenetic Studies,T10015,94,113,1.944044E-9,2.174628E-9,0,0,32.7,9.7,24.8,16.8
+Genomics and Phylogenetic Studies,T10015,95,113,1.944044E-9,2.174628E-9,0,0,30.1,8.8,25.7,20.4
+Genomics and Phylogenetic Studies,T10015,96,113,2.249780E-9,2.193503E-9,1,1,39.8,8.8,30.1,19.5
+Genomics and Phylogenetic Studies,T10015,97,113,2.039261E-9,2.174628E-9,0,0,32.7,7.1,21.2,17.7
+Genomics and Phylogenetic Studies,T10015,98,113,1.944044E-9,2.174628E-9,0,0,29.2,5.3,20.4,15.0
+Genomics and Phylogenetic Studies,T10015,99,113,1.944044E-9,2.174628E-9,0,0,31.0,8.8,26.5,19.5
+Scientific Computing and Data Management,T11986,0,95,1.944044E-9,2.174628E-9,0,0,22.1,12.6,20.0,10.5
+Scientific Computing and Data Management,T11986,1,95,1.944044E-9,2.174628E-9,0,0,15.8,7.4,11.6,6.3
+Scientific Computing and Data Management,T11986,2,95,2.249780E-9,2.174628E-9,0,0,31.6,16.8,20.0,11.6
+Scientific Computing and Data Management,T11986,3,95,1.944044E-9,2.174628E-9,0,0,18.9,9.5,18.9,13.7
+Scientific Computing and Data Management,T11986,4,95,1.944044E-9,2.174628E-9,0,0,21.1,8.4,16.8,11.6
+Scientific Computing and Data Management,T11986,5,95,1.944044E-9,2.174628E-9,0,0,21.1,10.5,15.8,10.5
+Scientific Computing and Data Management,T11986,6,95,1.944044E-9,2.174628E-9,0,0,27.4,18.9,23.2,15.8
+Scientific Computing and Data Management,T11986,7,95,1.944044E-9,2.174628E-9,0,0,22.1,14.7,17.9,12.6
+Scientific Computing and Data Management,T11986,8,95,1.944044E-9,2.174628E-9,0,0,18.9,11.6,16.8,9.5
+Scientific Computing and Data Management,T11986,9,95,1.944044E-9,2.174628E-9,0,0,21.1,15.8,20.0,14.7
+Scientific Computing and Data Management,T11986,10,95,1.908698E-9,2.174628E-9,0,0,13.7,7.4,10.5,4.2
+Scientific Computing and Data Management,T11986,11,95,1.944044E-9,2.174628E-9,0,0,24.2,14.7,20.0,11.6
+Scientific Computing and Data Management,T11986,12,95,1.683513E-9,2.174628E-9,0,0,22.1,14.7,16.8,13.7
+Scientific Computing and Data Management,T11986,13,95,1.944044E-9,2.174628E-9,0,0,17.9,8.4,10.5,6.3
+Scientific Computing and Data Management,T11986,14,95,1.944044E-9,2.174628E-9,0,0,18.9,11.6,17.9,10.5
+Scientific Computing and Data Management,T11986,15,95,1.944044E-9,2.174628E-9,0,0,21.1,14.7,21.1,10.5
+Scientific Computing and Data Management,T11986,16,95,1.944044E-9,2.174628E-9,0,0,22.1,13.7,22.1,10.5
+Scientific Computing and Data Management,T11986,17,95,1.944044E-9,2.174628E-9,0,0,23.2,10.5,18.9,9.5
+Scientific Computing and Data Management,T11986,18,95,1.944044E-9,2.174628E-9,0,0,15.8,11.6,15.8,8.4
+Scientific Computing and Data Management,T11986,19,95,1.944044E-9,2.174628E-9,0,0,21.1,13.7,12.6,8.4
+Scientific Computing and Data Management,T11986,20,95,1.944044E-9,2.174628E-9,0,0,22.1,10.5,13.7,9.5
+Scientific Computing and Data Management,T11986,21,95,2.249780E-9,2.174628E-9,0,0,31.6,15.8,22.1,14.7
+Scientific Computing and Data Management,T11986,22,95,1.912121E-9,2.174628E-9,0,0,13.7,8.4,12.6,5.3
+Scientific Computing and Data Management,T11986,23,95,1.944044E-9,2.174628E-9,0,0,20.0,11.6,12.6,9.5
+Scientific Computing and Data Management,T11986,24,95,1.944044E-9,2.174628E-9,0,0,23.2,10.5,21.1,10.5
+Scientific Computing and Data Management,T11986,25,95,1.944044E-9,2.174628E-9,0,0,16.8,11.6,16.8,12.6
+Scientific Computing and Data Management,T11986,26,95,1.944044E-9,2.174628E-9,0,0,18.9,10.5,15.8,8.4
+Scientific Computing and Data Management,T11986,27,95,1.944044E-9,2.174628E-9,0,0,25.3,12.6,20.0,12.6
+Scientific Computing and Data Management,T11986,28,95,1.944044E-9,2.174628E-9,0,0,14.7,8.4,15.8,8.4
+Scientific Computing and Data Management,T11986,29,95,1.944044E-9,2.174628E-9,0,0,17.9,13.7,15.8,11.6
+Scientific Computing and Data Management,T11986,30,95,1.944044E-9,2.174628E-9,0,0,25.3,14.7,23.2,14.7
+Scientific Computing and Data Management,T11986,31,95,1.944044E-9,2.174628E-9,0,0,28.4,16.8,22.1,17.9
+Scientific Computing and Data Management,T11986,32,95,1.944044E-9,2.174628E-9,0,0,24.2,15.8,16.8,12.6
+Scientific Computing and Data Management,T11986,33,95,1.944044E-9,2.174628E-9,0,0,16.8,12.6,15.8,12.6
+Scientific Computing and Data Management,T11986,34,95,1.944044E-9,2.174628E-9,0,0,16.8,11.6,13.7,11.6
+Scientific Computing and Data Management,T11986,35,95,1.944044E-9,2.174628E-9,0,0,22.1,10.5,17.9,8.4
+Scientific Computing and Data Management,T11986,36,95,1.944044E-9,2.174628E-9,0,0,21.1,13.7,18.9,11.6
+Scientific Computing and Data Management,T11986,37,95,1.782633E-9,2.174628E-9,0,0,12.6,10.5,12.6,8.4
+Scientific Computing and Data Management,T11986,38,95,2.249780E-9,2.174628E-9,0,0,27.4,15.8,21.1,14.7
+Scientific Computing and Data Management,T11986,39,95,1.908698E-9,2.174628E-9,0,0,18.9,13.7,14.7,9.5
+Scientific Computing and Data Management,T11986,40,95,1.944044E-9,2.174628E-9,0,0,17.9,9.5,15.8,9.5
+Scientific Computing and Data Management,T11986,41,95,1.944044E-9,2.174628E-9,0,0,18.9,15.8,18.9,11.6
+Scientific Computing and Data Management,T11986,42,95,1.944044E-9,2.174628E-9,0,0,21.1,11.6,16.8,10.5
+Scientific Computing and Data Management,T11986,43,95,1.944044E-9,2.174628E-9,0,0,16.8,7.4,13.7,4.2
+Scientific Computing and Data Management,T11986,44,95,1.944044E-9,2.174628E-9,0,0,24.2,13.7,20.0,11.6
+Scientific Computing and Data Management,T11986,45,95,1.944044E-9,2.174628E-9,0,0,21.1,10.5,16.8,10.5
+Scientific Computing and Data Management,T11986,46,95,1.944044E-9,2.174628E-9,0,0,26.3,8.4,17.9,9.5
+Scientific Computing and Data Management,T11986,47,95,1.944044E-9,2.174628E-9,0,0,17.9,11.6,16.8,11.6
+Scientific Computing and Data Management,T11986,48,95,1.944044E-9,2.174628E-9,0,0,21.1,11.6,18.9,10.5
+Scientific Computing and Data Management,T11986,49,95,1.944044E-9,2.174628E-9,0,0,18.9,14.7,15.8,11.6
+Scientific Computing and Data Management,T11986,50,95,1.944044E-9,2.174628E-9,0,0,17.9,11.6,15.8,8.4
+Scientific Computing and Data Management,T11986,51,95,1.944044E-9,2.174628E-9,0,0,20.0,7.4,15.8,9.5
+Scientific Computing and Data Management,T11986,52,95,1.944044E-9,2.174628E-9,0,0,25.3,16.8,23.2,16.8
+Scientific Computing and Data Management,T11986,53,95,1.944044E-9,2.174628E-9,0,0,14.7,11.6,14.7,7.4
+Scientific Computing and Data Management,T11986,54,95,1.944044E-9,2.174628E-9,0,0,28.4,11.6,15.8,12.6
+Scientific Computing and Data Management,T11986,55,95,1.944044E-9,2.174628E-9,0,0,23.2,16.8,21.1,15.8
+Scientific Computing and Data Management,T11986,56,95,1.944044E-9,2.174628E-9,0,0,18.9,13.7,20.0,13.7
+Scientific Computing and Data Management,T11986,57,95,1.944044E-9,2.174628E-9,0,0,23.2,8.4,16.8,6.3
+Scientific Computing and Data Management,T11986,58,95,1.944044E-9,2.174628E-9,0,0,28.4,18.9,21.1,10.5
+Scientific Computing and Data Management,T11986,59,95,1.683513E-9,2.174628E-9,0,0,8.4,3.2,7.4,3.2
+Scientific Computing and Data Management,T11986,60,95,1.971626E-9,2.174628E-9,0,0,25.3,15.8,23.2,11.6
+Scientific Computing and Data Management,T11986,61,95,1.944044E-9,2.174628E-9,0,0,16.8,8.4,10.5,5.3
+Scientific Computing and Data Management,T11986,62,95,1.944044E-9,2.174628E-9,0,0,24.2,11.6,22.1,8.4
+Scientific Computing and Data Management,T11986,63,95,1.944044E-9,2.174628E-9,0,0,27.4,18.9,26.3,17.9
+Scientific Computing and Data Management,T11986,64,95,1.944044E-9,2.174628E-9,0,0,15.8,7.4,14.7,3.2
+Scientific Computing and Data Management,T11986,65,95,1.944044E-9,2.174628E-9,0,0,20.0,12.6,16.8,10.5
+Scientific Computing and Data Management,T11986,66,95,1.683513E-9,2.174628E-9,0,0,15.8,8.4,11.6,6.3
+Scientific Computing and Data Management,T11986,67,95,1.944044E-9,2.174628E-9,0,0,20.0,10.5,16.8,10.5
+Scientific Computing and Data Management,T11986,68,95,1.944044E-9,2.174628E-9,0,0,17.9,12.6,16.8,11.6
+Scientific Computing and Data Management,T11986,69,95,1.944044E-9,2.174628E-9,0,0,24.2,7.4,18.9,10.5
+Scientific Computing and Data Management,T11986,70,95,1.944044E-9,2.174628E-9,0,0,20.0,13.7,17.9,12.6
+Scientific Computing and Data Management,T11986,71,95,2.249780E-9,2.174628E-9,0,0,25.3,14.7,17.9,13.7
+Scientific Computing and Data Management,T11986,72,95,1.944044E-9,2.174628E-9,0,0,20.0,10.5,15.8,10.5
+Scientific Computing and Data Management,T11986,73,95,1.944044E-9,2.174628E-9,0,0,16.8,13.7,13.7,12.6
+Scientific Computing and Data Management,T11986,74,95,1.944044E-9,2.174628E-9,0,0,17.9,13.7,15.8,9.5
+Scientific Computing and Data Management,T11986,75,95,1.944044E-9,2.174628E-9,0,0,20.0,16.8,18.9,12.6
+Scientific Computing and Data Management,T11986,76,95,1.944044E-9,2.174628E-9,0,0,16.8,9.5,14.7,7.4
+Scientific Computing and Data Management,T11986,77,95,1.944044E-9,2.174628E-9,0,0,23.2,15.8,17.9,12.6
+Scientific Computing and Data Management,T11986,78,95,1.944044E-9,2.174628E-9,0,0,26.3,13.7,21.1,12.6
+Scientific Computing and Data Management,T11986,79,95,1.944044E-9,2.174628E-9,0,0,17.9,8.4,15.8,11.6
+Scientific Computing and Data Management,T11986,80,95,1.786590E-9,2.174628E-9,0,0,13.7,9.5,13.7,5.3
+Scientific Computing and Data Management,T11986,81,95,1.944044E-9,2.174628E-9,0,0,22.1,10.5,20.0,12.6
+Scientific Computing and Data Management,T11986,82,95,1.944044E-9,2.174628E-9,0,0,22.1,12.6,18.9,11.6
+Scientific Computing and Data Management,T11986,83,95,1.944044E-9,2.174628E-9,0,0,13.7,8.4,15.8,9.5
+Scientific Computing and Data Management,T11986,84,95,1.944044E-9,2.174628E-9,0,0,17.9,10.5,13.7,7.4
+Scientific Computing and Data Management,T11986,85,95,1.683513E-9,2.174628E-9,0,0,14.7,7.4,11.6,6.3
+Scientific Computing and Data Management,T11986,86,95,1.944044E-9,2.174628E-9,0,0,23.2,12.6,15.8,10.5
+Scientific Computing and Data Management,T11986,87,95,1.944044E-9,2.174628E-9,0,0,20.0,11.6,20.0,11.6
+Scientific Computing and Data Management,T11986,88,95,1.944044E-9,2.174628E-9,0,0,21.1,15.8,16.8,11.6
+Scientific Computing and Data Management,T11986,89,95,1.967586E-9,2.174628E-9,0,0,20.0,12.6,15.8,12.6
+Scientific Computing and Data Management,T11986,90,95,1.944044E-9,2.174628E-9,0,0,24.2,13.7,21.1,16.8
+Scientific Computing and Data Management,T11986,91,95,1.944044E-9,2.174628E-9,0,0,17.9,10.5,12.6,8.4
+Scientific Computing and Data Management,T11986,92,95,1.944044E-9,2.174628E-9,0,0,18.9,11.6,15.8,7.4
+Scientific Computing and Data Management,T11986,93,95,1.944044E-9,2.174628E-9,0,0,22.1,11.6,14.7,11.6
+Scientific Computing and Data Management,T11986,94,95,1.944044E-9,2.174628E-9,0,0,21.1,16.8,20.0,14.7
+Scientific Computing and Data Management,T11986,95,95,1.683513E-9,2.174628E-9,0,0,14.7,4.2,11.6,6.3
+Scientific Computing and Data Management,T11986,96,95,1.944044E-9,2.174628E-9,0,0,16.8,10.5,12.6,6.3
+Scientific Computing and Data Management,T11986,97,95,1.944044E-9,2.174628E-9,0,0,12.6,6.3,10.5,5.3
+Scientific Computing and Data Management,T11986,98,95,2.052560E-9,2.174628E-9,0,0,25.3,16.8,26.3,18.9
+Scientific Computing and Data Management,T11986,99,95,1.944044E-9,2.174628E-9,0,0,21.1,14.7,17.9,9.5
+Bioinformatics and Genomic Networks,T10887,0,73,2.102538E-9,2.213319E-9,1,1,37.0,12.3,31.5,20.5
+Bioinformatics and Genomic Networks,T10887,1,73,1.944044E-9,2.196157E-9,1,1,41.1,16.4,37.0,23.3
+Bioinformatics and Genomic Networks,T10887,2,73,1.944044E-9,2.205796E-9,1,1,38.4,11.0,31.5,16.4
+Bioinformatics and Genomic Networks,T10887,3,73,2.105051E-9,2.200912E-9,1,1,38.4,11.0,34.2,26.0
+Bioinformatics and Genomic Networks,T10887,4,73,2.423410E-9,2.246600E-9,1,3,46.6,28.8,42.5,30.1
+Bioinformatics and Genomic Networks,T10887,5,73,1.944044E-9,2.205085E-9,0,1,35.6,12.3,30.1,23.3
+Bioinformatics and Genomic Networks,T10887,6,73,1.944044E-9,2.191145E-9,0,1,39.7,19.2,32.9,31.5
+Bioinformatics and Genomic Networks,T10887,7,73,2.783918E-9,2.247116E-9,1,2,46.6,16.4,39.7,28.8
+Bioinformatics and Genomic Networks,T10887,8,73,2.891808E-9,2.241655E-9,2,2,46.6,15.1,41.1,23.3
+Bioinformatics and Genomic Networks,T10887,9,73,3.141410E-9,2.257629E-9,2,3,50.7,13.7,43.8,32.9
+Bioinformatics and Genomic Networks,T10887,10,73,1.944044E-9,2.195538E-9,1,1,38.4,12.3,26.0,19.2
+Bioinformatics and Genomic Networks,T10887,11,73,2.249780E-9,2.202939E-9,1,1,46.6,15.1,35.6,23.3
+Bioinformatics and Genomic Networks,T10887,12,73,2.581442E-9,2.247116E-9,2,2,45.2,19.2,42.5,31.5
+Bioinformatics and Genomic Networks,T10887,13,73,1.944044E-9,2.174628E-9,0,0,35.6,8.2,27.4,19.2
+Bioinformatics and Genomic Networks,T10887,14,73,2.249780E-9,2.215829E-9,1,1,42.5,15.1,41.1,26.0
+Bioinformatics and Genomic Networks,T10887,15,73,2.186112E-9,2.200501E-9,1,1,35.6,16.4,34.2,27.4
+Bioinformatics and Genomic Networks,T10887,16,73,2.895057E-9,2.271401E-9,3,3,49.3,24.7,45.2,35.6
+Bioinformatics and Genomic Networks,T10887,17,73,2.348888E-9,2.207498E-9,1,1,42.5,20.5,37.0,34.2
+Bioinformatics and Genomic Networks,T10887,18,73,2.096480E-9,2.213319E-9,1,1,39.7,8.2,31.5,19.2
+Bioinformatics and Genomic Networks,T10887,19,73,2.249780E-9,2.210500E-9,1,1,42.5,16.4,39.7,28.8
+Bioinformatics and Genomic Networks,T10887,20,73,1.944044E-9,2.182855E-9,0,1,34.2,16.4,32.9,26.0
+Bioinformatics and Genomic Networks,T10887,21,73,2.584684E-9,2.254816E-9,2,2,47.9,19.2,41.1,32.9
+Bioinformatics and Genomic Networks,T10887,22,73,2.249780E-9,2.200501E-9,1,2,41.1,16.4,37.0,26.0
+Bioinformatics and Genomic Networks,T10887,23,73,1.944044E-9,2.221101E-9,1,1,39.7,13.7,34.2,24.7
+Bioinformatics and Genomic Networks,T10887,24,73,1.944044E-9,2.184782E-9,1,1,41.1,15.1,34.2,31.5
+Bioinformatics and Genomic Networks,T10887,25,73,2.094017E-9,2.205085E-9,1,1,41.1,17.8,35.6,26.0
+Bioinformatics and Genomic Networks,T10887,26,73,2.249780E-9,2.212323E-9,1,1,42.5,15.1,35.6,26.0
+Bioinformatics and Genomic Networks,T10887,27,73,2.327526E-9,2.208661E-9,1,2,39.7,9.6,28.8,21.9
+Bioinformatics and Genomic Networks,T10887,28,73,2.589330E-9,2.222754E-9,2,2,45.2,19.2,38.4,28.8
+Bioinformatics and Genomic Networks,T10887,29,73,2.737860E-9,2.251834E-9,2,3,43.8,12.3,39.7,27.4
+Bioinformatics and Genomic Networks,T10887,30,73,2.315423E-9,2.234281E-9,1,2,42.5,11.0,35.6,26.0
+Bioinformatics and Genomic Networks,T10887,31,73,2.783918E-9,2.232937E-9,2,3,47.9,17.8,43.8,31.5
+Bioinformatics and Genomic Networks,T10887,32,73,1.957817E-9,2.216448E-9,1,1,41.1,6.8,31.5,23.3
+Bioinformatics and Genomic Networks,T10887,33,73,2.586464E-9,2.238473E-9,2,3,46.6,17.8,41.1,30.1
+Bioinformatics and Genomic Networks,T10887,34,73,2.097437E-9,2.220862E-9,1,1,42.5,11.0,34.2,26.0
+Bioinformatics and Genomic Networks,T10887,35,73,2.093211E-9,2.194292E-9,1,1,37.0,11.0,31.5,20.5
+Bioinformatics and Genomic Networks,T10887,36,73,1.997220E-9,2.187604E-9,0,1,38.4,6.8,28.8,21.9
+Bioinformatics and Genomic Networks,T10887,37,73,3.043202E-9,2.246512E-9,2,3,50.7,15.1,37.0,26.0
+Bioinformatics and Genomic Networks,T10887,38,73,2.249780E-9,2.213319E-9,1,1,35.6,16.4,31.5,20.5
+Bioinformatics and Genomic Networks,T10887,39,73,2.249780E-9,2.193381E-9,1,1,42.5,13.7,39.7,28.8
+Bioinformatics and Genomic Networks,T10887,40,73,2.574953E-9,2.213739E-9,1,1,41.1,13.7,32.9,24.7
+Bioinformatics and Genomic Networks,T10887,41,73,2.107219E-9,2.205085E-9,1,1,43.8,21.9,42.5,31.5
+Bioinformatics and Genomic Networks,T10887,42,73,1.683513E-9,2.174628E-9,0,0,27.4,16.4,27.4,17.8
+Bioinformatics and Genomic Networks,T10887,43,73,3.189588E-9,2.255662E-9,2,4,52.1,15.1,45.2,28.8
+Bioinformatics and Genomic Networks,T10887,44,73,2.095220E-9,2.200496E-9,1,1,39.7,16.4,35.6,24.7
+Bioinformatics and Genomic Networks,T10887,45,73,1.944044E-9,2.194292E-9,0,1,38.4,13.7,30.1,20.5
+Bioinformatics and Genomic Networks,T10887,46,73,2.608565E-9,2.250739E-9,2,3,43.8,11.0,42.5,26.0
+Bioinformatics and Genomic Networks,T10887,47,73,1.997220E-9,2.198566E-9,1,1,37.0,13.7,35.6,24.7
+Bioinformatics and Genomic Networks,T10887,48,73,2.756341E-9,2.231078E-9,1,3,47.9,12.3,32.9,24.7
+Bioinformatics and Genomic Networks,T10887,49,73,2.335212E-9,2.246600E-9,1,2,46.6,17.8,43.8,35.6
+Bioinformatics and Genomic Networks,T10887,50,73,3.425975E-9,2.270899E-9,3,3,52.1,21.9,46.6,30.1
+Bioinformatics and Genomic Networks,T10887,51,73,2.564837E-9,2.240413E-9,2,3,46.6,19.2,42.5,28.8
+Bioinformatics and Genomic Networks,T10887,52,73,2.133408E-9,2.208336E-9,1,1,37.0,15.1,34.2,24.7
+Bioinformatics and Genomic Networks,T10887,53,73,1.944044E-9,2.202513E-9,1,1,37.0,17.8,35.6,26.0
+Bioinformatics and Genomic Networks,T10887,54,73,2.107518E-9,2.195660E-9,1,1,32.9,8.2,26.0,17.8
+Bioinformatics and Genomic Networks,T10887,55,73,2.764953E-9,2.243195E-9,2,2,47.9,21.9,45.2,34.2
+Bioinformatics and Genomic Networks,T10887,56,73,3.878713E-9,2.297608E-9,3,5,54.8,20.5,47.9,39.7
+Bioinformatics and Genomic Networks,T10887,57,73,1.957817E-9,2.210661E-9,0,1,42.5,9.6,32.9,20.5
+Bioinformatics and Genomic Networks,T10887,58,73,3.275039E-9,2.275495E-9,3,4,54.8,19.2,42.5,32.9
+Bioinformatics and Genomic Networks,T10887,59,73,1.944044E-9,2.187604E-9,1,1,38.4,12.3,34.2,30.1
+Bioinformatics and Genomic Networks,T10887,60,73,2.249780E-9,2.218603E-9,1,2,41.1,8.2,31.5,20.5
+Bioinformatics and Genomic Networks,T10887,61,73,2.918723E-9,2.268685E-9,2,4,49.3,15.1,43.8,30.1
+Bioinformatics and Genomic Networks,T10887,62,73,2.133408E-9,2.201020E-9,1,2,35.6,12.3,34.2,19.2
+Bioinformatics and Genomic Networks,T10887,63,73,2.339025E-9,2.232937E-9,1,3,45.2,23.3,32.9,27.4
+Bioinformatics and Genomic Networks,T10887,64,73,2.905530E-9,2.282274E-9,2,3,47.9,16.4,39.7,30.1
+Bioinformatics and Genomic Networks,T10887,65,73,2.317003E-9,2.199914E-9,1,1,39.7,13.7,34.2,23.3
+Bioinformatics and Genomic Networks,T10887,66,73,1.944044E-9,2.204831E-9,1,1,39.7,15.1,32.9,24.7
+Bioinformatics and Genomic Networks,T10887,67,73,3.631652E-9,2.294278E-9,4,5,53.4,21.9,50.7,32.9
+Bioinformatics and Genomic Networks,T10887,68,73,2.249780E-9,2.227101E-9,1,2,41.1,11.0,31.5,19.2
+Bioinformatics and Genomic Networks,T10887,69,73,1.781403E-9,2.197831E-9,1,1,41.1,16.4,31.5,30.1
+Bioinformatics and Genomic Networks,T10887,70,73,2.249780E-9,2.227101E-9,1,1,46.6,19.2,35.6,27.4
+Bioinformatics and Genomic Networks,T10887,71,73,2.466028E-9,2.216448E-9,1,3,47.9,13.7,37.0,30.1
+Bioinformatics and Genomic Networks,T10887,72,73,2.423410E-9,2.220444E-9,2,2,42.5,15.1,38.4,26.0
+Bioinformatics and Genomic Networks,T10887,73,73,2.339025E-9,2.199383E-9,1,2,43.8,15.1,31.5,26.0
+Bioinformatics and Genomic Networks,T10887,74,73,2.589330E-9,2.231728E-9,1,3,47.9,19.2,41.1,31.5
+Bioinformatics and Genomic Networks,T10887,75,73,2.578808E-9,2.223375E-9,1,2,43.8,15.1,30.1,27.4
+Bioinformatics and Genomic Networks,T10887,76,73,2.103969E-9,2.213461E-9,1,2,43.8,17.8,39.7,32.9
+Bioinformatics and Genomic Networks,T10887,77,73,1.944044E-9,2.220310E-9,1,2,41.1,16.4,38.4,24.7
+Bioinformatics and Genomic Networks,T10887,78,73,2.423410E-9,2.244498E-9,1,2,41.1,16.4,38.4,30.1
+Bioinformatics and Genomic Networks,T10887,79,73,2.249780E-9,2.223357E-9,1,1,46.6,20.5,42.5,39.7
+Bioinformatics and Genomic Networks,T10887,80,73,2.753583E-9,2.251834E-9,2,2,47.9,15.1,41.1,34.2
+Bioinformatics and Genomic Networks,T10887,81,73,2.533820E-9,2.255662E-9,2,3,45.2,12.3,38.4,31.5
+Bioinformatics and Genomic Networks,T10887,82,73,1.998354E-9,2.215829E-9,1,1,43.8,15.1,39.7,32.9
+Bioinformatics and Genomic Networks,T10887,83,73,2.249780E-9,2.221977E-9,1,2,45.2,12.3,37.0,27.4
+Bioinformatics and Genomic Networks,T10887,84,73,2.327526E-9,2.213319E-9,1,1,42.5,20.5,37.0,35.6
+Bioinformatics and Genomic Networks,T10887,85,73,2.979533E-9,2.271443E-9,2,3,49.3,12.3,37.0,28.8
+Bioinformatics and Genomic Networks,T10887,86,73,2.423410E-9,2.216179E-9,1,1,41.1,12.3,37.0,31.5
+Bioinformatics and Genomic Networks,T10887,87,73,1.755596E-9,2.182668E-9,0,1,32.9,15.1,27.4,26.0
+Bioinformatics and Genomic Networks,T10887,88,73,2.423410E-9,2.222687E-9,1,2,42.5,15.1,37.0,35.6
+Bioinformatics and Genomic Networks,T10887,89,73,2.249780E-9,2.223375E-9,1,1,41.1,13.7,39.7,20.5
+Bioinformatics and Genomic Networks,T10887,90,73,1.944044E-9,2.187208E-9,0,1,30.1,11.0,24.7,17.8
+Bioinformatics and Genomic Networks,T10887,91,73,2.326467E-9,2.210500E-9,2,2,39.7,13.7,37.0,26.0
+Bioinformatics and Genomic Networks,T10887,92,73,3.005418E-9,2.227101E-9,2,2,49.3,12.3,38.4,24.7
+Bioinformatics and Genomic Networks,T10887,93,73,2.186112E-9,2.228678E-9,1,2,43.8,11.0,31.5,21.9
+Bioinformatics and Genomic Networks,T10887,94,73,2.143379E-9,2.203310E-9,1,1,41.1,11.0,38.4,24.7
+Bioinformatics and Genomic Networks,T10887,95,73,2.249780E-9,2.200371E-9,1,1,46.6,15.1,42.5,24.7
+Bioinformatics and Genomic Networks,T10887,96,73,1.683513E-9,2.190109E-9,1,1,35.6,13.7,30.1,24.7
+Bioinformatics and Genomic Networks,T10887,97,73,1.944044E-9,2.200501E-9,1,1,37.0,15.1,26.0,28.8
+Bioinformatics and Genomic Networks,T10887,98,73,2.249780E-9,2.194292E-9,1,1,37.0,11.0,37.0,20.5
+Bioinformatics and Genomic Networks,T10887,99,73,2.547274E-9,2.226955E-9,2,2,43.8,17.8,35.6,27.4
+Protein Structure and Dynamics,T10044,0,69,1.944044E-9,2.180412E-9,0,1,30.4,4.3,24.6,15.9
+Protein Structure and Dynamics,T10044,1,69,2.249780E-9,2.191103E-9,0,1,37.7,14.5,33.3,23.2
+Protein Structure and Dynamics,T10044,2,69,3.062726E-9,2.251305E-9,2,5,50.7,14.5,46.4,30.4
+Protein Structure and Dynamics,T10044,3,69,3.196771E-9,2.238392E-9,2,3,52.2,13.0,36.2,27.5
+Protein Structure and Dynamics,T10044,4,69,3.217446E-9,2.217152E-9,2,3,52.2,14.5,40.6,27.5
+Protein Structure and Dynamics,T10044,5,69,2.581815E-9,2.206920E-9,1,1,42.0,11.6,39.1,27.5
+Protein Structure and Dynamics,T10044,6,69,2.576064E-9,2.203493E-9,1,1,42.0,11.6,33.3,23.2
+Protein Structure and Dynamics,T10044,7,69,2.249780E-9,2.174628E-9,0,0,34.8,10.1,27.5,23.2
+Protein Structure and Dynamics,T10044,8,69,2.756128E-9,2.220314E-9,2,2,47.8,13.0,39.1,27.5
+Protein Structure and Dynamics,T10044,9,69,3.134255E-9,2.230892E-9,2,2,50.7,10.1,37.7,23.2
+Protein Structure and Dynamics,T10044,10,69,2.582946E-9,2.201148E-9,1,1,44.9,11.6,37.7,27.5
+Protein Structure and Dynamics,T10044,11,69,2.339925E-9,2.206920E-9,1,1,43.5,14.5,33.3,24.6
+Protein Structure and Dynamics,T10044,12,69,3.250302E-9,2.263389E-9,2,4,52.2,20.3,44.9,26.1
+Protein Structure and Dynamics,T10044,13,69,4.465367E-9,2.304517E-9,4,6,59.4,17.4,58.0,42.0
+Protein Structure and Dynamics,T10044,14,69,2.558518E-9,2.193863E-9,1,1,40.6,8.7,37.7,23.2
+Protein Structure and Dynamics,T10044,15,69,1.944044E-9,2.174628E-9,0,0,34.8,10.1,33.3,21.7
+Protein Structure and Dynamics,T10044,16,69,2.587488E-9,2.204925E-9,2,2,46.4,11.6,42.0,27.5
+Protein Structure and Dynamics,T10044,17,69,3.486973E-9,2.252696E-9,2,4,55.1,11.6,40.6,31.9
+Protein Structure and Dynamics,T10044,18,69,3.597411E-9,2.283396E-9,3,5,55.1,5.8,46.4,27.5
+Protein Structure and Dynamics,T10044,19,69,2.515805E-9,2.232642E-9,2,2,46.4,14.5,39.1,30.4
+Protein Structure and Dynamics,T10044,20,69,2.329890E-9,2.217152E-9,1,2,40.6,5.8,34.8,18.8
+Protein Structure and Dynamics,T10044,21,69,3.219320E-9,2.253126E-9,3,4,53.6,14.5,44.9,34.8
+Protein Structure and Dynamics,T10044,22,69,2.322542E-9,2.229832E-9,2,3,47.8,17.4,44.9,27.5
+Protein Structure and Dynamics,T10044,23,69,2.318417E-9,2.200705E-9,1,1,43.5,11.6,30.4,24.6
+Protein Structure and Dynamics,T10044,24,69,4.254789E-9,2.306855E-9,4,5,59.4,18.8,50.7,39.1
+Protein Structure and Dynamics,T10044,25,69,3.617999E-9,2.255885E-9,3,3,56.5,17.4,40.6,34.8
+Protein Structure and Dynamics,T10044,26,69,2.608565E-9,2.207223E-9,1,2,46.4,15.9,36.2,26.1
+Protein Structure and Dynamics,T10044,27,69,2.249780E-9,2.174628E-9,0,0,33.3,8.7,29.0,18.8
+Protein Structure and Dynamics,T10044,28,69,2.806356E-9,2.245427E-9,1,3,47.8,18.8,43.5,36.2
+Protein Structure and Dynamics,T10044,29,69,2.761188E-9,2.245287E-9,2,2,46.4,11.6,40.6,30.4
+Protein Structure and Dynamics,T10044,30,69,3.571739E-9,2.264518E-9,3,3,53.6,7.2,42.0,27.5
+Protein Structure and Dynamics,T10044,31,69,2.587409E-9,2.220054E-9,1,2,44.9,8.7,39.1,27.5
+Protein Structure and Dynamics,T10044,32,69,2.591178E-9,2.208704E-9,1,2,44.9,7.2,36.2,24.6
+Protein Structure and Dynamics,T10044,33,69,3.413789E-9,2.247764E-9,3,4,50.7,18.8,46.4,33.3
+Protein Structure and Dynamics,T10044,34,69,2.249780E-9,2.195948E-9,1,1,37.7,8.7,37.7,27.5
+Protein Structure and Dynamics,T10044,35,69,2.299034E-9,2.208877E-9,1,1,40.6,5.8,34.8,18.8
+Protein Structure and Dynamics,T10044,36,69,2.249780E-9,2.198943E-9,1,1,43.5,15.9,36.2,26.1
+Protein Structure and Dynamics,T10044,37,69,2.909553E-9,2.230639E-9,2,3,49.3,14.5,40.6,29.0
+Protein Structure and Dynamics,T10044,38,69,2.249780E-9,2.191028E-9,1,1,37.7,10.1,34.8,21.7
+Protein Structure and Dynamics,T10044,39,69,3.766611E-9,2.297975E-9,2,4,56.5,20.3,46.4,37.7
+Protein Structure and Dynamics,T10044,40,69,2.608565E-9,2.221129E-9,2,3,47.8,17.4,43.5,33.3
+Protein Structure and Dynamics,T10044,41,69,1.961631E-9,2.196374E-9,1,1,36.2,8.7,29.0,17.4
+Protein Structure and Dynamics,T10044,42,69,3.597411E-9,2.329459E-9,4,4,52.2,17.4,52.2,42.0
+Protein Structure and Dynamics,T10044,43,69,2.249780E-9,2.201436E-9,1,2,39.1,7.2,27.5,18.8
+Protein Structure and Dynamics,T10044,44,69,2.970460E-9,2.219907E-9,2,3,49.3,13.0,42.0,33.3
+Protein Structure and Dynamics,T10044,45,69,2.608565E-9,2.241455E-9,2,2,46.4,14.5,43.5,31.9
+Protein Structure and Dynamics,T10044,46,69,2.897774E-9,2.234851E-9,2,2,44.9,10.1,36.2,23.2
+Protein Structure and Dynamics,T10044,47,69,2.660041E-9,2.251305E-9,2,4,47.8,5.8,40.6,20.3
+Protein Structure and Dynamics,T10044,48,69,2.249780E-9,2.182992E-9,1,1,37.7,7.2,37.7,30.4
+Protein Structure and Dynamics,T10044,49,69,3.603987E-9,2.282688E-9,3,4,53.6,20.3,46.4,31.9
+Protein Structure and Dynamics,T10044,50,69,2.249780E-9,2.194447E-9,1,1,40.6,17.4,39.1,27.5
+Protein Structure and Dynamics,T10044,51,69,2.329310E-9,2.197762E-9,1,1,44.9,4.3,37.7,21.7
+Protein Structure and Dynamics,T10044,52,69,3.833160E-9,2.307737E-9,3,5,52.2,23.2,49.3,37.7
+Protein Structure and Dynamics,T10044,53,69,2.963180E-9,2.241455E-9,2,3,49.3,10.1,39.1,26.1
+Protein Structure and Dynamics,T10044,54,69,2.249780E-9,2.193973E-9,1,1,34.8,10.1,31.9,21.7
+Protein Structure and Dynamics,T10044,55,69,2.342037E-9,2.221584E-9,1,1,39.1,15.9,31.9,23.2
+Protein Structure and Dynamics,T10044,56,69,2.582406E-9,2.230892E-9,1,2,46.4,13.0,42.0,30.4
+Protein Structure and Dynamics,T10044,57,69,2.044561E-9,2.181209E-9,0,1,33.3,8.7,29.0,20.3
+Protein Structure and Dynamics,T10044,58,69,2.582406E-9,2.199340E-9,1,1,44.9,10.1,30.4,21.7
+Protein Structure and Dynamics,T10044,59,69,3.168026E-9,2.251965E-9,3,3,50.7,10.1,44.9,36.2
+Protein Structure and Dynamics,T10044,60,69,2.589962E-9,2.238392E-9,1,2,47.8,8.7,44.9,30.4
+Protein Structure and Dynamics,T10044,61,69,2.398921E-9,2.215980E-9,2,2,46.4,7.2,47.8,26.1
+Protein Structure and Dynamics,T10044,62,69,2.249780E-9,2.188424E-9,1,1,30.4,10.1,27.5,17.4
+Protein Structure and Dynamics,T10044,63,69,2.893518E-9,2.240863E-9,3,3,49.3,15.9,44.9,30.4
+Protein Structure and Dynamics,T10044,64,69,2.994380E-9,2.257874E-9,2,3,49.3,13.0,40.6,21.7
+Protein Structure and Dynamics,T10044,65,69,2.882978E-9,2.220314E-9,1,2,44.9,13.0,33.3,24.6
+Protein Structure and Dynamics,T10044,66,69,2.565702E-9,2.215980E-9,1,2,46.4,13.0,43.5,31.9
+Protein Structure and Dynamics,T10044,67,69,2.322542E-9,2.210440E-9,1,2,43.5,10.1,29.0,17.4
+Protein Structure and Dynamics,T10044,68,69,2.720167E-9,2.233196E-9,2,3,46.4,14.5,40.6,29.0
+Protein Structure and Dynamics,T10044,69,69,2.926153E-9,2.237617E-9,2,2,47.8,11.6,42.0,24.6
+Protein Structure and Dynamics,T10044,70,69,3.415536E-9,2.297975E-9,3,3,55.1,8.7,46.4,27.5
+Protein Structure and Dynamics,T10044,71,69,2.909553E-9,2.245427E-9,3,3,44.9,11.6,39.1,23.2
+Protein Structure and Dynamics,T10044,72,69,4.509429E-9,2.297665E-9,4,4,59.4,20.3,52.2,34.8
+Protein Structure and Dynamics,T10044,73,69,2.323465E-9,2.196744E-9,1,1,44.9,21.7,42.0,31.9
+Protein Structure and Dynamics,T10044,74,69,2.581633E-9,2.210320E-9,1,1,42.0,17.4,39.1,29.0
+Protein Structure and Dynamics,T10044,75,69,2.597052E-9,2.237292E-9,2,3,44.9,13.0,43.5,31.9
+Protein Structure and Dynamics,T10044,76,69,3.415536E-9,2.245427E-9,3,3,55.1,20.3,40.6,37.7
+Protein Structure and Dynamics,T10044,77,69,2.249780E-9,2.174628E-9,0,0,33.3,7.2,29.0,18.8
+Protein Structure and Dynamics,T10044,78,69,3.532278E-9,2.222198E-9,2,3,52.2,23.2,42.0,34.8
+Protein Structure and Dynamics,T10044,79,69,2.587409E-9,2.210453E-9,1,1,42.0,8.7,39.1,30.4
+Protein Structure and Dynamics,T10044,80,69,2.750593E-9,2.226337E-9,1,2,43.5,11.6,30.4,26.1
+Protein Structure and Dynamics,T10044,81,69,2.580784E-9,2.196374E-9,1,1,43.5,7.2,31.9,20.3
+Protein Structure and Dynamics,T10044,82,69,3.232361E-9,2.247196E-9,2,3,58.0,15.9,37.7,29.0
+Protein Structure and Dynamics,T10044,83,69,2.572608E-9,2.216893E-9,1,1,44.9,14.5,36.2,29.0
+Protein Structure and Dynamics,T10044,84,69,2.318417E-9,2.196088E-9,1,1,40.6,17.4,37.7,30.4
+Protein Structure and Dynamics,T10044,85,69,2.324332E-9,2.204015E-9,1,1,44.9,15.9,39.1,27.5
+Protein Structure and Dynamics,T10044,86,69,2.322883E-9,2.207223E-9,1,1,34.8,11.6,31.9,20.3
+Protein Structure and Dynamics,T10044,87,69,2.951348E-9,2.227316E-9,2,2,49.3,13.0,39.1,26.1
+Protein Structure and Dynamics,T10044,88,69,2.592398E-9,2.211712E-9,1,2,44.9,5.8,39.1,21.7
+Protein Structure and Dynamics,T10044,89,69,1.944044E-9,2.180047E-9,0,1,34.8,15.9,30.4,23.2
+Protein Structure and Dynamics,T10044,90,69,3.220710E-9,2.240006E-9,3,4,50.7,13.0,43.5,31.9
+Protein Structure and Dynamics,T10044,91,69,2.249780E-9,2.189324E-9,1,1,40.6,15.9,39.1,29.0
+Protein Structure and Dynamics,T10044,92,69,2.963180E-9,2.230594E-9,2,3,49.3,13.0,40.6,33.3
+Protein Structure and Dynamics,T10044,93,69,2.893518E-9,2.269415E-9,2,4,49.3,14.5,44.9,31.9
+Protein Structure and Dynamics,T10044,94,69,2.574488E-9,2.204925E-9,1,1,40.6,14.5,36.2,23.2
+Protein Structure and Dynamics,T10044,95,69,2.581126E-9,2.230594E-9,2,2,47.8,14.5,44.9,27.5
+Protein Structure and Dynamics,T10044,96,69,2.249780E-9,2.174628E-9,0,0,40.6,8.7,24.6,17.4
+Protein Structure and Dynamics,T10044,97,69,3.713771E-9,2.266736E-9,3,5,53.6,17.4,46.4,34.8
+Protein Structure and Dynamics,T10044,98,69,4.514562E-9,2.330698E-9,4,5,59.4,20.3,55.1,39.1
+Protein Structure and Dynamics,T10044,99,69,2.761188E-9,2.215598E-9,2,2,49.3,13.0,39.1,24.6

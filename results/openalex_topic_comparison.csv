@@ -1,0 +1,41 @@
+topic,topic_id,n_papers,statistic,elixir_value,null_mean,null_p2_5,null_p97_5,elixir_percentile,p_two_sided,outside_95,direction
+Research Data Management Practices,T11937,154,median_popularity,9.009341E-9,1.736451E-9,1.683513E-9,1.944044E-9,100.0,0.0,true,higher
+Research Data Management Practices,T11937,154,median_influence,2.907353E-9,2.174628E-9,2.174628E-9,2.174628E-9,100.0,0.0,true,higher
+Research Data Management Practices,T11937,154,median_impulse,9,0,0,0,100.0,0.0,true,higher
+Research Data Management Practices,T11937,154,median_cc,11,0,0,0,100.0,0.0,true,higher
+Research Data Management Practices,T11937,154,pct_pop_top10,76,16.015,11.7,21.115,100.0,0.0,true,higher
+Research Data Management Practices,T11937,154,pct_inf_top10,55.8,8.821,5.485,12.3,100.0,0.0,true,higher
+Research Data Management Practices,T11937,154,pct_imp_top10,63,12.564,8.4,16.9,100.0,0.0,true,higher
+Research Data Management Practices,T11937,154,pct_cc_top10,52.6,7.998,4.5,11.7,100.0,0.0,true,higher
+Genomics and Phylogenetic Studies,T10015,113,median_popularity,1.022127E-8,2.005508E-9,1.944044E-9,2.249780E-9,100.0,0.0,true,higher
+Genomics and Phylogenetic Studies,T10015,113,median_influence,2.600728E-9,2.176250E-9,2.174628E-9,2.192877E-9,100.0,0.0,true,higher
+Genomics and Phylogenetic Studies,T10015,113,median_impulse,10,0.05,0,1,100.0,0.0,true,higher
+Genomics and Phylogenetic Studies,T10015,113,median_cc,16,0.11,0,1,100.0,0.0,true,higher
+Genomics and Phylogenetic Studies,T10015,113,pct_pop_top10,85.8,30.847,23.9,37.2,100.0,0.0,true,higher
+Genomics and Phylogenetic Studies,T10015,113,pct_inf_top10,46.9,9.211,5.3,14.62,100.0,0.0,true,higher
+Genomics and Phylogenetic Studies,T10015,113,pct_imp_top10,69.9,23.614,17.7,30.1,100.0,0.0,true,higher
+Genomics and Phylogenetic Studies,T10015,113,pct_cc_top10,60.2,16.651,11.5,23,100.0,0.0,true,higher
+Scientific Computing and Data Management,T11986,95,median_popularity,6.552419E-9,1.940628E-9,1.683513E-9,2.249780E-9,100.0,0.0,true,higher
+Scientific Computing and Data Management,T11986,95,median_influence,2.530405E-9,2.174628E-9,2.174628E-9,2.174628E-9,100.0,0.0,true,higher
+Scientific Computing and Data Management,T11986,95,median_impulse,5,0,0,0,100.0,0.0,true,higher
+Scientific Computing and Data Management,T11986,95,median_cc,7,0,0,0,100.0,0.0,true,higher
+Scientific Computing and Data Management,T11986,95,pct_pop_top10,62.8,20.454,13.1225,28.4,100.0,0.0,true,higher
+Scientific Computing and Data Management,T11986,95,pct_inf_top10,43.6,12.036,6.8225,17.9025,100.0,0.0,true,higher
+Scientific Computing and Data Management,T11986,95,pct_imp_top10,56.4,17.058,10.5,23.2,100.0,0.0,true,higher
+Scientific Computing and Data Management,T11986,95,pct_cc_top10,46.8,10.565,4.2,17.3775,100.0,0.0,true,higher
+Bioinformatics and Genomic Networks,T10887,73,median_popularity,1.415299E-8,2.351098E-9,1.767854E-9,3.354280E-9,100.0,0.0,true,higher
+Bioinformatics and Genomic Networks,T10887,73,median_influence,2.754036E-9,2.220624E-9,2.182757E-9,2.279054E-9,100.0,0.0,true,higher
+Bioinformatics and Genomic Networks,T10887,73,median_impulse,14,1.23,0,3,100.0,0.0,true,higher
+Bioinformatics and Genomic Networks,T10887,73,median_cc,22,1.75,1,4,100.0,0.0,true,higher
+Bioinformatics and Genomic Networks,T10887,73,pct_pop_top10,89,42.562,32.9,52.7825,100.0,0.0,true,higher
+Bioinformatics and Genomic Networks,T10887,73,pct_inf_top10,53.4,15.096,8.2,22.635,100.0,0.0,true,higher
+Bioinformatics and Genomic Networks,T10887,73,pct_imp_top10,83.6,36.409,26,45.935,100.0,0.0,true,higher
+Bioinformatics and Genomic Networks,T10887,73,pct_cc_top10,71.2,26.886,17.8,35.6,100.0,0.0,true,higher
+Protein Structure and Dynamics,T10044,69,median_popularity,1.436090E-8,2.784054E-9,1.952398E-9,4.365342E-9,100.0,0.0,true,higher
+Protein Structure and Dynamics,T10044,69,median_influence,2.808135E-9,2.226782E-9,2.174628E-9,2.307318E-9,100.0,0.0,true,higher
+Protein Structure and Dynamics,T10044,69,median_impulse,15,1.65,0,4,100.0,0.0,true,higher
+Protein Structure and Dynamics,T10044,69,median_cc,26,2.23,0,5,100.0,0.0,true,higher
+Protein Structure and Dynamics,T10044,69,pct_pop_top10,88.4,45.912,33.3,59.4,100.0,0.0,true,higher
+Protein Structure and Dynamics,T10044,69,pct_inf_top10,56.5,12.883,5.8,21.035,100.0,0.0,true,higher
+Protein Structure and Dynamics,T10044,69,pct_imp_top10,78.3,39.095,27.5,52.2,100.0,0.0,true,higher
+Protein Structure and Dynamics,T10044,69,pct_cc_top10,71,27.451,17.4,39.1,100.0,0.0,true,higher

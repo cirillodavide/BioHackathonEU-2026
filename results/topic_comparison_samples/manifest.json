@@ -1,0 +1,37 @@
+{
+  "created_utc": "2026-11-11T14:28:18.974794+00:00",
+  "input": "/Users/serafeim/projects/BiohackathonEU-2026/data/elixir_works_metadata_openalex_bip.csv",
+  "top": 5,
+  "replicates": 100,
+  "seed": 42,
+  "excluded_elixir_dois": 1269,
+  "n_sample_rows": 50400,
+  "sampling_note": "Year-stratified cohorts: OpenAlex sample+seed builds per-year candidate pools with BIP coverage; each replicate is a local RNG draw matching the Elixir year histogram.",
+  "topics": [
+    {
+      "name": "Research Data Management Practices",
+      "n_elixir": 154,
+      "topic_id": "T11937"
+    },
+    {
+      "name": "Genomics and Phylogenetic Studies",
+      "n_elixir": 113,
+      "topic_id": "T10015"
+    },
+    {
+      "name": "Scientific Computing and Data Management",
+      "n_elixir": 95,
+      "topic_id": "T11986"
+    },
+    {
+      "name": "Bioinformatics and Genomic Networks",
+      "n_elixir": 73,
+      "topic_id": "T10887"
+    },
+    {
+      "name": "Protein Structure and Dynamics",
+      "n_elixir": 69,
+      "topic_id": "T10044"
+    }
+  ]
+}

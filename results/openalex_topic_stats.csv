@@ -1,0 +1,232 @@
+topic,n_papers,median_popularity,median_influence,median_impulse,median_cc,pct_pop_top10,pct_inf_top10,pct_imp_top10,pct_cc_top10
+Research Data Management Practices,154,9.009341E-9,2.907353E-9,9,11,76.0,55.8,63.0,52.6
+Genomics and Phylogenetic Studies,113,1.022127E-8,2.600728E-9,10,16,85.8,46.9,69.9,60.2
+Scientific Computing and Data Management,95,6.552419E-9,2.530405E-9,5,7,62.8,43.6,56.4,46.8
+Bioinformatics and Genomic Networks,73,1.415299E-8,2.754036E-9,14,22,89.0,53.4,83.6,71.2
+Protein Structure and Dynamics,69,1.436090E-8,2.808135E-9,15,26,88.4,56.5,78.3,71.0
+Biomedical Text Mining and Ontologies,58,8.866008E-9,3.080777E-9,8.5,17,82.8,56.9,74.1,58.6
+SARS-CoV-2 and COVID-19 Research,41,1.157677E-8,2.590721E-9,15,16,78.0,43.9,70.7,61.0
+Advanced Proteomics Techniques and Applications,36,1.044583E-8,2.665721E-9,11,14.5,91.7,50.0,83.3,69.4
+Genomics and Rare Diseases,35,1.119717E-8,2.744291E-9,13,19,88.6,51.4,80.0,62.9
+Computational Drug Discovery Methods,30,1.728862E-8,3.367813E-9,19,26,96.7,80.0,96.7,90.0
+"Genetics, Bioinformatics, and Biomedical Research",30,6.616840E-9,2.839699E-9,7,13,83.3,60.0,66.7,60.0
+Single-cell and spatial transcriptomics,26,1.047975E-8,2.531975E-9,7.5,14,100.0,38.5,84.6,61.5
+Enzyme Structure and Function,25,2.967625E-8,4.379162E-9,13,30,88.0,64.0,84.0,72.0
+Semantic Web and Ontologies,19,3.051612E-9,2.510058E-9,2,3,52.6,31.6,42.1,26.3
+Genomics and Chromatin Dynamics,17,6.926219E-9,2.490728E-9,7,16,82.4,29.4,70.6,52.9
+MicroRNA in disease regulation,14,1.411175E-8,2.630849E-9,14,29,92.9,42.9,100.0,71.4
+RNA Research and Splicing,14,1.311669E-8,2.519979E-9,17,18.5,92.9,42.9,85.7,71.4
+RNA regulation and disease,13,2.776144E-8,3.082908E-9,26,40,92.3,69.2,92.3,84.6
+Advanced Electron Microscopy Techniques and Applications,12,1.841539E-8,3.583871E-9,12.5,26,91.7,75.0,83.3,75.0
+Metabolomics and Mass Spectrometry Studies,12,5.971218E-9,2.315534E-9,6,7,75.0,33.3,66.7,41.7
+Cancer Genomics and Diagnostics,11,5.517341E-9,2.404957E-9,4,6,81.8,27.3,63.6,36.4
+Genetic Associations and Epidemiology,10,9.605424E-9,2.937948E-9,13.5,22.5,90.0,50.0,70.0,50.0
+Chromosomal and Genetic Variations,9,1.536082E-8,3.023412E-9,14,20,77.8,55.6,77.8,66.7
+RNA and protein synthesis mechanisms,9,5.791663E-9,2.472428E-9,4,13,77.8,33.3,66.7,55.6
+SARS-CoV-2 detection and testing,9,4.206841E-9,2.271322E-9,3,3,77.8,33.3,44.4,44.4
+Bacterial Genetics and Biotechnology,8,7.799824E-9,2.315304E-9,7,9.5,87.5,12.5,87.5,50.0
+scientometrics and bibliometrics research,8,4.772566E-9,2.454356E-9,4.5,5,62.5,12.5,50.0,25.0
+Machine Learning in Bioinformatics,7,1.371504E-8,3.152424E-9,13,20,100.0,57.1,100.0,85.7
+Access Control and Trust,6,1.178974E-8,3.564022E-9,11.5,18.5,83.3,66.7,66.7,50.0
+"Cancer, Hypoxia, and Metabolism",6,1.551152E-8,2.936596E-9,21,31,100.0,66.7,83.3,66.7
+Cell Image Analysis Techniques,6,5.398866E-9,2.439208E-9,8,9,66.7,0.0,66.7,50.0
+Estrogen and related hormone effects,6,1.637783E-8,2.895184E-9,15,29.5,100.0,66.7,100.0,100.0
+Ethics in Clinical Research,6,7.638203E-9,3.272637E-9,11.5,16,100.0,66.7,83.3,50.0
+Privacy-Preserving Technologies in Data,6,7.638359E-9,2.550696E-9,8.5,8.5,83.3,33.3,66.7,33.3
+Antibiotic Resistance in Bacteria,5,1.000514E-8,2.551738E-9,9,13,100.0,40.0,100.0,60.0
+DNA and Nucleic Acid Chemistry,5,6.072728E-9,2.427499E-9,7,14,100.0,20.0,80.0,80.0
+Electronic Health Records Systems,5,7.753576E-9,2.386479E-9,8,9,60.0,20.0,60.0,40.0
+Epigenetics and DNA Methylation,5,1.121877E-8,2.471718E-9,14,14,80.0,40.0,60.0,60.0
+Glioma Diagnosis and Treatment,5,6.572054E-9,2.392730E-9,7,8,100.0,20.0,100.0,40.0
+Microbial Community Ecology and Physiology,5,1.073213E-8,2.574823E-9,13,17,100.0,40.0,80.0,60.0
+Microbial Metabolic Engineering and Bioproduction,5,4.456740E-9,2.241553E-9,3,5,60.0,0.0,40.0,20.0
+Mosquito-borne diseases and control,5,8.074489E-9,2.504116E-9,9,9,80.0,40.0,80.0,40.0
+Mycobacterium research and diagnosis,5,7.065189E-9,2.372509E-9,8,8,100.0,20.0,80.0,20.0
+Wheat and Barley Genetics and Pathology,5,5.950601E-9,2.303050E-9,7,7,100.0,0.0,60.0,20.0
+Artificial Intelligence in Healthcare and Education,4,4.597794E-9,2.332767E-9,3.5,3.5,75.0,25.0,50.0,25.0
+Chronic Lymphocytic Leukemia Research,4,1.174508E-8,2.596447E-9,15.5,15.5,75.0,50.0,75.0,50.0
+Data Visualization and Analytics,4,2.575045E-9,2.198888E-9,1.5,1.5,25.0,25.0,25.0,0.0
+Diabetes and associated disorders,4,9.265869E-9,2.445323E-9,10.5,12,100.0,0.0,75.0,50.0
+Gene Regulatory Network Analysis,4,1.492812E-8,2.676916E-9,10,24,75.0,50.0,75.0,75.0
+Metabolism and Genetic Disorders,4,4.337402E-9,2.901088E-9,3,4,100.0,50.0,25.0,0.0
+Mitochondrial Function and Pathology,4,2.000931E-8,2.824776E-9,25.5,29.5,100.0,75.0,100.0,100.0
+Multiple Sclerosis Research Studies,4,1.349324E-8,3.248701E-9,16.5,17,100.0,75.0,100.0,75.0
+Probiotics and Fermented Foods,4,2.500760E-8,2.867307E-9,22,36,100.0,75.0,100.0,100.0
+"Research, Science, and Academia",4,2.899351E-9,2.635505E-9,3.5,4,50.0,50.0,50.0,25.0
+Acute Lymphoblastic Leukemia research,3,5.643353E-9,2.299942E-9,6,6,66.7,0.0,66.7,33.3
+COVID-19 Clinical Research Studies,3,2.580852E-9,2.248032E-9,1,2,33.3,0.0,33.3,33.3
+COVID-19 epidemiological studies,3,8.527548E-9,2.551375E-9,11,11,100.0,33.3,100.0,66.7
+Cancer-related molecular mechanisms research,3,1.486891E-8,2.801089E-9,15,26,100.0,66.7,100.0,100.0
+Colorectal Cancer Treatments and Studies,3,5.331248E-9,2.292195E-9,6,6,66.7,0.0,66.7,33.3
+Fungal and yeast genetics research,3,5.365550E-9,2.307170E-9,5,6,66.7,33.3,66.7,33.3
+Gene expression and cancer classification,3,6.302107E-9,2.753759E-9,7,15,100.0,66.7,100.0,66.7
+Gut microbiota and health,3,1.879284E-8,2.557287E-9,15,27,100.0,33.3,100.0,100.0
+Hops Chemistry and Applications,3,1.605343E-8,2.566394E-9,20,22,100.0,33.3,100.0,100.0
+Nutritional Studies and Diet,3,3.198326E-8,3.313047E-9,46,46,100.0,100.0,100.0,100.0
+Pancreatic and Hepatic Oncology Research,3,9.868012E-9,2.655631E-9,4,16,100.0,33.3,100.0,66.7
+Plant-Microbe Interactions and Immunity,3,6.729293E-9,2.315076E-9,7,7,100.0,33.3,66.7,33.3
+RNA modifications and cancer,3,2.528760E-8,2.815271E-9,24,36,100.0,100.0,100.0,100.0
+Sleep and related disorders,3,1.322363E-8,2.784500E-9,17,17,100.0,66.7,100.0,66.7
+T-cell and B-cell Immunology,3,9.017875E-9,2.432083E-9,8,12,100.0,33.3,100.0,66.7
+Acute Myeloid Leukemia Research,2,1.220939E-8,2.546579E-9,14,16.5,100.0,50.0,100.0,50.0
+Advanced Chemical Physics Studies,2,4.280742E-9,2.844947E-9,2.5,3.5,100.0,50.0,0.0,0.0
+Alzheimer's disease research and treatments,2,1.853604E-8,2.677253E-9,23.5,26.5,100.0,50.0,100.0,50.0
+Aquaculture Nutrition and Growth,2,9.085940E-9,2.378777E-9,7,12,100.0,0.0,100.0,50.0
+Cloud Computing and Resource Management,2,5.408417E-9,2.468451E-9,3,6.5,50.0,50.0,50.0,50.0
+DNA Repair Mechanisms,2,2.080540E-8,2.662353E-9,15,31.5,50.0,50.0,50.0,50.0
+"Digitalization, Law, and Regulation",2,1.358663E-8,3.209815E-9,13.5,17.5,100.0,50.0,100.0,100.0
+Environmental DNA in Biodiversity Studies,2,1.702900E-8,3.077845E-9,13,26.5,100.0,100.0,100.0,100.0
+Extracellular vesicles in disease,2,6.190844E-9,2.340137E-9,7,7,100.0,0.0,100.0,0.0
+Fractal and DNA sequence analysis,2,2.196052E-9,2.242433E-9,1,1,0.0,0.0,0.0,0.0
+Genetic Neurodegenerative Diseases,2,1.815747E-8,3.129290E-9,24,24.5,100.0,50.0,100.0,50.0
+Genetic and Clinical Aspects of Sex Determination and Chromosomal Abnormalities,2,1.934807E-8,3.402321E-9,20,44.5,100.0,50.0,50.0,50.0
+Genetic and phenotypic traits in livestock,2,3.065202E-9,2.191512E-9,1,1,50.0,0.0,0.0,0.0
+Genetics and Neurodevelopmental Disorders,2,1.531569E-8,2.846963E-9,17,27.5,100.0,100.0,100.0,100.0
+Genome Rearrangement Algorithms,2,1.642262E-8,2.679257E-9,7.5,23.5,50.0,50.0,50.0,50.0
+Genomic variations and chromosomal abnormalities,2,1.156221E-8,2.573231E-9,8.5,16,100.0,50.0,100.0,50.0
+Hereditary Neurological Disorders,2,7.306441E-9,2.361004E-9,8.5,8.5,100.0,0.0,100.0,50.0
+Interdisciplinary Research and Collaboration,2,5.020274E-9,2.348578E-9,4.5,4.5,50.0,0.0,50.0,0.0
+Mass Spectrometry Techniques and Applications,2,1.333128E-8,2.688703E-9,9,19.5,100.0,50.0,50.0,50.0
+Maternal Mental Health During Pregnancy and Postpartum,2,1.480189E-8,2.624341E-9,9.5,21.5,100.0,0.0,100.0,100.0
+Melanoma and MAPK Pathways,2,9.436847E-9,2.402385E-9,12,12,100.0,0.0,100.0,100.0
+Molecular Biology Techniques and Applications,2,7.959935E-8,7.107121E-9,58.5,141.5,100.0,50.0,100.0,100.0
+Neurogenesis and neuroplasticity mechanisms,2,6.787593E-9,2.276674E-9,7.5,7.5,50.0,0.0,50.0,50.0
+Neurogenetic and Muscular Disorders Research,2,1.502521E-8,2.652415E-9,15.5,21,100.0,50.0,100.0,100.0
+"Obesity, Physical Activity, Diet",2,1.014459E-8,2.634903E-9,11.5,13,100.0,50.0,100.0,50.0
+Open Education and E-Learning,2,1.727660E-8,7.115306E-9,13.5,23,50.0,50.0,50.0,50.0
+Ovarian cancer diagnosis and treatment,2,1.560576E-8,2.744626E-9,14,24,100.0,50.0,100.0,100.0
+Parkinson's Disease Mechanisms and Treatments,2,1.827891E-8,3.314434E-9,11.5,24,100.0,50.0,50.0,50.0
+Pharmacogenetics and Drug Metabolism,2,9.110810E-9,2.522228E-9,11.5,11.5,100.0,50.0,100.0,50.0
+Pharmacovigilance and Adverse Drug Reactions,2,1.778135E-8,3.941750E-9,16,23.5,100.0,100.0,100.0,100.0
+Plant Molecular Biology Research,2,6.795760E-9,2.338755E-9,6.5,11,100.0,0.0,100.0,100.0
+Plant Virus Research Studies,2,1.016578E-8,2.386533E-9,13,13,100.0,0.0,100.0,50.0
+Poxvirus research and outbreaks,2,3.576008E-9,2.237750E-9,2.5,2.5,50.0,0.0,50.0,0.0
+Recommender Systems and Techniques,2,3.499761E-9,2.491865E-9,3,3,100.0,0.0,0.0,0.0
+Salmonella and Campylobacter epidemiology,2,7.507024E-9,2.646132E-9,8.5,8.5,100.0,50.0,100.0,50.0
+Schizophrenia research and treatment,2,2.675196E-9,2.186512E-9,1.5,1.5,0.0,0.0,0.0,0.0
+Sepsis Diagnosis and Treatment,2,1.392500E-8,2.746125E-9,18,18,100.0,100.0,100.0,100.0
+Sperm and Testicular Function,2,1.762567E-8,3.077785E-9,24.5,24.5,50.0,50.0,50.0,50.0
+"Telomeres, Telomerase, and Senescence",2,1.108991E-8,2.398728E-9,14,14,100.0,0.0,100.0,100.0
+Academic Publishing and Open Access,1,2.744760E-8,4.184846E-9,39,39,100.0,100.0,100.0,100.0
+Academic Writing and Publishing,1,3.216670E-9,2.275497E-9,3,3,100.0,0.0,0.0,0.0
+"Adipokines, Inflammation, and Metabolic Diseases",1,4.260406E-9,2.476372E-9,3,3,100.0,0.0,0.0,0.0
+Advanced Causal Inference Techniques,1,8.191640E-9,2.552851E-9,10,10,100.0,0.0,100.0,100.0
+Advanced Graph Neural Networks,1,6.188574E-8,8.866021E-9,46,120,100.0,100.0,100.0,100.0
+Advanced biosensing and bioanalysis techniques,1,7.568094E-9,2.344858E-9,7,11,100.0,0.0,100.0,100.0
+Agricultural Productivity and Crop Improvement,1,2.889050E-9,2.198265E-9,1,1,0.0,0.0,0.0,0.0
+Algorithms and Data Compression,1,2.249780E-9,2.174628E-9,0,0,0.0,0.0,0.0,0.0
+Amyotrophic Lateral Sclerosis Research,1,5.135104E-9,2.245900E-9,5,5,100.0,0.0,100.0,0.0
+Animal testing and alternatives,1,3.544230E-9,2.255062E-9,2,2,100.0,0.0,0.0,0.0
+Antimicrobial Resistance in Staphylococcus,1,8.566651E-10,2.174628E-9,0,0,0.0,0.0,0.0,0.0
+Aquatic Ecosystems and Phytoplankton Dynamics,1,2.398739E-9,2.204385E-9,2,2,0.0,0.0,0.0,0.0
+Artificial Immune Systems Applications,1,5.471368E-8,4.137315E-9,82,82,100.0,100.0,100.0,100.0
+Artificial Intelligence in Healthcare,1,5.628688E-9,2.540967E-9,6,6,100.0,0.0,100.0,0.0
+Autoimmune Neurological Disorders and Treatments,1,2.365082E-8,3.981865E-9,33,33,100.0,100.0,100.0,100.0
+Bacteriophages and microbial interactions,1,1.995453E-8,3.449839E-9,19,59,100.0,100.0,100.0,100.0
+Bioenergy crop production and management,1,1.966421E-8,3.009407E-9,17,45,100.0,100.0,100.0,100.0
+Biomedical and Engineering Education,1,7.838434E-9,3.052689E-9,7,11,100.0,100.0,100.0,100.0
+Blood disorders and treatments,1,4.514169E-9,2.298391E-9,4,4,100.0,0.0,100.0,0.0
+CRISPR and Genetic Engineering,1,4.205197E-9,2.325970E-9,3,3,100.0,0.0,0.0,0.0
+Cancer Immunotherapy and Biomarkers,1,1.211208E-7,6.911788E-9,181,181,100.0,100.0,100.0,100.0
+Cancer survivorship and care,1,1.699249E-8,2.770094E-9,23,23,100.0,100.0,100.0,100.0
+Cancer-related Molecular Pathways,1,7.577846E-9,2.353303E-9,7,11,100.0,0.0,100.0,100.0
+Cellular transport and secretion,1,4.428298E-8,3.531481E-9,58,70,100.0,100.0,100.0,100.0
+Chronic Disease Management Strategies,1,4.734816E-8,5.993936E-9,36,89,100.0,100.0,100.0,100.0
+Circular RNAs in diseases,1,1.865502E-8,3.601800E-9,41,53,100.0,100.0,100.0,100.0
+Colorectal Cancer Surgical Treatments,1,1.400837E-8,3.068652E-9,18,18,100.0,100.0,100.0,100.0
+Cutaneous lymphoproliferative disorders research,1,5.781673E-9,2.299194E-9,6,6,100.0,0.0,100.0,0.0
+Developmental Biology and Gene Regulation,1,6.719759E-9,2.324147E-9,7,7,100.0,0.0,100.0,0.0
+Digital Rights Management and Security,1,2.886361E-9,2.195538E-9,1,1,0.0,0.0,0.0,0.0
+Distributed and Parallel Computing Systems,1,2.988023E-9,3.342005E-9,6,8,0.0,100.0,100.0,0.0
+Domain Adaptation and Few-Shot Learning,1,4.197924E-9,2.299706E-9,3,3,100.0,0.0,0.0,0.0
+Drug-Induced Hepatotoxicity and Protection,1,2.548743E-9,2.202269E-9,1,2,0.0,0.0,0.0,0.0
+Endoplasmic Reticulum Stress and Disease,1,1.467479E-8,2.654383E-9,20,20,100.0,0.0,100.0,100.0
+Entrepreneurship Studies and Influences,1,5.571472E-9,2.318426E-9,6,6,100.0,0.0,100.0,0.0
+Enzyme Catalysis and Immobilization,1,6.129931E-8,3.971422E-9,78,90,100.0,100.0,100.0,100.0
+Enzyme Production and Characterization,1,2.951080E-9,2.195294E-9,2,2,0.0,0.0,0.0,0.0
+Ethics and Social Impacts of AI,1,5.837564E-9,2.360866E-9,5,5,100.0,0.0,100.0,0.0
+Evolution and Genetic Dynamics,1,3.408860E-9,2.247419E-9,0,4,100.0,0.0,0.0,0.0
+Fermentation and Sensory Analysis,1,1.367136E-8,2.595108E-9,11,20,100.0,0.0,100.0,100.0
+Ferroptosis and cancer prognosis,1,9.914745E-9,2.392073E-9,12,12,100.0,0.0,100.0,100.0
+Fibroblast Growth Factor Research,1,4.240588E-9,2.239745E-9,4,4,100.0,0.0,100.0,0.0
+Forensic and Genetic Research,1,2.460308E-8,3.426695E-9,14,44,100.0,100.0,100.0,100.0
+Galectins and Cancer Biology,1,2.602293E-8,3.388660E-9,26,55,100.0,100.0,100.0,100.0
+Gastric Cancer Management and Outcomes,1,9.660272E-9,2.929926E-9,9,10,100.0,100.0,100.0,100.0
+Genetic Mapping and Diversity in Plants and Animals,1,9.256714E-9,2.320514E-9,11,11,100.0,0.0,100.0,100.0
+Genetic Syndromes and Imprinting,1,7.652459E-9,2.603422E-9,8,16,100.0,0.0,100.0,100.0
+Genetic and Environmental Crop Studies,1,9.037131E-9,2.433263E-9,11,11,100.0,0.0,100.0,100.0
+Genetic diversity and population structure,1,9.745723E-9,2.608550E-9,17,26,100.0,0.0,100.0,100.0
+"Genetics, Aging, and Longevity in Model Organisms",1,9.018167E-9,2.370338E-9,10,12,100.0,0.0,100.0,100.0
+Gold and Silver Nanoparticles Synthesis and Applications,1,2.114788E-8,3.062123E-9,22,30,100.0,100.0,100.0,100.0
+Health Services Management and Policy,1,2.137314E-9,2.199948E-9,1,1,0.0,0.0,0.0,0.0
+"Health, Environment, Cognitive Aging",1,3.236161E-9,2.231481E-9,2,2,100.0,0.0,0.0,0.0
+Hematopoietic Stem Cell Transplantation,1,5.164002E-9,2.268758E-9,5,5,100.0,0.0,100.0,0.0
+Histone Deacetylase Inhibitors Research,1,2.941706E-8,3.095362E-9,27,43,100.0,100.0,100.0,100.0
+History of Science and Natural History,1,2.605599E-9,2.264267E-9,2,2,0.0,0.0,0.0,0.0
+Immune cells in cancer,1,5.161644E-9,2.284377E-9,4,6,100.0,0.0,100.0,0.0
+Immunotherapy and Immune Responses,1,9.375499E-9,2.365188E-9,12,12,100.0,0.0,100.0,100.0
+"Indigenous Health, Education, and Rights",1,3.534681E-9,2.235163E-9,2,2,100.0,0.0,0.0,0.0
+Infant Nutrition and Health,1,2.609237E-9,2.252294E-9,1,1,0.0,0.0,0.0,0.0
+Inflammatory Biomarkers in Disease Prognosis,1,6.909539E-8,6.363397E-9,103,103,100.0,100.0,100.0,100.0
+Inflammatory Bowel Disease,1,4.692545E-8,4.377848E-9,39,91,100.0,100.0,100.0,100.0
+Innovations in Medical Education,1,1.060285E-8,3.885935E-9,13,13,100.0,100.0,100.0,100.0
+Insect and Arachnid Ecology and Behavior,1,2.252693E-8,2.670021E-9,23,33,100.0,0.0,100.0,100.0
+Light effects on plants,1,5.780419E-9,2.272608E-9,6,6,100.0,0.0,100.0,0.0
+Listeria monocytogenes in Food Safety,1,2.204356E-8,3.708957E-9,11,52,100.0,100.0,100.0,100.0
+Markov Chains and Monte Carlo Methods,1,1.218183E-8,2.648386E-9,15,15,100.0,0.0,100.0,100.0
+Meat and Animal Product Quality,1,9.105982E-9,2.388763E-9,9,12,100.0,0.0,100.0,100.0
+Meta-analysis and systematic reviews,1,4.240634E-8,4.241171E-9,28,69,100.0,100.0,100.0,100.0
+"Metabolism, Diabetes, and Cancer",1,2.468252E-8,3.562993E-9,34,34,100.0,100.0,100.0,100.0
+Microbial Natural Products and Biosynthesis,1,2.249780E-9,2.174628E-9,0,0,0.0,0.0,0.0,0.0
+Microbial metabolism and enzyme function,1,4.561229E-9,2.252097E-9,4,4,100.0,0.0,100.0,0.0
+Mobile Health and mHealth Applications,1,6.566919E-9,2.655337E-9,7,7,100.0,0.0,100.0,0.0
+Mobile and Web Applications,1,7.724852E-10,2.273475E-9,1,1,0.0,0.0,0.0,0.0
+Moyamoya disease diagnosis and treatment,1,2.885334E-9,2.193057E-9,1,1,0.0,0.0,0.0,0.0
+Myasthenia Gravis and Thymoma,1,1.218019E-8,2.498322E-9,16,16,100.0,0.0,100.0,100.0
+Mycotoxins in Agriculture and Food,1,2.327376E-8,2.819168E-9,33,33,100.0,100.0,100.0,100.0
+Nanoparticle-Based Drug Delivery,1,1.303843E-8,2.438556E-9,17,17,100.0,0.0,100.0,100.0
+Neuroblastoma Research and Treatments,1,1.093678E-8,2.709941E-9,17,28,100.0,100.0,100.0,100.0
+Neuropeptides and Animal Physiology,1,1.031361E-8,2.471802E-9,11,14,100.0,0.0,100.0,100.0
+Nicotinic Acetylcholine Receptors Study,1,8.598052E-9,2.425651E-9,11,11,100.0,0.0,100.0,100.0
+"Nutrition, Genetics, and Disease",1,8.017599E-9,2.402201E-9,8,10,100.0,0.0,100.0,100.0
+Ocean Acidification Effects and Responses,1,1.917636E-9,2.210872E-9,0,1,0.0,0.0,0.0,0.0
+PI3K/AKT/mTOR signaling in cancer,1,6.921942E-9,2.365886E-9,8,8,100.0,0.0,100.0,0.0
+Parasite Biology and Host Interactions,1,6.447857E-9,2.396125E-9,7,7,100.0,0.0,100.0,0.0
+Pharmaceutical studies and practices,1,1.045535E-8,3.023561E-9,8,14,100.0,100.0,100.0,100.0
+Phytoplasmas and Hemiptera pathogens,1,3.025461E-9,2.378982E-9,2,2,100.0,0.0,0.0,0.0
+Plant Diversity and Evolution,1,1.522240E-8,2.589356E-9,17,23,100.0,0.0,100.0,100.0
+Plant Stress Responses and Tolerance,1,2.239010E-8,2.679560E-9,18,35,100.0,0.0,100.0,100.0
+Plant tissue culture and regeneration,1,2.493320E-8,2.935574E-9,36,36,100.0,100.0,100.0,100.0
+Pluripotent Stem Cells Research,1,3.529498E-9,2.198354E-9,2,2,100.0,0.0,0.0,0.0
+Preterm Birth and Chorioamnionitis,1,1.867546E-8,2.754277E-9,21,26,100.0,100.0,100.0,100.0
+Protein Kinase Regulation and GTPase Signaling,1,2.238589E-8,3.137525E-9,24,55,100.0,100.0,100.0,100.0
+Remote Sensing in Agriculture,1,2.827935E-8,3.097706E-9,25,41,100.0,100.0,100.0,100.0
+Renal cell carcinoma treatment,1,7.797175E-9,2.511144E-9,8,10,100.0,0.0,100.0,100.0
+Reproductive biology and impacts on aquatic species,1,6.422232E-9,2.289476E-9,7,7,100.0,0.0,100.0,0.0
+Retinal Development and Disorders,1,9.560841E-9,2.461832E-9,12,12,100.0,0.0,100.0,100.0
+Rheumatoid Arthritis Research and Therapies,1,8.580906E-9,2.729887E-9,10,10,100.0,100.0,100.0,100.0
+"Science, Research, and Medicine",1,1.653438E-8,2.656758E-9,20,23,100.0,0.0,100.0,100.0
+Seed Germination and Physiology,1,1.124201E-8,2.520785E-9,10,17,100.0,0.0,100.0,100.0
+Seedling growth and survival studies,1,1.130714E-8,2.503008E-9,7,20,100.0,0.0,100.0,100.0
+Selenium in Biological Systems,1,6.887395E-9,2.336155E-9,8,8,100.0,0.0,100.0,0.0
+Sentiment Analysis and Opinion Mining,1,7.137142E-9,2.743016E-9,6,8,100.0,100.0,100.0,0.0
+Sex and Gender in Healthcare,1,3.855206E-9,2.227796E-9,3,3,100.0,0.0,0.0,0.0
+Silk-based biomaterials and applications,1,8.376128E-9,2.387016E-9,10,10,100.0,0.0,100.0,100.0
+Skin and Cellular Biology Research,1,2.670491E-8,3.580643E-9,37,57,100.0,100.0,100.0,100.0
+Smart Agriculture and AI,1,4.953427E-8,5.871639E-9,46,108,100.0,100.0,100.0,100.0
+Sphingolipid Metabolism and Signaling,1,2.273366E-8,3.128519E-9,33,33,100.0,100.0,100.0,100.0
+Statistical Methods and Inference,1,3.388072E-8,3.599474E-9,20,50,100.0,100.0,100.0,100.0
+Stress Responses and Cortisol,1,3.847516E-8,3.043486E-9,27,58,100.0,100.0,100.0,100.0
+Sulfur Compounds in Biology,1,4.530013E-9,2.346071E-9,4,5,100.0,0.0,100.0,0.0
+Systemic Lupus Erythematosus Research,1,5.363760E-9,2.318344E-9,4,6,100.0,0.0,100.0,0.0
+Technology and Human Factors in Education and Health,1,2.579533E-9,2.190386E-9,1,1,0.0,0.0,0.0,0.0
+Ultrasound and Hyperthermia Applications,1,2.979704E-8,4.054106E-9,43,43,100.0,100.0,100.0,100.0
+Urological Disorders and Treatments,1,7.929024E-9,2.942008E-9,5,10,100.0,100.0,100.0,100.0
+Vascular Tumors and Angiosarcomas,1,4.587742E-9,3.359220E-9,4,4,100.0,100.0,100.0,0.0
+Virus-based gene therapy research,1,1.394131E-9,2.196549E-9,0,1,0.0,0.0,0.0,0.0
+Wnt/β-catenin signaling in development and cancer,1,6.056637E-9,2.245006E-9,6,6,100.0,0.0,100.0,0.0
+Zoonotic diseases and public health,1,1.662870E-8,2.828262E-9,23,23,100.0,100.0,100.0,100.0
+biodegradable polymer synthesis and properties,1,3.849738E-9,2.209722E-9,3,3,100.0,0.0,0.0,0.0
+dental development and anomalies,1,3.258386E-9,2.265055E-9,2,2,100.0,0.0,0.0,0.0
+interferon and immune responses,1,1.713458E-8,2.838747E-9,15,27,100.0,100.0,100.0,100.0
+vaccines and immunoinformatics approaches,1,1.672005E-8,2.728653E-9,23,23,100.0,100.0,100.0,100.0
