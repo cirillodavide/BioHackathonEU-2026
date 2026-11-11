@@ -1,8 +1,8 @@
 # Elixir vs OpenAlex topic BIP! comparison
 
-## Process and how to read the figures
+## Process
 
-Starting from `data/elixir_works_metadata_openalex_bip.csv`, we counted how often each OpenAlex **primary topic** appears among ELIXIR papers and ranked topics by that frequency (`results/openalex_topic_counts.csv`). We then kept the **top 5** topics and, for each, summarised BIP! impact on the ELIXIR papers in that topic (medians of impulse and citation count; share of papers in the BIP! top 10% for popularity, influence, impulse, and citations—see `results/openalex_topic_stats.csv`). To ask whether those ELIXIR values are unusual for the topic, we built a reference from the wider OpenAlex graph: for a topic with n ELIXIR papers we drew **100** random OpenAlex samples of size n, matching ELIXIR’s publication-year mix, restricted to the same primary topic, requiring a DOI, excluding ELIXIR DOIs, and scoring each paper with BIP!. The same statistics were recomputed on every sample. Across the 100 draws we report the mean and the central 95% range (2.5th–97.5th percentiles) and place the ELIXIR value in that range (including whether it falls outside). Plots are in [`topic_comparison_figures/`](topic_comparison_figures/). **Forest plots** show one statistic across topics: a grey bar is the OpenAlex 95% range, a tick is the OpenAlex-sample mean, and a coloured point is ELIXIR (red if outside the band). **Histogram plots** show, for one statistic, the cloud of the 100 OpenAlex-sample values per topic, with a red line at the ELIXIR value. Raw popularity/influence score plots are omitted; we keep the top-10% class shares instead. Seed `42`.
+Starting from `data/elixir_works_metadata_openalex_bip.csv`, we counted how often each OpenAlex **primary topic** appears among ELIXIR papers and ranked topics by that frequency (`results/openalex_topic_counts.csv`). We then kept the **top 5** topics and, for each, summarised BIP! impact on the ELIXIR papers in that topic (medians of impulse and citation count; share of papers in the BIP! top 10% for popularity, influence, impulse, and citations—see `results/openalex_topic_stats.csv`). To ask whether those ELIXIR values are unusual for the topic, we built a reference from the wider OpenAlex graph: for a topic with n ELIXIR papers we drew **100** random OpenAlex samples of size n, matching ELIXIR’s publication-year mix, restricted to the same primary topic, requiring a DOI, excluding ELIXIR DOIs, and scoring each paper with BIP!. The same statistics were recomputed on every sample. Across the 100 draws we report the mean and the central 95% range (2.5th–97.5th percentiles) and place the ELIXIR value in that range (including whether it falls outside). Plots are in [`topic_comparison_figures/`](topic_comparison_figures/). Raw popularity/influence score plots are omitted; we keep the top-10% class shares instead. Seed `42`.
 
 ### Topics
 
@@ -13,6 +13,28 @@ Starting from `data/elixir_works_metadata_openalex_bip.csv`, we counted how ofte
 | Scientific Computing and Data Management | 95 | `T11986` |
 | Bioinformatics and Genomic Networks | 73 | `T10887` |
 | Protein Structure and Dynamics | 69 | `T10044` |
+
+## Forest plots
+
+One panel per BIP! statistic. Each row is a topic. The grey bar is the central 95% range of that statistic across the 100 year-matched OpenAlex samples; the tick is the mean of those samples; the red point is the ELIXIR value for the topic. Use these to see, at a glance, whether ELIXIR sits inside or outside the OpenAlex reference band for every topic.
+
+- [Median BIP! citation count](topic_comparison_figures/forest_median_cc.png)
+- [Median BIP! impulse (3-year citation count)](topic_comparison_figures/forest_median_impulse.png)
+- [Share of papers in BIP! citation-count top 10%](topic_comparison_figures/forest_pct_cc_top10.png)
+- [Share of papers in BIP! impulse top 10%](topic_comparison_figures/forest_pct_imp_top10.png)
+- [Share of papers in BIP! influence top 10%](topic_comparison_figures/forest_pct_inf_top10.png)
+- [Share of papers in BIP! popularity top 10%](topic_comparison_figures/forest_pct_pop_top10.png)
+
+## Null histograms
+
+One figure per BIP! statistic, with a small histogram for each topic. Bars show the distribution of the 100 OpenAlex-sample values; the red vertical line is the ELIXIR value. Use these to see the shape of the OpenAlex null and how far ELIXIR lies from that cloud.
+
+- [Median BIP! citation count](topic_comparison_figures/null_hist_median_cc.png)
+- [Median BIP! impulse (3-year citation count)](topic_comparison_figures/null_hist_median_impulse.png)
+- [Share of papers in BIP! citation-count top 10%](topic_comparison_figures/null_hist_pct_cc_top10.png)
+- [Share of papers in BIP! impulse top 10%](topic_comparison_figures/null_hist_pct_imp_top10.png)
+- [Share of papers in BIP! influence top 10%](topic_comparison_figures/null_hist_pct_inf_top10.png)
+- [Share of papers in BIP! popularity top 10%](topic_comparison_figures/null_hist_pct_pop_top10.png)
 
 ## Main findings
 
@@ -61,12 +83,4 @@ Starting from `data/elixir_works_metadata_openalex_bip.csv`, we counted how ofte
 | Protein Structure and Dynamics | `pct_imp_top10` | 78.3 | 39.095 | [27.5, 52.2] | higher | 0.0 |
 | Protein Structure and Dynamics | `pct_cc_top10` | 71 | 27.451 | [17.4, 39.1] | higher | 0.0 |
 
-## Caveats
-
-- BIP! coverage is incomplete; DOIs without scores were redrawn from the year pool when possible
-- OpenAlex topic assignment is model-based and may differ from community labels
-- Year matching does not control for venue, article type, or collaboration structure
-- Multiple testing: 40 comparisons (5 topics × 8 statistics); outside-95 flags are descriptive, not family-wise adjusted
-- Candidate pools are built with OpenAlex `sample` then locally resampled for replicates (documented in the samples manifest)
-
-_Generated 2026-11-11 15:27 UTC_
+_Generated 2026-11-11 16:49 UTC_

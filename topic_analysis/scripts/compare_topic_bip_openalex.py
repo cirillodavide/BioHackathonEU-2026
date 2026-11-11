@@ -63,6 +63,16 @@ USER_AGENT = f"BHEU26-topic-compare (mailto:{MAILTO})"
 STAT_KEYS = [k for k in STATS_HEADER if k not in {"topic", "n_papers"}]
 # Absolute AttRank/PageRank scores are hard to read in plots; keep class shares instead.
 PLOT_STAT_KEYS = [k for k in STAT_KEYS if k not in {"median_popularity", "median_influence"}]
+STAT_LABELS = {
+    "median_popularity": "Median BIP! popularity (AttRank)",
+    "median_influence": "Median BIP! influence (PageRank)",
+    "median_impulse": "Median BIP! impulse (3-year citation count)",
+    "median_cc": "Median BIP! citation count",
+    "pct_pop_top10": "Share of papers in BIP! popularity top 10%",
+    "pct_inf_top10": "Share of papers in BIP! influence top 10%",
+    "pct_imp_top10": "Share of papers in BIP! impulse top 10%",
+    "pct_cc_top10": "Share of papers in BIP! citation-count top 10%",
+}
 csv.field_size_limit(sys.maxsize)
 
 
@@ -445,6 +455,8 @@ def load_samples_csv(path: Path) -> list[dict]:
 def make_figures(comparison_rows: list[dict], replicate_rows: list[dict], out_dir: Path) -> list[Path]:
     import matplotlib.pyplot as plt
     import numpy as np
+    from matplotlib.lines import Line2D
+    from matplotlib.patches import Patch
 
     out_dir.mkdir(parents=True, exist_ok=True)
     paths: list[Path] = []
@@ -453,44 +465,55 @@ def make_figures(comparison_rows: list[dict], replicate_rows: list[dict], out_di
         if r["topic"] not in topics:
             topics.append(r["topic"])
 
+    forest_legend = [
+        Patch(facecolor="#9aa5b1", edgecolor="none", alpha=0.85,
+              label="OpenAlex central 95% range"),
+        Line2D([0], [0], marker="|", color="#4b5563", linestyle="None",
+               markersize=14, markeredgewidth=2, label="OpenAlex sample mean"),
+        Line2D([0], [0], marker="o", color="#c0392b", linestyle="None",
+               markersize=8, label="ELIXIR value"),
+    ]
+
     # 1) Forest plots per statistic (skip raw popularity/influence scores)
     for stat in PLOT_STAT_KEYS:
         subset = [r for r in comparison_rows if r["statistic"] == stat]
         if not subset:
             continue
-        fig, ax = plt.subplots(figsize=(9, 0.55 * len(subset) + 1.5))
+        label = STAT_LABELS.get(stat, stat)
+        fig, ax = plt.subplots(figsize=(10, 0.7 * len(subset) + 2.4))
         y = np.arange(len(subset))
         for i, r in enumerate(subset):
             p2 = to_float(r["null_p2_5"])
             p97 = to_float(r["null_p97_5"])
             mean = to_float(r["null_mean"])
             elx = to_float(r["elixir_value"])
-            outside = str(r["outside_95"]).lower() == "true"
             if p2 is not None and p97 is not None:
                 ax.hlines(i, p2, p97, color="#9aa5b1", linewidth=6, alpha=0.85, zorder=1)
             if mean is not None:
                 ax.plot(mean, i, "|", color="#4b5563", markersize=14, markeredgewidth=2, zorder=2)
             if elx is not None:
-                ax.plot(elx, i, "o", color="#c0392b" if outside else "#1f6feb",
-                        markersize=8, zorder=3)
+                ax.plot(elx, i, "o", color="#c0392b", markersize=8, zorder=3)
         ax.set_yticks(y)
-        ax.set_yticklabels([short_topic(r["topic"]) for r in subset])
-        ax.set_xlabel(stat)
-        ax.set_title(f"Elixir vs OpenAlex (95% band)\n{stat}")
+        ax.set_yticklabels([wrap_topic(r["topic"]) for r in subset], fontsize=9)
+        ax.set_xlabel(label)
         ax.invert_yaxis()
         ax.grid(axis="x", linestyle=":", alpha=0.5)
+        ax.legend(handles=forest_legend, loc="lower center", bbox_to_anchor=(0.5, 1.02),
+                  ncol=3, fontsize=8, frameon=True)
         fig.tight_layout()
         path = out_dir / f"forest_{stat}.png"
-        fig.savefig(path, dpi=160)
+        fig.savefig(path, dpi=160, bbox_inches="tight")
         plt.close(fig)
         paths.append(path)
 
     # 2) Null histograms (skip raw popularity/influence scores)
     for stat in PLOT_STAT_KEYS:
-        fig, axes = plt.subplots(1, len(topics), figsize=(3.2 * len(topics), 3.2), sharey=False)
+        label = STAT_LABELS.get(stat, stat)
+        n_rep = len({r["replicate"] for r in replicate_rows}) or "B"
+        fig, axes = plt.subplots(1, len(topics), figsize=(3.4 * len(topics), 3.8), sharey=False)
         if len(topics) == 1:
             axes = [axes]
-        for ax, topic in zip(axes, topics):
+        for i, (ax, topic) in enumerate(zip(axes, topics)):
             vals = [to_float(r[stat]) for r in replicate_rows
                     if r["topic"] == topic and to_float(r.get(stat)) is not None]
             vals = [v for v in vals if v is not None]
@@ -498,18 +521,24 @@ def make_figures(comparison_rows: list[dict], replicate_rows: list[dict], out_di
                             if r["topic"] == topic and r["statistic"] == stat), None)
             elx = to_float(elx_row["elixir_value"]) if elx_row else None
             if vals:
-                ax.hist(vals, bins=min(15, max(5, len(set(vals)))), color="#cbd5e1", edgecolor="white")
+                ax.hist(vals, bins=min(15, max(5, len(set(vals)))), color="#cbd5e1",
+                        edgecolor="white", label="OpenAlex samples")
             if elx is not None:
-                ax.axvline(elx, color="#c0392b", linewidth=2, label="Elixir")
-            ax.set_title(short_topic(topic), fontsize=9)
-            ax.set_xlabel(stat, fontsize=8)
+                ax.axvline(elx, color="#c0392b", linewidth=2, label="ELIXIR value")
+            ax.set_title(wrap_topic(topic, width=22), fontsize=9)
+            ax.set_xlabel(label, fontsize=8)
             if topic == topics[0]:
-                ax.set_ylabel("replicates")
+                ax.set_ylabel("Number of OpenAlex samples")
             ax.tick_params(labelsize=8)
-        fig.suptitle(f"OpenAlex sample distribution of {stat} (B replicates)", fontsize=11)
+            if i == 0:
+                ax.legend(fontsize=7, loc="best", frameon=True)
+        fig.suptitle(
+            f"{label}\nacross {n_rep} year-matched OpenAlex samples",
+            fontsize=11,
+        )
         fig.tight_layout()
         path = out_dir / f"null_hist_{stat}.png"
-        fig.savefig(path, dpi=160)
+        fig.savefig(path, dpi=160, bbox_inches="tight")
         plt.close(fig)
         paths.append(path)
 
@@ -518,6 +547,11 @@ def make_figures(comparison_rows: list[dict], replicate_rows: list[dict], out_di
 
 def short_topic(name: str, n: int = 34) -> str:
     return name if len(name) <= n else name[: n - 1] + "…"
+
+
+def wrap_topic(name: str, width: int = 28) -> str:
+    import textwrap
+    return "\n".join(textwrap.wrap(name, width=width)) or name
 
 
 def write_report(
@@ -532,7 +566,7 @@ def write_report(
     lines = [
         "# Elixir vs OpenAlex topic BIP! comparison",
         "",
-        "## Process and how to read the figures",
+        "## Process",
         "",
         f"Starting from `data/elixir_works_metadata_openalex_bip.csv`, we counted how often each "
         f"OpenAlex **primary topic** appears among ELIXIR papers and ranked topics by that "
@@ -547,13 +581,8 @@ def write_report(
         f"BIP!. The same statistics were recomputed on every sample. Across the {replicates} draws "
         f"we report the mean and the central 95% range (2.5th–97.5th percentiles) and place the "
         f"ELIXIR value in that range (including whether it falls outside). Plots are in "
-        f"[`topic_comparison_figures/`](topic_comparison_figures/). **Forest plots** show one "
-        f"statistic across topics: a grey bar is the OpenAlex 95% range, a tick is the "
-        f"OpenAlex-sample mean, and a coloured point is ELIXIR (red if outside the band). "
-        f"**Histogram plots** show, for one statistic, the cloud of the {replicates} "
-        f"OpenAlex-sample values per topic, with a red line at the ELIXIR value. Raw "
-        f"popularity/influence score plots are omitted; we keep the top-10% class shares instead. "
-        f"Seed `{seed}`.",
+        f"[`topic_comparison_figures/`](topic_comparison_figures/). Raw popularity/influence score "
+        f"plots are omitted; we keep the top-10% class shares instead. Seed `{seed}`.",
         "",
         "### Topics",
         "",
@@ -562,8 +591,49 @@ def write_report(
     ]
     for name, n, tid in topics:
         lines.append(f"| {name} | {n} | `{tid}` |")
+
+    forest_files = [p for p in figure_paths if p.name.startswith("forest_")]
+    hist_files = [p for p in figure_paths if p.name.startswith("null_hist_")]
+
     lines += [
         "",
+        "## Forest plots",
+        "",
+        "One panel per BIP! statistic. Each row is a topic. The grey bar is the central 95% "
+        f"range of that statistic across the {replicates} year-matched OpenAlex samples; the "
+        "tick is the mean of those samples; the red point is the ELIXIR value for the topic. "
+        "Use these to see, at a glance, whether ELIXIR sits inside or outside the OpenAlex "
+        "reference band for every topic.",
+        "",
+    ]
+    if forest_files:
+        for p in forest_files:
+            key = p.stem.removeprefix("forest_")
+            label = STAT_LABELS.get(key, key)
+            lines.append(f"- [{label}](topic_comparison_figures/{p.name})")
+        lines.append("")
+    else:
+        lines += ["_No forest plots generated._", ""]
+
+    lines += [
+        "## Null histograms",
+        "",
+        "One figure per BIP! statistic, with a small histogram for each topic. Bars show the "
+        f"distribution of the {replicates} OpenAlex-sample values; the red vertical line is the "
+        "ELIXIR value. Use these to see the shape of the OpenAlex null and how far ELIXIR lies "
+        "from that cloud.",
+        "",
+    ]
+    if hist_files:
+        for p in hist_files:
+            key = p.stem.removeprefix("null_hist_")
+            label = STAT_LABELS.get(key, key)
+            lines.append(f"- [{label}](topic_comparison_figures/{p.name})")
+        lines.append("")
+    else:
+        lines += ["_No null histograms generated._", ""]
+
+    lines += [
         "## Main findings",
         "",
         f"**{len(outside)}** topic×statistic pairs fall **outside** the 95% OpenAlex reference band "
@@ -586,16 +656,6 @@ def write_report(
         lines += ["No pairs outside the 95% band.", ""]
 
     lines += [
-        "## Caveats",
-        "",
-        "- BIP! coverage is incomplete; DOIs without scores were redrawn from the year pool when possible",
-        "- OpenAlex topic assignment is model-based and may differ from community labels",
-        "- Year matching does not control for venue, article type, or collaboration structure",
-        f"- Multiple testing: {len(comparison_rows)} comparisons (5 topics × {len(STAT_KEYS)} statistics); "
-        "outside-95 flags are descriptive, not family-wise adjusted",
-        "- Candidate pools are built with OpenAlex `sample` then locally resampled for replicates "
-        "(documented in the samples manifest)",
-        "",
         f"_Generated {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}_",
         "",
     ]
@@ -813,6 +873,9 @@ def main() -> None:
         figure_paths = make_figures(comparison_out, replicate_out, FIGURES_DIR)
         for p in figure_paths:
             print(f"-> {p}", flush=True)
+    elif FIGURES_DIR.exists():
+        figure_paths = sorted(FIGURES_DIR.glob("forest_*.png")) + sorted(
+            FIGURES_DIR.glob("null_hist_*.png"))
 
     write_report(REPORT_MD, topic_meta, comparison_out, figure_paths,
                  replicates=args.replicates if not args.reuse_samples else (
