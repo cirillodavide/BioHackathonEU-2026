@@ -73,25 +73,35 @@ coloured point = ELIXIR.
 ELIXIR. Raw popularity/influence score plots are omitted; top-10% class shares
 are kept instead.
 
-## First-author gender (within ELIXIR)
+## Author gender (within ELIXIR)
 
-Compare paper **counts** and BIP! indicators by inferred first-author gender
-within each top topic. Uses
+Compare paper **counts** and BIP! indicators by inferred **first-** or
+**last-author** gender within each top topic. Uses
 `data/elixir_unique_authors_dedup_countries_gender.tsv` (does not gender
 OpenAlex random samples).
 
 ```bash
-python scripts/attach_first_author_gender.py
-python scripts/compare_topic_gender_bip.py --top 5
+# First author (default)
+python scripts/attach_first_author_gender.py --role first
+python scripts/compare_topic_gender_bip.py --role first --top 5
+
+# Last author
+python scripts/attach_first_author_gender.py --role last
+python scripts/compare_topic_gender_bip.py --role last --top 5
 ```
 
 | Path | What |
 |---|---|
-| `results/elixir_works_with_first_author_gender.csv` | BIP papers + first-author gender join |
-| `results/openalex_topic_gender_counts.csv` | Per-topic male / female / unknown counts and shares |
-| `results/openalex_topic_gender_stats.csv` | Per-topic × gender BIP! stats |
-| `results/topic_gender_figures/` | Count/share bars and female/male BIP! indicator bars |
-| `results/topic_gender_report.md` | Coverage, figures, and stats table |
+| `results/elixir_works_with_first_author_gender.csv` | BIP papers + first-author gender |
+| `results/elixir_works_with_last_author_gender.csv` | BIP papers + last-author gender |
+| `results/openalex_topic_gender_counts.csv` | First-author counts/shares per topic |
+| `results/openalex_topic_last_author_gender_counts.csv` | Last-author counts/shares per topic |
+| `results/openalex_topic_gender_stats.csv` | First-author BIP! stats |
+| `results/openalex_topic_last_author_gender_stats.csv` | Last-author BIP! stats |
+| `results/topic_gender_figures/` | First-author count/share + indicator bars |
+| `results/topic_last_author_gender_figures/` | Last-author count/share + indicator bars |
+| `results/topic_gender_report.md` | First-author report |
+| `results/topic_last_author_gender_report.md` | Last-author report |
 
 Unknown = unmatched consortia, missing authors, or `not retrievable` names.
 BIP! indicator bars use female vs male only (bar length = statistic).

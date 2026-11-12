@@ -1,20 +1,18 @@
-"""Within-topic first-author gender counts and BIP! comparison for ELIXIR papers.
+"""Within-topic first- or last-author gender counts and BIP! comparison.
 
-Reads results/elixir_works_with_first_author_gender.csv (from
-attach_first_author_gender.py) and the top topics from
+Reads results/elixir_works_with_{first|last}_author_gender.csv (from
+attach_first_author_gender.py --role …) and the top topics from
 results/openalex_topic_counts.csv.
 
-Writes:
-  results/openalex_topic_gender_counts.csv
-  results/openalex_topic_gender_stats.csv
-  results/topic_gender_figures/counts_by_topic.png
-  results/topic_gender_figures/share_by_topic.png
-  results/topic_gender_figures/bars_<statistic>.png
-  results/topic_gender_report.md
+Writes (role=first keeps the original paths; role=last uses last_author_*):
+  results/openalex_topic[_last_author]_gender_counts.csv
+  results/openalex_topic[_last_author]_gender_stats.csv
+  results/topic[_last_author]_gender_figures/…
+  results/topic[_last_author]_gender_report.md
 
 Usage:
   python scripts/compare_topic_gender_bip.py
-  python scripts/compare_topic_gender_bip.py --top 5
+  python scripts/compare_topic_gender_bip.py --role last --top 5
 """
 from __future__ import annotations
 
@@ -36,12 +34,7 @@ from count_topics import (  # noqa: E402
     to_float,
 )
 
-DEFAULT_INPUT = ROOT / "results" / "elixir_works_with_first_author_gender.csv"
 DEFAULT_COUNTS = ROOT / "results" / "openalex_topic_counts.csv"
-COUNTS_OUT = ROOT / "results" / "openalex_topic_gender_counts.csv"
-STATS_OUT = ROOT / "results" / "openalex_topic_gender_stats.csv"
-FIGURES_DIR = ROOT / "results" / "topic_gender_figures"
-REPORT_MD = ROOT / "results" / "topic_gender_report.md"
 
 STAT_KEYS = [k for k in STATS_HEADER if k not in {"topic", "n_papers"}]
 PLOT_STAT_KEYS = [k for k in STAT_KEYS if k not in {"median_popularity", "median_influence"}]
@@ -58,6 +51,30 @@ STAT_LABELS = {
 
 GENDER_PLOT = ("female", "male")
 GENDER_COLORS = {"female": "#c0392b", "male": "#1f6feb", "unknown": "#9aa5b1"}
+
+
+def role_paths(role: str) -> dict[str, Path]:
+    if role == "first":
+        return {
+            "input": ROOT / "results" / "elixir_works_with_first_author_gender.csv",
+            "counts": ROOT / "results" / "openalex_topic_gender_counts.csv",
+            "stats": ROOT / "results" / "openalex_topic_gender_stats.csv",
+            "figures": ROOT / "results" / "topic_gender_figures",
+            "report": ROOT / "results" / "topic_gender_report.md",
+            "figures_rel": "topic_gender_figures",
+        }
+    return {
+        "input": ROOT / "results" / "elixir_works_with_last_author_gender.csv",
+        "counts": ROOT / "results" / "openalex_topic_last_author_gender_counts.csv",
+        "stats": ROOT / "results" / "openalex_topic_last_author_gender_stats.csv",
+        "figures": ROOT / "results" / "topic_last_author_gender_figures",
+        "report": ROOT / "results" / "topic_last_author_gender_report.md",
+        "figures_rel": "topic_last_author_gender_figures",
+    }
+
+
+def role_phrase(role: str) -> str:
+    return "first-author" if role == "first" else "last-author"
 
 
 def wrap_topic(name: str, width: int = 28) -> str:
@@ -79,16 +96,6 @@ def read_top_topics(counts_path: Path, top: int) -> list[tuple[str, int]]:
     return rows[:top]
 
 
-def fmt_num(x) -> str:
-    if x == "" or x is None:
-        return ""
-    if isinstance(x, float):
-        if abs(x) != 0 and (abs(x) < 1e-3 or abs(x) >= 1e4):
-            return f"{x:.6E}".replace("E+", "E").replace("E-0", "E-")
-        return f"{x:.6g}"
-    return str(x)
-
-
 def make_count_figures(count_rows: list[dict], topics: list[str], out_dir: Path) -> list[Path]:
     import matplotlib.pyplot as plt
     import numpy as np
@@ -100,7 +107,6 @@ def make_count_figures(count_rows: list[dict], topics: list[str], out_dir: Path)
     height = 0.25
     genders = ["female", "male", "unknown"]
 
-    # Absolute counts
     fig, ax = plt.subplots(figsize=(10, 0.7 * len(topics) + 2.2))
     for i, g in enumerate(genders):
         vals = [int(by_topic[t][f"n_{g}"]) for t in topics]
@@ -122,7 +128,6 @@ def make_count_figures(count_rows: list[dict], topics: list[str], out_dir: Path)
     plt.close(fig)
     paths.append(path)
 
-    # Percentage share
     fig, ax = plt.subplots(figsize=(10, 0.7 * len(topics) + 2.2))
     left = np.zeros(len(topics))
     for g in genders:
@@ -148,7 +153,6 @@ def make_count_figures(count_rows: list[dict], topics: list[str], out_dir: Path)
 
 
 def format_stat_annotation(stat: str, value: float) -> str:
-    """Value on the axis scale (no sample size)."""
     if stat.startswith("pct_"):
         return f"{value:.0f}%" if float(value).is_integer() else f"{value:.1f}%"
     if stat.startswith("median_") and stat in {"median_impulse", "median_cc"}:
@@ -156,19 +160,20 @@ def format_stat_annotation(stat: str, value: float) -> str:
     return f"{value:.3g}"
 
 
-def make_indicator_bar_figures(stat_rows: list[dict], topics: list[str], out_dir: Path) -> list[Path]:
-    """Grouped bars: x = BIP! statistic; annotation = value only."""
+def make_indicator_bar_figures(
+    stat_rows: list[dict], topics: list[str], out_dir: Path, role: str,
+) -> list[Path]:
     import matplotlib.pyplot as plt
     import numpy as np
 
     out_dir.mkdir(parents=True, exist_ok=True)
-    # Drop old dumbbell forests if present
     for old in out_dir.glob("forest_*.png"):
         old.unlink()
 
     paths: list[Path] = []
     by_key = {(r["topic"], r["gender"]): r for r in stat_rows}
     height = 0.32
+    author_word = "first author" if role == "first" else "last author"
 
     for stat in PLOT_STAT_KEYS:
         label = STAT_LABELS.get(stat, stat)
@@ -183,7 +188,7 @@ def make_indicator_bar_figures(stat_rows: list[dict], topics: list[str], out_dir
             offset = (i - 0.5) * height
             bars = ax.barh(
                 y + offset, vals, height=height,
-                color=GENDER_COLORS[g], label=f"{g.capitalize()} first author",
+                color=GENDER_COLORS[g], label=f"{g.capitalize()} {author_word}",
             )
             for j, (bar, v) in enumerate(zip(bars, vals)):
                 row = by_key.get((topics[j], g))
@@ -225,18 +230,21 @@ def write_report(
     stat_rows: list[dict],
     figure_paths: list[Path],
     coverage: dict,
+    role: str,
+    figures_rel: str,
 ) -> None:
+    phrase = role_phrase(role)
     lines = [
-        "# ELIXIR topic BIP! by first-author gender",
+        f"# ELIXIR topic BIP! by {phrase} gender",
         "",
         "## Process",
         "",
-        "First-author gender was attached from "
+        f"{phrase.capitalize()} gender was attached from "
         "`data/elixir_unique_authors_dedup_countries_gender.tsv` to "
         "`data/elixir_works_metadata_openalex_bip.csv` "
-        "(`scripts/attach_first_author_gender.py`). Within each of the top "
+        f"(`scripts/attach_first_author_gender.py --role {role}`). Within each of the top "
         f"{len(topics)} OpenAlex primary topics, we count papers by inferred "
-        "first-author gender and recompute the same BIP! statistics as "
+        f"{phrase} gender and recompute the same BIP! statistics as "
         "`count_topics.py` for female and male subsets.",
         "",
         "### Join coverage (all papers)",
@@ -265,24 +273,24 @@ def write_report(
         "",
         "## Count and composition figures",
         "",
-        "Paper counts and percentage shares by first-author gender within each "
+        f"Paper counts and percentage shares by {phrase} gender within each "
         "topic (unknown includes unmatched consortia and non-retrievable names).",
         "",
     ]
     for p in count_figs:
-        label = "Paper counts by first-author gender" if p.name.startswith("counts_") \
-            else "Share of papers by first-author gender"
+        label = f"Paper counts by {phrase} gender" if p.name.startswith("counts_") \
+            else f"Share of papers by {phrase} gender"
         lines += [
             f"### {label}",
             "",
-            f"![{label}](topic_gender_figures/{p.name})",
+            f"![{label}]({figures_rel}/{p.name})",
             "",
         ]
 
     lines += [
         "## BIP! indicator figures",
         "",
-        "Grouped bars compare female vs male first-author subsets within each "
+        f"Grouped bars compare female vs male {phrase} subsets within each "
         "topic. The **bar length / x-axis** is the BIP! statistic; the label "
         "next to each bar repeats that value. Unknown-gender papers are "
         "excluded from these plots (subset sizes are in the topics table "
@@ -295,7 +303,7 @@ def write_report(
         lines += [
             f"### {label}",
             "",
-            f"![{label}](topic_gender_figures/{p.name})",
+            f"![{label}]({figures_rel}/{p.name})",
             "",
         ]
 
@@ -327,29 +335,37 @@ def write_report(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--input", type=Path, default=DEFAULT_INPUT)
+    parser.add_argument("--role", choices=("first", "last"), default="first")
+    parser.add_argument("--input", type=Path, default=None)
     parser.add_argument("--counts", type=Path, default=DEFAULT_COUNTS)
     parser.add_argument("--top", type=int, default=5)
     parser.add_argument("--skip-plots", action="store_true")
     args = parser.parse_args()
 
-    if not args.input.exists():
-        sys.exit(f"Not found: {args.input}: run scripts/attach_first_author_gender.py first")
+    paths = role_paths(args.role)
+    input_path = args.input or paths["input"]
+    gender_col = f"{args.role}_author_gender"
+
+    if not input_path.exists():
+        sys.exit(
+            f"Not found: {input_path}: run "
+            f"scripts/attach_first_author_gender.py --role {args.role} first"
+        )
     if not args.counts.exists():
         sys.exit(f"Not found: {args.counts}: run scripts/count_topics.py first")
 
-    papers = load_rows(args.input)
-    if "first_author_gender" not in (papers[0] if papers else {}):
-        sys.exit(f"Column first_author_gender missing in {args.input}")
+    papers = load_rows(input_path)
+    if gender_col not in (papers[0] if papers else {}):
+        sys.exit(f"Column {gender_col} missing in {input_path}")
 
     top_topics = read_top_topics(args.counts, args.top)
     topic_names = [t for t, _ in top_topics]
+    print(f"role={args.role}")
     print("Top topics:")
     for name, n in top_topics:
         print(f"  {name}: {n}")
 
-    # Coverage over all papers
-    all_gender = Counter(normalize_gender(p.get("first_author_gender") or "") for p in papers)
+    all_gender = Counter(normalize_gender(p.get(gender_col) or "") for p in papers)
     methods = Counter((p.get("gender_match_method") or "") for p in papers)
     coverage = {
         "n_papers": len(papers),
@@ -359,14 +375,13 @@ def main() -> None:
         "methods": dict(methods),
     }
 
-    # Counts per top topic
     count_rows = []
     groups: dict[tuple[str, str], list[dict]] = defaultdict(list)
     for p in papers:
         topic = (p.get("topic") or "").strip()
         if topic not in topic_names:
             continue
-        g = normalize_gender(p.get("first_author_gender") or "")
+        g = normalize_gender(p.get(gender_col) or "")
         groups[(topic, g)].append(p)
 
     for topic, n_all in top_topics:
@@ -385,54 +400,52 @@ def main() -> None:
             "pct_unknown": round(100.0 * n_u / total, 1) if total else 0.0,
         })
 
-    COUNTS_OUT.parent.mkdir(parents=True, exist_ok=True)
-    with COUNTS_OUT.open("w", newline="", encoding="utf-8") as fh:
+    paths["counts"].parent.mkdir(parents=True, exist_ok=True)
+    with paths["counts"].open("w", newline="", encoding="utf-8") as fh:
         fields = ["topic", "n_papers", "n_female", "n_male", "n_unknown",
                   "pct_female", "pct_male", "pct_unknown"]
         w = csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
         w.writeheader()
         w.writerows(count_rows)
-    print(f"-> {COUNTS_OUT}")
+    print(f"-> {paths['counts']}")
 
-    # BIP stats for female/male only
     stat_rows = []
     for topic, _ in top_topics:
         for g in GENDER_PLOT:
             subset = groups[(topic, g)]
             st = topic_stats(subset)
-            row = {"topic": topic, "gender": g, **{k: st[k] for k in STATS_HEADER if k != "topic"}}
-            # ensure stringy values for CSV
-            for k, v in list(row.items()):
-                if k not in {"topic", "gender"}:
-                    row[k] = v if isinstance(v, str) else ("" if v is None else str(v))
-            # n_papers already int-like from topic_stats
-            row["n_papers"] = st["n_papers"]
+            row = {"topic": topic, "gender": g, "n_papers": st["n_papers"]}
             for k in STAT_KEYS:
                 row[k] = st[k]
             stat_rows.append(row)
 
-    with STATS_OUT.open("w", newline="", encoding="utf-8") as fh:
+    with paths["stats"].open("w", newline="", encoding="utf-8") as fh:
         fields = ["topic", "gender", "n_papers", *STAT_KEYS]
         w = csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
         w.writeheader()
         w.writerows(stat_rows)
-    print(f"-> {STATS_OUT}")
+    print(f"-> {paths['stats']}")
 
     figure_paths: list[Path] = []
     if not args.skip_plots:
-        figure_paths.extend(make_count_figures(count_rows, topic_names, FIGURES_DIR))
-        figure_paths.extend(make_indicator_bar_figures(stat_rows, topic_names, FIGURES_DIR))
+        figure_paths.extend(make_count_figures(count_rows, topic_names, paths["figures"]))
+        figure_paths.extend(
+            make_indicator_bar_figures(stat_rows, topic_names, paths["figures"], args.role)
+        )
         for p in figure_paths:
             print(f"-> {p}")
-    elif FIGURES_DIR.exists():
+    elif paths["figures"].exists():
         figure_paths = (
-            sorted(FIGURES_DIR.glob("counts_*.png"))
-            + sorted(FIGURES_DIR.glob("share_*.png"))
-            + sorted(FIGURES_DIR.glob("bars_*.png"))
+            sorted(paths["figures"].glob("counts_*.png"))
+            + sorted(paths["figures"].glob("share_*.png"))
+            + sorted(paths["figures"].glob("bars_*.png"))
         )
 
-    write_report(REPORT_MD, top_topics, count_rows, stat_rows, figure_paths, coverage)
-    print(f"-> {REPORT_MD}")
+    write_report(
+        paths["report"], top_topics, count_rows, stat_rows, figure_paths, coverage,
+        role=args.role, figures_rel=paths["figures_rel"],
+    )
+    print(f"-> {paths['report']}")
     print("Done.")
 
 

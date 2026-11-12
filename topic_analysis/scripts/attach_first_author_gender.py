@@ -1,8 +1,8 @@
-"""Attach inferred first-author gender to ELIXIR BIP! papers.
+"""Attach inferred first- or last-author gender to ELIXIR BIP! papers.
 
 Joins data/elixir_works_metadata_openalex_bip.csv to
-data/elixir_unique_authors_dedup_countries_gender.tsv using the first author
-in the semicolon-separated `authors` column.
+data/elixir_unique_authors_dedup_countries_gender.tsv using the first or last
+author in the semicolon-separated `authors` column.
 
 Match order:
   1. exact full_name
@@ -11,12 +11,13 @@ Match order:
   4. exact first_name|last_name
   5. normalized first_name|last_name
 
-Writes results/elixir_works_with_first_author_gender.csv with the original
-columns plus first_author, first_author_gender, gender_match_method,
-gender_llm_confidence, gender_oa_author_id.
+Writes results/elixir_works_with_{first|last}_author_gender.csv with the
+original columns plus {role}_author, {role}_author_gender,
+gender_match_method, gender_llm_confidence, gender_oa_author_id.
 
 Usage:
   python scripts/attach_first_author_gender.py
+  python scripts/attach_first_author_gender.py --role last
 """
 from __future__ import annotations
 
@@ -31,7 +32,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_PAPERS = ROOT / "data" / "elixir_works_metadata_openalex_bip.csv"
 DEFAULT_GENDER = ROOT / "data" / "elixir_unique_authors_dedup_countries_gender.tsv"
-DEFAULT_OUT = ROOT / "results" / "elixir_works_with_first_author_gender.csv"
 
 csv.field_size_limit(sys.maxsize)
 
@@ -57,11 +57,14 @@ def strip_middle_initials(full: str) -> str:
     return " ".join(keep)
 
 
-def first_author(authors: str) -> str:
+def pick_author(authors: str, role: str) -> str:
     text = (authors or "").strip()
     if not text:
         return ""
-    return text.split(";")[0].strip()
+    parts = [p.strip() for p in text.split(";") if p.strip()]
+    if not parts:
+        return ""
+    return parts[0] if role == "first" else parts[-1]
 
 
 def first_last(name: str) -> tuple[str, str]:
@@ -133,12 +136,19 @@ def match_author(name: str, index: dict[str, dict[str, list[dict]]]) -> tuple[di
     return None, "unmatched"
 
 
+def default_output(role: str) -> Path:
+    return ROOT / "results" / f"elixir_works_with_{role}_author_gender.csv"
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--role", choices=("first", "last"), default="first",
+                        help="Which author position to gender (default: first)")
     parser.add_argument("--papers", type=Path, default=DEFAULT_PAPERS)
     parser.add_argument("--gender", type=Path, default=DEFAULT_GENDER)
-    parser.add_argument("--output", type=Path, default=DEFAULT_OUT)
+    parser.add_argument("--output", type=Path, default=None)
     args = parser.parse_args()
+    out = args.output or default_output(args.role)
 
     if not args.papers.exists():
         sys.exit(f"Not found: {args.papers}")
@@ -153,9 +163,11 @@ def main() -> None:
         fieldnames = list(reader.fieldnames)
         papers = list(reader)
 
+    author_col = f"{args.role}_author"
+    gender_col = f"{args.role}_author_gender"
     extra = [
-        "first_author",
-        "first_author_gender",
+        author_col,
+        gender_col,
         "gender_match_method",
         "gender_llm_confidence",
         "gender_oa_author_id",
@@ -166,7 +178,7 @@ def main() -> None:
     gender_counts: dict[str, int] = defaultdict(int)
     out_rows = []
     for paper in papers:
-        author = first_author(paper.get("authors") or "")
+        author = pick_author(paper.get("authors") or "", args.role)
         hit, method = match_author(author, index)
         if hit is None:
             gender = "unmatched" if author else "no_author"
@@ -175,20 +187,20 @@ def main() -> None:
         method_counts[method] += 1
         gender_counts[gender] += 1
         row = dict(paper)
-        row["first_author"] = author
-        row["first_author_gender"] = gender
+        row[author_col] = author
+        row[gender_col] = gender
         row["gender_match_method"] = method
         row["gender_llm_confidence"] = (hit.get("llm_confidence") if hit else "") or ""
         row["gender_oa_author_id"] = (hit.get("oa_author_id") if hit else "") or ""
         out_rows.append(row)
 
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    with args.output.open("w", newline="", encoding="utf-8") as fh:
+    out.parent.mkdir(parents=True, exist_ok=True)
+    with out.open("w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=out_fields, lineterminator="\n", extrasaction="ignore")
         writer.writeheader()
         writer.writerows(out_rows)
 
-    print(f"{len(out_rows)} papers -> {args.output}")
+    print(f"role={args.role}: {len(out_rows)} papers -> {out}")
     print("match methods:", dict(sorted(method_counts.items(), key=lambda x: -x[1])))
     print("genders:", dict(sorted(gender_counts.items(), key=lambda x: -x[1])))
 
