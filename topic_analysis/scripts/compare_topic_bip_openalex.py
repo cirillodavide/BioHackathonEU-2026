@@ -610,8 +610,12 @@ def write_report(
         for p in forest_files:
             key = p.stem.removeprefix("forest_")
             label = STAT_LABELS.get(key, key)
-            lines.append(f"- [{label}](topic_comparison_figures/{p.name})")
-        lines.append("")
+            lines += [
+                f"### {label}",
+                "",
+                f"![{label}](topic_comparison_figures/{p.name})",
+                "",
+            ]
     else:
         lines += ["_No forest plots generated._", ""]
 
@@ -628,8 +632,12 @@ def write_report(
         for p in hist_files:
             key = p.stem.removeprefix("null_hist_")
             label = STAT_LABELS.get(key, key)
-            lines.append(f"- [{label}](topic_comparison_figures/{p.name})")
-        lines.append("")
+            lines += [
+                f"### {label}",
+                "",
+                f"![{label}](topic_comparison_figures/{p.name})",
+                "",
+            ]
     else:
         lines += ["_No null histograms generated._", ""]
 

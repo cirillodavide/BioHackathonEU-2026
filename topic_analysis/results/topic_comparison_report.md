@@ -18,23 +18,57 @@ Starting from `data/elixir_works_metadata_openalex_bip.csv`, we counted how ofte
 
 One panel per BIP! statistic. Each row is a topic. The grey bar is the central 95% range of that statistic across the 100 year-matched OpenAlex samples; the tick is the mean of those samples; the red point is the ELIXIR value for the topic. Use these to see, at a glance, whether ELIXIR sits inside or outside the OpenAlex reference band for every topic.
 
-- [Median BIP! citation count](topic_comparison_figures/forest_median_cc.png)
-- [Median BIP! impulse (3-year citation count)](topic_comparison_figures/forest_median_impulse.png)
-- [Share of papers in BIP! citation-count top 10%](topic_comparison_figures/forest_pct_cc_top10.png)
-- [Share of papers in BIP! impulse top 10%](topic_comparison_figures/forest_pct_imp_top10.png)
-- [Share of papers in BIP! influence top 10%](topic_comparison_figures/forest_pct_inf_top10.png)
-- [Share of papers in BIP! popularity top 10%](topic_comparison_figures/forest_pct_pop_top10.png)
+### Median BIP! citation count
+
+![Median BIP! citation count](topic_comparison_figures/forest_median_cc.png)
+
+### Median BIP! impulse (3-year citation count)
+
+![Median BIP! impulse (3-year citation count)](topic_comparison_figures/forest_median_impulse.png)
+
+### Share of papers in BIP! citation-count top 10%
+
+![Share of papers in BIP! citation-count top 10%](topic_comparison_figures/forest_pct_cc_top10.png)
+
+### Share of papers in BIP! impulse top 10%
+
+![Share of papers in BIP! impulse top 10%](topic_comparison_figures/forest_pct_imp_top10.png)
+
+### Share of papers in BIP! influence top 10%
+
+![Share of papers in BIP! influence top 10%](topic_comparison_figures/forest_pct_inf_top10.png)
+
+### Share of papers in BIP! popularity top 10%
+
+![Share of papers in BIP! popularity top 10%](topic_comparison_figures/forest_pct_pop_top10.png)
 
 ## Null histograms
 
 One figure per BIP! statistic, with a small histogram for each topic. Bars show the distribution of the 100 OpenAlex-sample values; the red vertical line is the ELIXIR value. Use these to see the shape of the OpenAlex null and how far ELIXIR lies from that cloud.
 
-- [Median BIP! citation count](topic_comparison_figures/null_hist_median_cc.png)
-- [Median BIP! impulse (3-year citation count)](topic_comparison_figures/null_hist_median_impulse.png)
-- [Share of papers in BIP! citation-count top 10%](topic_comparison_figures/null_hist_pct_cc_top10.png)
-- [Share of papers in BIP! impulse top 10%](topic_comparison_figures/null_hist_pct_imp_top10.png)
-- [Share of papers in BIP! influence top 10%](topic_comparison_figures/null_hist_pct_inf_top10.png)
-- [Share of papers in BIP! popularity top 10%](topic_comparison_figures/null_hist_pct_pop_top10.png)
+### Median BIP! citation count
+
+![Median BIP! citation count](topic_comparison_figures/null_hist_median_cc.png)
+
+### Median BIP! impulse (3-year citation count)
+
+![Median BIP! impulse (3-year citation count)](topic_comparison_figures/null_hist_median_impulse.png)
+
+### Share of papers in BIP! citation-count top 10%
+
+![Share of papers in BIP! citation-count top 10%](topic_comparison_figures/null_hist_pct_cc_top10.png)
+
+### Share of papers in BIP! impulse top 10%
+
+![Share of papers in BIP! impulse top 10%](topic_comparison_figures/null_hist_pct_imp_top10.png)
+
+### Share of papers in BIP! influence top 10%
+
+![Share of papers in BIP! influence top 10%](topic_comparison_figures/null_hist_pct_inf_top10.png)
+
+### Share of papers in BIP! popularity top 10%
+
+![Share of papers in BIP! popularity top 10%](topic_comparison_figures/null_hist_pct_pop_top10.png)
 
 ## Main findings
 
@@ -83,4 +117,4 @@ One figure per BIP! statistic, with a small histogram for each topic. Bars show 
 | Protein Structure and Dynamics | `pct_imp_top10` | 78.3 | 39.095 | [27.5, 52.2] | higher | 0.0 |
 | Protein Structure and Dynamics | `pct_cc_top10` | 71 | 27.451 | [17.4, 39.1] | higher | 0.0 |
 
-_Generated 2026-11-11 16:49 UTC_
+_Generated 2026-11-12 13:34 UTC_

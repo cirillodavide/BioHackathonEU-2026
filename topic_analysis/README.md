@@ -68,7 +68,31 @@ Run the commands below from this folder (`topic_analysis/`).
 | `results/cache/bip_scores.jsonl` | Cached BIP! API scores used during sampling |
 
 **Forest plots:** grey bar = OpenAlex 95% range, tick = OpenAlex-sample mean,
-coloured point = ELIXIR (red if outside the band).  
+coloured point = ELIXIR.  
 **Histograms:** cloud of the 100 OpenAlex-sample values per topic, red line at
 ELIXIR. Raw popularity/influence score plots are omitted; top-10% class shares
 are kept instead.
+
+## First-author gender (within ELIXIR)
+
+Compare paper **counts** and BIP! indicators by inferred first-author gender
+within each top topic. Uses
+`data/elixir_unique_authors_dedup_countries_gender.tsv` (does not gender
+OpenAlex random samples).
+
+```bash
+python scripts/attach_first_author_gender.py
+python scripts/compare_topic_gender_bip.py --top 5
+```
+
+| Path | What |
+|---|---|
+| `results/elixir_works_with_first_author_gender.csv` | BIP papers + first-author gender join |
+| `results/openalex_topic_gender_counts.csv` | Per-topic male / female / unknown counts and shares |
+| `results/openalex_topic_gender_stats.csv` | Per-topic × gender BIP! stats |
+| `results/topic_gender_figures/` | Count/share bars and female/male BIP! indicator bars |
+| `results/topic_gender_report.md` | Coverage, figures, and stats table |
+
+Unknown = unmatched consortia, missing authors, or `not retrievable` names.
+BIP! indicator bars use female vs male only: bar length is the statistic;
+`(n=…)` is the paper count in that subset.

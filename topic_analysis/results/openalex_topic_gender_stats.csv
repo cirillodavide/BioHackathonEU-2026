@@ -1,0 +1,11 @@
+topic,gender,n_papers,median_popularity,median_influence,median_impulse,median_cc,pct_pop_top10,pct_inf_top10,pct_imp_top10,pct_cc_top10
+Research Data Management Practices,female,64,1.566294E-8,3.397425E-9,15,23,81.2,60.9,65.6,57.8
+Research Data Management Practices,male,88,7.672589E-9,2.826796E-9,7,9,72.7,52.3,61.4,48.9
+Genomics and Phylogenetic Studies,female,31,1.317527E-8,2.719957E-9,9,19,80.6,54.8,74.2,61.3
+Genomics and Phylogenetic Studies,male,80,8.889903E-9,2.567908E-9,10.5,14.5,88.8,43.8,68.8,60.0
+Scientific Computing and Data Management,female,17,8.203296E-9,2.556607E-9,8,12,64.7,41.2,58.8,52.9
+Scientific Computing and Data Management,male,76,6.462088E-9,2.504203E-9,5,7,61.3,44.0,56.0,45.3
+Bioinformatics and Genomic Networks,female,33,1.552498E-8,3.233793E-9,17,34,97.0,63.6,93.9,87.9
+Bioinformatics and Genomic Networks,male,39,9.539930E-9,2.528156E-9,9,14,82.1,43.6,74.4,56.4
+Protein Structure and Dynamics,female,20,9.900478E-9,2.545638E-9,11,15.5,95.0,40.0,80.0,70.0
+Protein Structure and Dynamics,male,49,2.060031E-8,3.414204E-9,16,28,85.7,63.3,77.6,71.4
