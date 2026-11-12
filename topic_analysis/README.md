@@ -67,8 +67,8 @@ Run the commands below from this folder (`topic_analysis/`).
 | `results/topic_comparison_report.md` | Written-up findings |
 | `results/cache/bip_scores.jsonl` | Cached BIP! API scores used during sampling |
 
-**Forest plots:** grey bar = OpenAlex 95% range, tick = OpenAlex-sample mean,
-coloured point = ELIXIR.  
+**Forest plots:** grey bar = OpenAlex 95% range, open grey circle = OpenAlex-sample
+mean, red point = ELIXIR.  
 **Histograms:** cloud of the 100 OpenAlex-sample values per topic, red line at
 ELIXIR. Raw popularity/influence score plots are omitted; top-10% class shares
 are kept instead.

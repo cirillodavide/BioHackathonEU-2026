@@ -465,11 +465,13 @@ def make_figures(comparison_rows: list[dict], replicate_rows: list[dict], out_di
         if r["topic"] not in topics:
             topics.append(r["topic"])
 
+    band_color = "#9aa5b1"
     forest_legend = [
-        Patch(facecolor="#9aa5b1", edgecolor="none", alpha=0.85,
+        Patch(facecolor=band_color, edgecolor="none", alpha=0.85,
               label="OpenAlex central 95% range"),
-        Line2D([0], [0], marker="|", color="#4b5563", linestyle="None",
-               markersize=14, markeredgewidth=2, label="OpenAlex sample mean"),
+        Line2D([0], [0], marker="o", linestyle="None", markersize=8,
+               markerfacecolor="none", markeredgecolor=band_color, markeredgewidth=1.5,
+               label="OpenAlex sample mean"),
         Line2D([0], [0], marker="o", color="#c0392b", linestyle="None",
                markersize=8, label="ELIXIR value"),
     ]
@@ -488,9 +490,10 @@ def make_figures(comparison_rows: list[dict], replicate_rows: list[dict], out_di
             mean = to_float(r["null_mean"])
             elx = to_float(r["elixir_value"])
             if p2 is not None and p97 is not None:
-                ax.hlines(i, p2, p97, color="#9aa5b1", linewidth=6, alpha=0.85, zorder=1)
+                ax.hlines(i, p2, p97, color=band_color, linewidth=6, alpha=0.85, zorder=1)
             if mean is not None:
-                ax.plot(mean, i, "|", color="#4b5563", markersize=14, markeredgewidth=2, zorder=2)
+                ax.plot(mean, i, "o", markersize=8, markerfacecolor="none",
+                        markeredgecolor=band_color, markeredgewidth=1.5, zorder=2)
             if elx is not None:
                 ax.plot(elx, i, "o", color="#c0392b", markersize=8, zorder=3)
         ax.set_yticks(y)
@@ -601,7 +604,7 @@ def write_report(
         "",
         "One panel per BIP! statistic. Each row is a topic. The grey bar is the central 95% "
         f"range of that statistic across the {replicates} year-matched OpenAlex samples; the "
-        "tick is the mean of those samples; the red point is the ELIXIR value for the topic. "
+        "open grey circle is the mean of those samples; the red point is the ELIXIR value for the topic. "
         "Use these to see, at a glance, whether ELIXIR sits inside or outside the OpenAlex "
         "reference band for every topic.",
         "",
