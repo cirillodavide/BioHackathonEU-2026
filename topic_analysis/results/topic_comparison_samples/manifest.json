@@ -1,37 +1,44 @@
 {
-  "created_utc": "2026-11-11T14:28:18.974794+00:00",
-  "input": "/Users/serafeim/projects/BiohackathonEU-2026/data/elixir_works_metadata_openalex_bip.csv",
+  "created_utc": "2026-11-12T16:33:26.650174+00:00",
+  "input": "/Users/serafeim/projects/BioHackathonEU-2026-davide/topic_analysis/data/elixir_works_metadata_openalex_bip.csv",
   "top": 5,
-  "replicates": 100,
+  "replicates": 500,
   "seed": 42,
   "excluded_elixir_dois": 1269,
-  "n_sample_rows": 50400,
-  "sampling_note": "Year-stratified cohorts: OpenAlex sample+seed builds per-year candidate pools with BIP coverage; each replicate is a local RNG draw matching the Elixir year histogram.",
+  "n_sample_rows": 252000,
+  "n_unique_works_with_authors": 13098,
+  "n_author_rows": 56451,
+  "sampling_note": "Year-stratified samples: OpenAlex sample+seed builds per-year candidate pools with BIP coverage; each replicate is a local RNG draw matching the Elixir year histogram. Author lists come from OpenAlex authorships; first_name/last_name are best-effort splits of display_name/raw_author_name (empty when unclear).",
   "topics": [
     {
       "name": "Research Data Management Practices",
       "n_elixir": 154,
-      "topic_id": "T11937"
+      "topic_id": "T11937",
+      "openalex_n": 265910
     },
     {
       "name": "Genomics and Phylogenetic Studies",
       "n_elixir": 113,
-      "topic_id": "T10015"
+      "topic_id": "T10015",
+      "openalex_n": 260355
     },
     {
       "name": "Scientific Computing and Data Management",
       "n_elixir": 95,
-      "topic_id": "T11986"
+      "topic_id": "T11986",
+      "openalex_n": 62318
     },
     {
       "name": "Bioinformatics and Genomic Networks",
       "n_elixir": 73,
-      "topic_id": "T10887"
+      "topic_id": "T10887",
+      "openalex_n": 61821
     },
     {
       "name": "Protein Structure and Dynamics",
       "n_elixir": 69,
-      "topic_id": "T10044"
+      "topic_id": "T10044",
+      "openalex_n": 220661
     }
   ]
 }

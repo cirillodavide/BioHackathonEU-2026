@@ -2,7 +2,7 @@
 
 ## Process
 
-First-author gender was attached from `data/elixir_unique_authors_dedup_countries_gender.tsv` to `data/elixir_works_metadata_openalex_bip.csv` (`scripts/attach_first_author_gender.py`). Within each of the top 5 OpenAlex primary topics, we count papers by inferred first-author gender and recompute the same BIP! statistics as `count_topics.py` for female and male subsets.
+First-author gender was attached from `data/elixir_unique_authors_dedup_countries_gender.tsv` to `data/elixir_works_metadata_openalex_bip.csv` (`scripts/attach_first_author_gender.py --role first`). Within each of the top 5 OpenAlex primary topics, we count papers by inferred first-author gender and recompute the same BIP! statistics as `count_topics.py` for female and male subsets.
 
 ### Join coverage (all papers)
 
@@ -26,39 +26,39 @@ Paper counts and percentage shares by first-author gender within each topic (unk
 
 ### Paper counts by first-author gender
 
-![Paper counts by first-author gender](topic_gender_figures/counts_by_topic.png)
+![Paper counts by first-author gender](../figures/topic_gender_figures/counts_by_topic.png)
 
 ### Share of papers by first-author gender
 
-![Share of papers by first-author gender](topic_gender_figures/share_by_topic.png)
+![Share of papers by first-author gender](../figures/topic_gender_figures/share_by_topic.png)
 
 ## BIP! indicator figures
 
 Grouped bars compare female vs male first-author subsets within each topic. The **bar length / x-axis** is the BIP! statistic; the label next to each bar repeats that value. Unknown-gender papers are excluded from these plots (subset sizes are in the topics table above).
 
-### Median BIP! impulse (3-year citation count)
-
-![Median BIP! impulse (3-year citation count)](topic_gender_figures/bars_median_impulse.png)
-
 ### Median BIP! citation count
 
-![Median BIP! citation count](topic_gender_figures/bars_median_cc.png)
+![Median BIP! citation count](../figures/topic_gender_figures/bars_median_cc.png)
 
-### Share of papers in BIP! popularity top 10%
+### Median BIP! impulse (3-year citation count)
 
-![Share of papers in BIP! popularity top 10%](topic_gender_figures/bars_pct_pop_top10.png)
-
-### Share of papers in BIP! influence top 10%
-
-![Share of papers in BIP! influence top 10%](topic_gender_figures/bars_pct_inf_top10.png)
-
-### Share of papers in BIP! impulse top 10%
-
-![Share of papers in BIP! impulse top 10%](topic_gender_figures/bars_pct_imp_top10.png)
+![Median BIP! impulse (3-year citation count)](../figures/topic_gender_figures/bars_median_impulse.png)
 
 ### Share of papers in BIP! citation-count top 10%
 
-![Share of papers in BIP! citation-count top 10%](topic_gender_figures/bars_pct_cc_top10.png)
+![Share of papers in BIP! citation-count top 10%](../figures/topic_gender_figures/bars_pct_cc_top10.png)
+
+### Share of papers in BIP! impulse top 10%
+
+![Share of papers in BIP! impulse top 10%](../figures/topic_gender_figures/bars_pct_imp_top10.png)
+
+### Share of papers in BIP! influence top 10%
+
+![Share of papers in BIP! influence top 10%](../figures/topic_gender_figures/bars_pct_inf_top10.png)
+
+### Share of papers in BIP! popularity top 10%
+
+![Share of papers in BIP! popularity top 10%](../figures/topic_gender_figures/bars_pct_pop_top10.png)
 
 ## Per-topic gender BIP! stats
 
@@ -75,4 +75,4 @@ Grouped bars compare female vs male first-author subsets within each topic. The 
 | Protein Structure and Dynamics | female | 20 | 11 | 15.5 | 95.0 | 40.0 | 80.0 | 70.0 |
 | Protein Structure and Dynamics | male | 49 | 16 | 28 | 85.7 | 63.3 | 77.6 | 71.4 |
 
-_Generated 2026-11-12 13:49 UTC_
+_Generated 2026-11-12 20:02 UTC_

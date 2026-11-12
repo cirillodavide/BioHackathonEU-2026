@@ -12,7 +12,7 @@ Requires: Python 3.9+, matplotlib
 
 Usage:
   python scripts/compare_topic_bip_openalex.py
-  python scripts/compare_topic_bip_openalex.py --top 5 --replicates 100 --seed 42
+  python scripts/compare_topic_bip_openalex.py --top 5 --replicates 500 --seed 42
   python scripts/compare_topic_bip_openalex.py --reuse-samples
 """
 from __future__ import annotations
@@ -48,12 +48,13 @@ from count_topics import (  # noqa: E402
 DEFAULT_INPUT = ROOT / "data" / "elixir_works_metadata_openalex_bip.csv"
 DEFAULT_COUNTS = ROOT / "results" / "openalex_topic_counts.csv"
 SAMPLES_DIR = ROOT / "results" / "topic_comparison_samples"
+AUTHORS_CSV = SAMPLES_DIR / "samples_authors.csv"
 CACHE_DIR = ROOT / "results" / "cache"
 BIP_CACHE = CACHE_DIR / "bip_scores.jsonl"
 COMPARISON_CSV = ROOT / "results" / "openalex_topic_comparison.csv"
 REPLICATES_CSV = ROOT / "results" / "openalex_topic_comparison_replicates.csv"
-FIGURES_DIR = ROOT / "results" / "topic_comparison_figures"
-REPORT_MD = ROOT / "results" / "topic_comparison_report.md"
+FIGURES_DIR = ROOT / "results" / "figures" / "topic_comparison_figures"
+REPORT_MD = ROOT / "results" / "reports" / "topic_comparison_report.md"
 
 OPENALEX = "https://api.openalex.org"
 BIP = "https://bip-api.imsi.athenarc.gr"
@@ -272,6 +273,124 @@ def openalex_sample(topic_id: str, year: int, n: int, seed: int) -> list[dict]:
     return works
 
 
+def split_person_name(full: str) -> tuple[str, str]:
+    """Best-effort first/last from OpenAlex display/raw name; empty if unclear."""
+    text = (full or "").strip()
+    if not text:
+        return "", ""
+    lower = text.lower()
+    if any(tok in lower for tok in (
+        "consortium", "community", "collaboration", "network", " group", "team",
+        "members", "committee",
+    )):
+        return "", ""
+    # Prefer "Last, First Middle" when a single comma is present
+    if text.count(",") == 1:
+        last, first = [p.strip() for p in text.split(",", 1)]
+        first_tok = first.split()[0] if first.split() else ""
+        last_tok = last.split()[-1] if last.split() else ""
+        if first_tok and last_tok:
+            return first_tok, last_tok
+        return "", ""
+    parts = [p for p in text.replace(",", " ").split() if p]
+    if len(parts) < 2:
+        return "", ""
+    return parts[0], parts[-1]
+
+
+def authorships_from_work(work: dict) -> list[dict]:
+    """Parse OpenAlex work authorships into rows with best-effort first/last."""
+    wid = (work.get("id") or "").rsplit("/", 1)[-1]
+    doi = normalize_doi(work.get("doi") or "")
+    rows = []
+    for i, a in enumerate(work.get("authorships") or [], start=1):
+        author = a.get("author") or {}
+        raw = (a.get("raw_author_name") or "").strip()
+        display = (author.get("display_name") or "").strip()
+        full = display or raw
+        first, last = split_person_name(full) if full else ("", "")
+        oa_id = (author.get("id") or "").rsplit("/", 1)[-1]
+        rows.append({
+            "openalex_work_id": wid,
+            "doi": doi,
+            "author_order": i,
+            "author_position": (a.get("author_position") or "").strip(),
+            "full_name": full,
+            "first_name": first,
+            "last_name": last,
+            "raw_author_name": raw,
+            "oa_author_id": oa_id,
+        })
+    return rows
+
+
+def fetch_works_authorships(work_ids: list[str]) -> dict[str, list[dict]]:
+    """Return {openalex_work_id: [author rows]} via OpenAlex batched works lookups."""
+    out: dict[str, list[dict]] = {}
+    ids = [w for w in work_ids if w]
+    for i in range(0, len(ids), 50):
+        chunk = ids[i:i + 50]
+        # OpenAlex accepts pipe-separated openalex IDs
+        filt = "|".join(chunk)
+        url = (
+            f"{OPENALEX}/works?filter=openalex_id:{urllib.parse.quote(filt, safe='|')}"
+            f"&per-page={len(chunk)}"
+            f"&select=id,doi,authorships"
+        )
+        try:
+            data = http_json(url, sleep=0.12)
+        except Exception as exc:  # noqa: BLE001
+            print(f"  authorship batch failed ({exc}); falling back to singles", flush=True)
+            data = {"results": []}
+            for wid in chunk:
+                try:
+                    one = http_json(
+                        f"{OPENALEX}/works/{wid}?select=id,doi,authorships", sleep=0.12)
+                    if isinstance(one, dict) and one.get("id"):
+                        data["results"].append(one)
+                except Exception:
+                    continue
+        for work in data.get("results") or []:
+            wid = (work.get("id") or "").rsplit("/", 1)[-1]
+            if wid:
+                out[wid] = authorships_from_work(work)
+        if (i // 50 + 1) % 20 == 0 or i + 50 >= len(ids):
+            print(f"  authorships: {min(i + 50, len(ids))}/{len(ids)} works", flush=True)
+    return out
+
+
+def attach_authors_to_samples(sample_rows: list[dict]) -> list[dict]:
+    """Fetch authorships for unique sample works; set authors on samples; return author rows."""
+    work_ids = sorted({(r.get("openalex_work_id") or "").strip() for r in sample_rows
+                       if (r.get("openalex_work_id") or "").strip()})
+    print(f"Fetching authorships for {len(work_ids)} unique OpenAlex works…", flush=True)
+    by_work = fetch_works_authorships(work_ids)
+    for r in sample_rows:
+        wid = (r.get("openalex_work_id") or "").strip()
+        authors = by_work.get(wid) or []
+        names = [a["full_name"] for a in authors if a.get("full_name")]
+        r["authors"] = "; ".join(names)
+        r["n_authors"] = len(authors)
+    # one row per work×author (deduped by work)
+    author_rows: list[dict] = []
+    for wid in work_ids:
+        author_rows.extend(by_work.get(wid) or [])
+    return author_rows
+
+
+def write_authors_csv(path: Path, rows: list[dict]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fields = [
+        "openalex_work_id", "doi", "author_order", "author_position",
+        "full_name", "first_name", "last_name", "raw_author_name", "oa_author_id",
+    ]
+    with path.open("w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields, lineterminator="\n", extrasaction="ignore")
+        w.writeheader()
+        for r in rows:
+            w.writerow(r)
+
+
 def build_year_pool(
     topic_id: str,
     year: int,
@@ -281,8 +400,8 @@ def build_year_pool(
     base_seed: int,
 ) -> list[dict]:
     """Collect unique DOI works with BIP coverage for topic-year."""
-    # Enough headroom for B local draws without huge API cost on sparse years.
-    target = min(1200, max(need * 12, need + 80, 120))
+    # Enough headroom for large B local draws without huge API cost on sparse years.
+    target = min(2000, max(need * 15, need + 100, 150))
     by_doi: dict[str, dict] = {}
     seed = base_seed + year * 1009
     rounds = 0
@@ -435,8 +554,11 @@ def read_top_topics(counts_path: Path, top: int) -> list[tuple[str, int]]:
 
 def write_samples_csv(path: Path, rows: list[dict]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    fields = ["topic", "topic_id", "replicate", "year", "openalex_work_id", "doi", "seed_used",
-              "popularity", "pop_class", "influence", "inf_class", "impulse", "imp_class", "cc", "cc_class"]
+    fields = [
+        "topic", "topic_id", "replicate", "year", "openalex_work_id", "doi", "seed_used",
+        "n_authors", "authors",
+        "popularity", "pop_class", "influence", "inf_class", "impulse", "imp_class", "cc", "cc_class",
+    ]
     with path.open("w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=fields, lineterminator="\n", extrasaction="ignore")
         w.writeheader()
@@ -465,11 +587,13 @@ def make_figures(comparison_rows: list[dict], replicate_rows: list[dict], out_di
         if r["topic"] not in topics:
             topics.append(r["topic"])
 
+    band_color = "#9aa5b1"
     forest_legend = [
-        Patch(facecolor="#9aa5b1", edgecolor="none", alpha=0.85,
+        Patch(facecolor=band_color, edgecolor="none", alpha=0.85,
               label="OpenAlex central 95% range"),
-        Line2D([0], [0], marker="|", color="#4b5563", linestyle="None",
-               markersize=14, markeredgewidth=2, label="OpenAlex sample mean"),
+        Line2D([0], [0], marker="o", linestyle="None", markersize=8,
+               markerfacecolor="none", markeredgecolor=band_color, markeredgewidth=1.5,
+               label="OpenAlex sample mean"),
         Line2D([0], [0], marker="o", color="#c0392b", linestyle="None",
                markersize=8, label="ELIXIR value"),
     ]
@@ -488,9 +612,10 @@ def make_figures(comparison_rows: list[dict], replicate_rows: list[dict], out_di
             mean = to_float(r["null_mean"])
             elx = to_float(r["elixir_value"])
             if p2 is not None and p97 is not None:
-                ax.hlines(i, p2, p97, color="#9aa5b1", linewidth=6, alpha=0.85, zorder=1)
+                ax.hlines(i, p2, p97, color=band_color, linewidth=6, alpha=0.85, zorder=1)
             if mean is not None:
-                ax.plot(mean, i, "|", color="#4b5563", markersize=14, markeredgewidth=2, zorder=2)
+                ax.plot(mean, i, "o", markersize=8, markerfacecolor="none",
+                        markeredgecolor=band_color, markeredgewidth=1.5, zorder=2)
             if elx is not None:
                 ax.plot(elx, i, "o", color="#c0392b", markersize=8, zorder=3)
         ax.set_yticks(y)
@@ -556,7 +681,7 @@ def wrap_topic(name: str, width: int = 28) -> str:
 
 def write_report(
     path: Path,
-    topics: list[tuple[str, int, str]],
+    topics: list[tuple[str, int, str, int]],
     comparison_rows: list[dict],
     figure_paths: list[Path],
     replicates: int,
@@ -581,16 +706,22 @@ def write_report(
         f"BIP!. The same statistics were recomputed on every sample. Across the {replicates} draws "
         f"we report the mean and the central 95% range (2.5th–97.5th percentiles) and place the "
         f"ELIXIR value in that range (including whether it falls outside). Plots are in "
-        f"[`topic_comparison_figures/`](topic_comparison_figures/). Raw popularity/influence score "
-        f"plots are omitted; we keep the top-10% class shares instead. Seed `{seed}`.",
+        f"[`topic_comparison_figures/`](../figures/topic_comparison_figures/). Raw popularity/influence score "
+        f"plots are omitted; we keep the top-10% class shares instead. Seed `{seed}`. "
+        f"OpenAlex n is the topic’s `works_count` from the OpenAlex topics API "
+        f"(all works with that primary topic). Sample papers include OpenAlex author "
+        f"lists in `topic_comparison_samples/samples.csv` (`authors`) and "
+        f"`samples_authors.csv` (one row per author, with best-effort "
+        f"`first_name`/`last_name` when the name string can be split).",
         "",
         "### Topics",
         "",
-        "| Topic | ELIXIR n | OpenAlex topic id |",
-        "|---|---:|---|",
+        "| Topic | ELIXIR n | OpenAlex n | OpenAlex topic id |",
+        "|---|---:|---:|---|",
     ]
-    for name, n, tid in topics:
-        lines.append(f"| {name} | {n} | `{tid}` |")
+    for name, n, tid, oa_n in topics:
+        oa_s = f"{oa_n:,}" if oa_n else ""
+        lines.append(f"| {name} | {n} | {oa_s} | `{tid}` |")
 
     forest_files = [p for p in figure_paths if p.name.startswith("forest_")]
     hist_files = [p for p in figure_paths if p.name.startswith("null_hist_")]
@@ -601,7 +732,7 @@ def write_report(
         "",
         "One panel per BIP! statistic. Each row is a topic. The grey bar is the central 95% "
         f"range of that statistic across the {replicates} year-matched OpenAlex samples; the "
-        "tick is the mean of those samples; the red point is the ELIXIR value for the topic. "
+        "open grey circle is the mean of those samples; the red point is the ELIXIR value for the topic. "
         "Use these to see, at a glance, whether ELIXIR sits inside or outside the OpenAlex "
         "reference band for every topic.",
         "",
@@ -613,7 +744,7 @@ def write_report(
             lines += [
                 f"### {label}",
                 "",
-                f"![{label}](topic_comparison_figures/{p.name})",
+                f"![{label}](../figures/topic_comparison_figures/{p.name})",
                 "",
             ]
     else:
@@ -635,7 +766,7 @@ def write_report(
             lines += [
                 f"### {label}",
                 "",
-                f"![{label}](topic_comparison_figures/{p.name})",
+                f"![{label}](../figures/topic_comparison_figures/{p.name})",
                 "",
             ]
     else:
@@ -679,10 +810,12 @@ def main() -> None:
     parser.add_argument("--input", type=Path, default=DEFAULT_INPUT)
     parser.add_argument("--counts", type=Path, default=DEFAULT_COUNTS)
     parser.add_argument("--top", type=int, default=5)
-    parser.add_argument("--replicates", type=int, default=100)
+    parser.add_argument("--replicates", type=int, default=500)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--reuse-samples", action="store_true",
                         help="Reload saved sample membership instead of re-sampling")
+    parser.add_argument("--enrich-authors", action="store_true",
+                        help="With --reuse-samples, (re)fetch OpenAlex authorships for sample works")
     parser.add_argument("--skip-plots", action="store_true")
     args = parser.parse_args()
 
@@ -708,7 +841,8 @@ def main() -> None:
     samples_path = SAMPLES_DIR / "samples.csv"
     manifest_path = SAMPLES_DIR / "manifest.json"
     sample_rows: list[dict] = []
-    topic_meta: list[tuple[str, int, str]] = []
+    # (name, n_elixir, topic_id, openalex_n)
+    topic_meta: list[tuple[str, int, str, int]] = []
 
     if args.reuse_samples:
         if not samples_path.exists():
@@ -725,17 +859,48 @@ def main() -> None:
                       "impulse", "imp_class", "cc", "cc_class"]:
                 if not (r.get(k) or "").strip() and row.get(k) not in (None, ""):
                     r[k] = row.get(k, "")
-        # topic meta from manifest or samples
+        # topic meta from manifest or samples; fill OpenAlex works_count from API/manifest
+        raw_topics: list[tuple[str, int, str, int]] = []
         if manifest_path.exists():
             man = json.loads(manifest_path.read_text(encoding="utf-8"))
-            topic_meta = [(t["name"], t["n_elixir"], t["topic_id"]) for t in man.get("topics", [])]
-        if not topic_meta:
+            for t in man.get("topics", []):
+                raw_topics.append((
+                    t["name"], int(t["n_elixir"]), t["topic_id"],
+                    int(t.get("openalex_n") or t.get("works_count") or 0),
+                ))
+        if not raw_topics:
             seen = []
             for r in sample_rows:
                 if r["topic"] not in seen:
                     seen.append(r["topic"])
                     n = next(c for name, c in top if name == r["topic"])
-                    topic_meta.append((r["topic"], n, r.get("topic_id", "")))
+                    raw_topics.append((r["topic"], n, r.get("topic_id", ""), 0))
+        for name, n, tid, oa_n in raw_topics:
+            if not oa_n:
+                try:
+                    _, _, oa_n = resolve_topic_id(name)
+                except Exception as exc:  # noqa: BLE001
+                    print(f"  warning: could not fetch OpenAlex n for {name}: {exc}", flush=True)
+                    oa_n = 0
+            topic_meta.append((name, n, tid, oa_n))
+        # persist OpenAlex n into the samples manifest for later reuse
+        if manifest_path.exists():
+            man = json.loads(manifest_path.read_text(encoding="utf-8"))
+            by_name = {name: oa_n for name, _n, _tid, oa_n in topic_meta}
+            for t in man.get("topics", []):
+                if t.get("name") in by_name:
+                    t["openalex_n"] = by_name[t["name"]]
+            manifest_path.write_text(json.dumps(man, indent=2), encoding="utf-8")
+        if args.enrich_authors or any(not (r.get("authors") or "").strip() for r in sample_rows[:20]):
+            author_rows = attach_authors_to_samples(sample_rows)
+            write_authors_csv(AUTHORS_CSV, author_rows)
+            write_samples_csv(samples_path, sample_rows)
+            if manifest_path.exists():
+                man = json.loads(manifest_path.read_text(encoding="utf-8"))
+                man["n_unique_works_with_authors"] = len({r.get("openalex_work_id") for r in author_rows})
+                man["n_author_rows"] = len(author_rows)
+                manifest_path.write_text(json.dumps(man, indent=2), encoding="utf-8")
+            print(f"Wrote authorships -> {AUTHORS_CSV}", flush=True)
     else:
         for name, n in top:
             tid, display, works_count = resolve_topic_id(name)
@@ -745,7 +910,7 @@ def main() -> None:
             if sum(years.values()) != len(papers):
                 # drop papers without year from stratification target; keep n from counts file
                 print(f"  warning: {len(papers) - sum(years.values())} papers missing year", flush=True)
-            topic_meta.append((name, n, tid))
+            topic_meta.append((name, n, tid, works_count))
 
             pools: dict[int, list[dict]] = {}
             for year, n_y in sorted(years.items()):
@@ -776,9 +941,12 @@ def main() -> None:
                         "cc": paper.get("cc", ""),
                         "cc_class": paper.get("cc_class", ""),
                     })
-                if (rep + 1) % 20 == 0:
+                if (rep + 1) % 20 == 0 or (rep + 1) == args.replicates:
                     print(f"  drawn replicate {rep + 1}/{args.replicates}", flush=True)
 
+        SAMPLES_DIR.mkdir(parents=True, exist_ok=True)
+        author_rows = attach_authors_to_samples(sample_rows)
+        write_authors_csv(AUTHORS_CSV, author_rows)
         write_samples_csv(samples_path, sample_rows)
         manifest = {
             "created_utc": datetime.now(timezone.utc).isoformat(),
@@ -788,21 +956,24 @@ def main() -> None:
             "seed": args.seed,
             "excluded_elixir_dois": len(exclude),
             "n_sample_rows": len(sample_rows),
+            "n_unique_works_with_authors": len({r.get("openalex_work_id") for r in author_rows}),
+            "n_author_rows": len(author_rows),
             "sampling_note": (
                 "Year-stratified samples: OpenAlex sample+seed builds per-year candidate pools "
-                "with BIP coverage; each replicate is a local RNG draw matching the Elixir year histogram."
+                "with BIP coverage; each replicate is a local RNG draw matching the Elixir year histogram. "
+                "Author lists come from OpenAlex authorships; first_name/last_name are best-effort "
+                "splits of display_name/raw_author_name (empty when unclear)."
             ),
             "topics": [
-                {"name": name, "n_elixir": n, "topic_id": tid}
-                for name, n, tid in topic_meta
+                {"name": name, "n_elixir": n, "topic_id": tid, "openalex_n": oa_n}
+                for name, n, tid, oa_n in topic_meta
             ],
         }
-        SAMPLES_DIR.mkdir(parents=True, exist_ok=True)
         manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-        print(f"\nWrote {samples_path} and {manifest_path}", flush=True)
+        print(f"\nWrote {samples_path}, {AUTHORS_CSV}, and {manifest_path}", flush=True)
 
     # ---- compute replicate stats + comparison
-    elixir_stats = {name: stats_as_floats(topic_stats(groups[name])) for name, _, _ in topic_meta}
+    elixir_stats = {name: stats_as_floats(topic_stats(groups[name])) for name, _, _, _ in topic_meta}
 
     # group samples
     by_topic_rep: dict[tuple[str, int], list[dict]] = defaultdict(list)
@@ -812,7 +983,7 @@ def main() -> None:
     replicate_out = []
     null_values: dict[tuple[str, str], list[float]] = defaultdict(list)
 
-    for name, n, tid in topic_meta:
+    for name, n, tid, _oa_n in topic_meta:
         reps = sorted({int(r["replicate"]) for r in sample_rows if r["topic"] == name})
         for rep in reps:
             papers = by_topic_rep[(name, rep)]
@@ -839,7 +1010,7 @@ def main() -> None:
             replicate_out.append(row)
 
     comparison_out = []
-    for name, n, tid in topic_meta:
+    for name, n, tid, _oa_n in topic_meta:
         for stat in STAT_KEYS:
             elx = elixir_stats[name].get(stat)
             summary = summarize_null(null_values[(name, stat)], elx)

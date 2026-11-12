@@ -26,39 +26,39 @@ Paper counts and percentage shares by last-author gender within each topic (unkn
 
 ### Paper counts by last-author gender
 
-![Paper counts by last-author gender](topic_last_author_gender_figures/counts_by_topic.png)
+![Paper counts by last-author gender](../figures/topic_last_author_gender_figures/counts_by_topic.png)
 
 ### Share of papers by last-author gender
 
-![Share of papers by last-author gender](topic_last_author_gender_figures/share_by_topic.png)
+![Share of papers by last-author gender](../figures/topic_last_author_gender_figures/share_by_topic.png)
 
 ## BIP! indicator figures
 
 Grouped bars compare female vs male last-author subsets within each topic. The **bar length / x-axis** is the BIP! statistic; the label next to each bar repeats that value. Unknown-gender papers are excluded from these plots (subset sizes are in the topics table above).
 
-### Median BIP! impulse (3-year citation count)
-
-![Median BIP! impulse (3-year citation count)](topic_last_author_gender_figures/bars_median_impulse.png)
-
 ### Median BIP! citation count
 
-![Median BIP! citation count](topic_last_author_gender_figures/bars_median_cc.png)
+![Median BIP! citation count](../figures/topic_last_author_gender_figures/bars_median_cc.png)
 
-### Share of papers in BIP! popularity top 10%
+### Median BIP! impulse (3-year citation count)
 
-![Share of papers in BIP! popularity top 10%](topic_last_author_gender_figures/bars_pct_pop_top10.png)
-
-### Share of papers in BIP! influence top 10%
-
-![Share of papers in BIP! influence top 10%](topic_last_author_gender_figures/bars_pct_inf_top10.png)
-
-### Share of papers in BIP! impulse top 10%
-
-![Share of papers in BIP! impulse top 10%](topic_last_author_gender_figures/bars_pct_imp_top10.png)
+![Median BIP! impulse (3-year citation count)](../figures/topic_last_author_gender_figures/bars_median_impulse.png)
 
 ### Share of papers in BIP! citation-count top 10%
 
-![Share of papers in BIP! citation-count top 10%](topic_last_author_gender_figures/bars_pct_cc_top10.png)
+![Share of papers in BIP! citation-count top 10%](../figures/topic_last_author_gender_figures/bars_pct_cc_top10.png)
+
+### Share of papers in BIP! impulse top 10%
+
+![Share of papers in BIP! impulse top 10%](../figures/topic_last_author_gender_figures/bars_pct_imp_top10.png)
+
+### Share of papers in BIP! influence top 10%
+
+![Share of papers in BIP! influence top 10%](../figures/topic_last_author_gender_figures/bars_pct_inf_top10.png)
+
+### Share of papers in BIP! popularity top 10%
+
+![Share of papers in BIP! popularity top 10%](../figures/topic_last_author_gender_figures/bars_pct_pop_top10.png)
 
 ## Per-topic gender BIP! stats
 
@@ -75,4 +75,4 @@ Grouped bars compare female vs male last-author subsets within each topic. The *
 | Protein Structure and Dynamics | female | 11 | 7 | 7 | 81.8 | 36.4 | 63.6 | 45.5 |
 | Protein Structure and Dynamics | male | 58 | 16 | 26.5 | 89.7 | 60.3 | 81.0 | 75.9 |
 
-_Generated 2026-11-12 14:23 UTC_
+_Generated 2026-11-12 19:39 UTC_
