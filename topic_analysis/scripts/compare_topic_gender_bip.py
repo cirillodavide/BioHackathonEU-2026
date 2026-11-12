@@ -8,7 +8,7 @@ Writes (role=first keeps the original paths; role=last uses last_author_*):
   results/openalex_topic[_last_author]_gender_counts.csv
   results/openalex_topic[_last_author]_gender_stats.csv
   results/figures/topic[_last_author]_gender_figures/…
-  results/reports/topic[_last_author]_gender_report.md
+  results/reports/topic_[first|last]_author_gender_report.md
 
 Usage:
   python scripts/compare_topic_gender_bip.py
@@ -60,7 +60,7 @@ def role_paths(role: str) -> dict[str, Path]:
             "counts": ROOT / "results" / "openalex_topic_gender_counts.csv",
             "stats": ROOT / "results" / "openalex_topic_gender_stats.csv",
             "figures": ROOT / "results" / "figures" / "topic_gender_figures",
-            "report": ROOT / "results" / "reports" / "topic_gender_report.md",
+            "report": ROOT / "results" / "reports" / "topic_first_author_gender_report.md",
             "figures_rel": "../figures/topic_gender_figures",
         }
     return {

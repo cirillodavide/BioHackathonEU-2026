@@ -36,29 +36,29 @@ Paper counts by first-author R stage with female vs male side-by-side, and withi
 
 Grouped bars compare female vs male first-author subsets within each R stage. The **bar length / x-axis** is the BIP! statistic. Unknown gender and unknown/implausible ages are excluded.
 
-### Median BIP! impulse (3-year citation count)
-
-![Median BIP! impulse (3-year citation count)](../figures/age_gender_figures/bars_median_impulse.png)
-
 ### Median BIP! citation count
 
 ![Median BIP! citation count](../figures/age_gender_figures/bars_median_cc.png)
 
-### Share of papers in BIP! popularity top 10%
+### Median BIP! impulse (3-year citation count)
 
-![Share of papers in BIP! popularity top 10%](../figures/age_gender_figures/bars_pct_pop_top10.png)
+![Median BIP! impulse (3-year citation count)](../figures/age_gender_figures/bars_median_impulse.png)
 
-### Share of papers in BIP! influence top 10%
+### Share of papers in BIP! citation-count top 10%
 
-![Share of papers in BIP! influence top 10%](../figures/age_gender_figures/bars_pct_inf_top10.png)
+![Share of papers in BIP! citation-count top 10%](../figures/age_gender_figures/bars_pct_cc_top10.png)
 
 ### Share of papers in BIP! impulse top 10%
 
 ![Share of papers in BIP! impulse top 10%](../figures/age_gender_figures/bars_pct_imp_top10.png)
 
-### Share of papers in BIP! citation-count top 10%
+### Share of papers in BIP! influence top 10%
 
-![Share of papers in BIP! citation-count top 10%](../figures/age_gender_figures/bars_pct_cc_top10.png)
+![Share of papers in BIP! influence top 10%](../figures/age_gender_figures/bars_pct_inf_top10.png)
+
+### Share of papers in BIP! popularity top 10%
+
+![Share of papers in BIP! popularity top 10%](../figures/age_gender_figures/bars_pct_pop_top10.png)
 
 ## Stage × gender BIP! stats
 
@@ -73,4 +73,4 @@ Grouped bars compare female vs male first-author subsets within each R stage. Th
 | R4 | female | 60 | 11.5 | 14 | 83.3 | 46.7 | 75.0 | 58.3 |
 | R4 | male | 141 | 12 | 17 | 83.7 | 52.5 | 77.3 | 63.1 |
 
-_Generated 2026-11-12 19:57 UTC_
+_Generated 2026-11-12 20:02 UTC_

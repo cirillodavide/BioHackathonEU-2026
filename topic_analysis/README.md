@@ -105,7 +105,7 @@ python scripts/compare_topic_gender_bip.py --role last --top 5
 | `results/openalex_topic_last_author_gender_stats.csv` | Last-author BIP! stats |
 | `results/figures/topic_gender_figures/` | First-author count/share + indicator bars |
 | `results/figures/topic_last_author_gender_figures/` | Last-author count/share + indicator bars |
-| `results/reports/topic_gender_report.md` | First-author report |
+| `results/reports/topic_first_author_gender_report.md` | First-author report |
 | `results/reports/topic_last_author_gender_report.md` | Last-author report |
 
 Unknown = unmatched consortia, missing authors, or `not retrievable` names.
@@ -139,5 +139,5 @@ python scripts/compare_topic_age_gender_bip.py --role last
 | `results/openalex_last_author_age_gender_stats.csv` | Last-author BIP! by R × gender |
 | `results/figures/age_gender_figures/` | First-author count/share + indicator bars |
 | `results/figures/last_author_age_gender_figures/` | Last-author count/share + indicator bars |
-| `results/reports/age_gender_report.md` | First-author report |
+| `results/reports/first_author_age_gender_report.md` | First-author report |
 | `results/reports/last_author_age_gender_report.md` | Last-author report |

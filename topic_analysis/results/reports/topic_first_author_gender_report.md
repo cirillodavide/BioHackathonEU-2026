@@ -75,4 +75,4 @@ Grouped bars compare female vs male first-author subsets within each topic. The 
 | Protein Structure and Dynamics | female | 20 | 11 | 15.5 | 95.0 | 40.0 | 80.0 | 70.0 |
 | Protein Structure and Dynamics | male | 49 | 16 | 28 | 85.7 | 63.3 | 77.6 | 71.4 |
 
-_Generated 2026-11-12 19:39 UTC_
+_Generated 2026-11-12 20:02 UTC_

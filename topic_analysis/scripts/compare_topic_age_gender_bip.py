@@ -7,8 +7,8 @@ attach_author_academic_age.py --role …). Aggregates across all ELIXIR papers
 Writes (role=first keeps short paths; role=last uses last_author_*):
   results/openalex[_last_author]_age_gender_counts.csv
   results/openalex[_last_author]_age_gender_stats.csv
-  results/figures/[_last_author_]age_gender_figures/…
-  results/reports/[_last_author_]age_gender_report.md
+  results/figures/[first_|last_]author_age_gender_figures/…  (first uses age_gender_figures)
+  results/reports/[first_|last_]author_age_gender_report.md
 
 Usage:
   python scripts/compare_topic_age_gender_bip.py --role first
@@ -70,7 +70,7 @@ def role_paths(role: str) -> dict[str, Path]:
             "counts": ROOT / "results" / "openalex_age_gender_counts.csv",
             "stats": ROOT / "results" / "openalex_age_gender_stats.csv",
             "figures": ROOT / "results" / "figures" / "age_gender_figures",
-            "report": ROOT / "results" / "reports" / "age_gender_report.md",
+            "report": ROOT / "results" / "reports" / "first_author_age_gender_report.md",
             "figures_rel": "../figures/age_gender_figures",
         }
     return {
