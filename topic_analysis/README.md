@@ -66,8 +66,8 @@ Run the commands below from this folder (`topic_analysis/`).
 |---|---|
 | `results/openalex_topic_comparison.csv` | ELIXIR vs OpenAlex summary per topic × statistic |
 | `results/openalex_topic_comparison_replicates.csv` | Per-replicate sample statistics |
-| `results/topic_comparison_figures/` | Forest plots (95% band + ELIXIR point) and null histograms |
-| `results/topic_comparison_report.md` | Written-up findings |
+| `results/figures/topic_comparison_figures/` | Forest plots (95% band + ELIXIR point) and null histograms |
+| `results/reports/topic_comparison_report.md` | Written-up findings |
 | `results/topic_comparison_samples/samples.csv` | Sample membership (+ joined author names) |
 | `results/topic_comparison_samples/samples_authors.csv` | Per-author rows (`full_name`, best-effort `first_name`/`last_name`) |
 | `results/cache/bip_scores.jsonl` | Cached BIP! API scores used during sampling |
@@ -103,10 +103,41 @@ python scripts/compare_topic_gender_bip.py --role last --top 5
 | `results/openalex_topic_last_author_gender_counts.csv` | Last-author counts/shares per topic |
 | `results/openalex_topic_gender_stats.csv` | First-author BIP! stats |
 | `results/openalex_topic_last_author_gender_stats.csv` | Last-author BIP! stats |
-| `results/topic_gender_figures/` | First-author count/share + indicator bars |
-| `results/topic_last_author_gender_figures/` | Last-author count/share + indicator bars |
-| `results/topic_gender_report.md` | First-author report |
-| `results/topic_last_author_gender_report.md` | Last-author report |
+| `results/figures/topic_gender_figures/` | First-author count/share + indicator bars |
+| `results/figures/topic_last_author_gender_figures/` | Last-author count/share + indicator bars |
+| `results/reports/topic_gender_report.md` | First-author report |
+| `results/reports/topic_last_author_gender_report.md` | Last-author report |
 
 Unknown = unmatched consortia, missing authors, or `not retrievable` names.
 BIP! indicator bars use female vs male only (bar length = statistic).
+
+## Academic age × gender (within ELIXIR)
+
+Join `data/elixir_authors_academic_age.csv` onto the gender-enriched works.
+**Academic age at paper** = publication year − OpenAlex first publication year.
+Stages (bibliometric proxies of EU R1–R4): **R1** 0–4y, **R2** 5–10y,
+**R3** 11–20y, **R4** ≥21y (missing/negative → unknown; >60 → implausible).
+Reports count/share and BIP! bars by stage × gender for first and last authors
+across the **full ELIXIR corpus** (not stratified by topic).
+
+```bash
+# Requires gender CSVs from the previous section
+python scripts/attach_author_academic_age.py --role first
+python scripts/compare_topic_age_gender_bip.py --role first
+
+python scripts/attach_author_academic_age.py --role last
+python scripts/compare_topic_age_gender_bip.py --role last
+```
+
+| Path | What |
+|---|---|
+| `results/elixir_works_with_first_author_gender_age.csv` | First-author gender + R stage |
+| `results/elixir_works_with_last_author_gender_age.csv` | Last-author gender + R stage |
+| `results/openalex_age_gender_counts.csv` | First-author R × gender counts |
+| `results/openalex_last_author_age_gender_counts.csv` | Last-author R × gender counts |
+| `results/openalex_age_gender_stats.csv` | First-author BIP! by R × gender |
+| `results/openalex_last_author_age_gender_stats.csv` | Last-author BIP! by R × gender |
+| `results/figures/age_gender_figures/` | First-author count/share + indicator bars |
+| `results/figures/last_author_age_gender_figures/` | Last-author count/share + indicator bars |
+| `results/reports/age_gender_report.md` | First-author report |
+| `results/reports/last_author_age_gender_report.md` | Last-author report |

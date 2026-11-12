@@ -53,8 +53,8 @@ CACHE_DIR = ROOT / "results" / "cache"
 BIP_CACHE = CACHE_DIR / "bip_scores.jsonl"
 COMPARISON_CSV = ROOT / "results" / "openalex_topic_comparison.csv"
 REPLICATES_CSV = ROOT / "results" / "openalex_topic_comparison_replicates.csv"
-FIGURES_DIR = ROOT / "results" / "topic_comparison_figures"
-REPORT_MD = ROOT / "results" / "topic_comparison_report.md"
+FIGURES_DIR = ROOT / "results" / "figures" / "topic_comparison_figures"
+REPORT_MD = ROOT / "results" / "reports" / "topic_comparison_report.md"
 
 OPENALEX = "https://api.openalex.org"
 BIP = "https://bip-api.imsi.athenarc.gr"
@@ -706,7 +706,7 @@ def write_report(
         f"BIP!. The same statistics were recomputed on every sample. Across the {replicates} draws "
         f"we report the mean and the central 95% range (2.5th–97.5th percentiles) and place the "
         f"ELIXIR value in that range (including whether it falls outside). Plots are in "
-        f"[`topic_comparison_figures/`](topic_comparison_figures/). Raw popularity/influence score "
+        f"[`topic_comparison_figures/`](../figures/topic_comparison_figures/). Raw popularity/influence score "
         f"plots are omitted; we keep the top-10% class shares instead. Seed `{seed}`. "
         f"OpenAlex n is the topic’s `works_count` from the OpenAlex topics API "
         f"(all works with that primary topic). Sample papers include OpenAlex author "
@@ -744,7 +744,7 @@ def write_report(
             lines += [
                 f"### {label}",
                 "",
-                f"![{label}](topic_comparison_figures/{p.name})",
+                f"![{label}](../figures/topic_comparison_figures/{p.name})",
                 "",
             ]
     else:
@@ -766,7 +766,7 @@ def write_report(
             lines += [
                 f"### {label}",
                 "",
-                f"![{label}](topic_comparison_figures/{p.name})",
+                f"![{label}](../figures/topic_comparison_figures/{p.name})",
                 "",
             ]
     else:

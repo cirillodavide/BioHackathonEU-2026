@@ -7,8 +7,8 @@ results/openalex_topic_counts.csv.
 Writes (role=first keeps the original paths; role=last uses last_author_*):
   results/openalex_topic[_last_author]_gender_counts.csv
   results/openalex_topic[_last_author]_gender_stats.csv
-  results/topic[_last_author]_gender_figures/…
-  results/topic[_last_author]_gender_report.md
+  results/figures/topic[_last_author]_gender_figures/…
+  results/reports/topic[_last_author]_gender_report.md
 
 Usage:
   python scripts/compare_topic_gender_bip.py
@@ -59,17 +59,17 @@ def role_paths(role: str) -> dict[str, Path]:
             "input": ROOT / "results" / "elixir_works_with_first_author_gender.csv",
             "counts": ROOT / "results" / "openalex_topic_gender_counts.csv",
             "stats": ROOT / "results" / "openalex_topic_gender_stats.csv",
-            "figures": ROOT / "results" / "topic_gender_figures",
-            "report": ROOT / "results" / "topic_gender_report.md",
-            "figures_rel": "topic_gender_figures",
+            "figures": ROOT / "results" / "figures" / "topic_gender_figures",
+            "report": ROOT / "results" / "reports" / "topic_gender_report.md",
+            "figures_rel": "../figures/topic_gender_figures",
         }
     return {
         "input": ROOT / "results" / "elixir_works_with_last_author_gender.csv",
         "counts": ROOT / "results" / "openalex_topic_last_author_gender_counts.csv",
         "stats": ROOT / "results" / "openalex_topic_last_author_gender_stats.csv",
-        "figures": ROOT / "results" / "topic_last_author_gender_figures",
-        "report": ROOT / "results" / "topic_last_author_gender_report.md",
-        "figures_rel": "topic_last_author_gender_figures",
+        "figures": ROOT / "results" / "figures" / "topic_last_author_gender_figures",
+        "report": ROOT / "results" / "reports" / "topic_last_author_gender_report.md",
+        "figures_rel": "../figures/topic_last_author_gender_figures",
     }
 
 

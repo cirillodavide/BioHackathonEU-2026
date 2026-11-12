@@ -2,7 +2,7 @@
 
 ## Process
 
-Starting from `data/elixir_works_metadata_openalex_bip.csv`, we counted how often each OpenAlex **primary topic** appears among ELIXIR papers and ranked topics by that frequency (`results/openalex_topic_counts.csv`). We then kept the **top 5** topics and, for each, summarised BIP! impact on the ELIXIR papers in that topic (medians of impulse and citation count; share of papers in the BIP! top 10% for popularity, influence, impulse, and citations—see `results/openalex_topic_stats.csv`). To ask whether those ELIXIR values are unusual for the topic, we built a reference from the wider OpenAlex graph: for a topic with n ELIXIR papers we drew **500** random OpenAlex samples of size n, matching ELIXIR’s publication-year mix, restricted to the same primary topic, requiring a DOI, excluding ELIXIR DOIs, and scoring each paper with BIP!. The same statistics were recomputed on every sample. Across the 500 draws we report the mean and the central 95% range (2.5th–97.5th percentiles) and place the ELIXIR value in that range (including whether it falls outside). Plots are in [`topic_comparison_figures/`](topic_comparison_figures/). Raw popularity/influence score plots are omitted; we keep the top-10% class shares instead. Seed `42`. OpenAlex n is the topic’s `works_count` from the OpenAlex topics API (all works with that primary topic). Sample papers include OpenAlex author lists in `topic_comparison_samples/samples.csv` (`authors`) and `samples_authors.csv` (one row per author, with best-effort `first_name`/`last_name` when the name string can be split).
+Starting from `data/elixir_works_metadata_openalex_bip.csv`, we counted how often each OpenAlex **primary topic** appears among ELIXIR papers and ranked topics by that frequency (`results/openalex_topic_counts.csv`). We then kept the **top 5** topics and, for each, summarised BIP! impact on the ELIXIR papers in that topic (medians of impulse and citation count; share of papers in the BIP! top 10% for popularity, influence, impulse, and citations—see `results/openalex_topic_stats.csv`). To ask whether those ELIXIR values are unusual for the topic, we built a reference from the wider OpenAlex graph: for a topic with n ELIXIR papers we drew **500** random OpenAlex samples of size n, matching ELIXIR’s publication-year mix, restricted to the same primary topic, requiring a DOI, excluding ELIXIR DOIs, and scoring each paper with BIP!. The same statistics were recomputed on every sample. Across the 500 draws we report the mean and the central 95% range (2.5th–97.5th percentiles) and place the ELIXIR value in that range (including whether it falls outside). Plots are in [`topic_comparison_figures/`](../figures/topic_comparison_figures/). Raw popularity/influence score plots are omitted; we keep the top-10% class shares instead. Seed `42`. OpenAlex n is the topic’s `works_count` from the OpenAlex topics API (all works with that primary topic). Sample papers include OpenAlex author lists in `topic_comparison_samples/samples.csv` (`authors`) and `samples_authors.csv` (one row per author, with best-effort `first_name`/`last_name` when the name string can be split).
 
 ### Topics
 
@@ -20,27 +20,27 @@ One panel per BIP! statistic. Each row is a topic. The grey bar is the central 9
 
 ### Median BIP! impulse (3-year citation count)
 
-![Median BIP! impulse (3-year citation count)](topic_comparison_figures/forest_median_impulse.png)
+![Median BIP! impulse (3-year citation count)](../figures/topic_comparison_figures/forest_median_impulse.png)
 
 ### Median BIP! citation count
 
-![Median BIP! citation count](topic_comparison_figures/forest_median_cc.png)
+![Median BIP! citation count](../figures/topic_comparison_figures/forest_median_cc.png)
 
 ### Share of papers in BIP! popularity top 10%
 
-![Share of papers in BIP! popularity top 10%](topic_comparison_figures/forest_pct_pop_top10.png)
+![Share of papers in BIP! popularity top 10%](../figures/topic_comparison_figures/forest_pct_pop_top10.png)
 
 ### Share of papers in BIP! influence top 10%
 
-![Share of papers in BIP! influence top 10%](topic_comparison_figures/forest_pct_inf_top10.png)
+![Share of papers in BIP! influence top 10%](../figures/topic_comparison_figures/forest_pct_inf_top10.png)
 
 ### Share of papers in BIP! impulse top 10%
 
-![Share of papers in BIP! impulse top 10%](topic_comparison_figures/forest_pct_imp_top10.png)
+![Share of papers in BIP! impulse top 10%](../figures/topic_comparison_figures/forest_pct_imp_top10.png)
 
 ### Share of papers in BIP! citation-count top 10%
 
-![Share of papers in BIP! citation-count top 10%](topic_comparison_figures/forest_pct_cc_top10.png)
+![Share of papers in BIP! citation-count top 10%](../figures/topic_comparison_figures/forest_pct_cc_top10.png)
 
 ## Null histograms
 
@@ -48,27 +48,27 @@ One figure per BIP! statistic, with a small histogram for each topic. Bars show 
 
 ### Median BIP! impulse (3-year citation count)
 
-![Median BIP! impulse (3-year citation count)](topic_comparison_figures/null_hist_median_impulse.png)
+![Median BIP! impulse (3-year citation count)](../figures/topic_comparison_figures/null_hist_median_impulse.png)
 
 ### Median BIP! citation count
 
-![Median BIP! citation count](topic_comparison_figures/null_hist_median_cc.png)
+![Median BIP! citation count](../figures/topic_comparison_figures/null_hist_median_cc.png)
 
 ### Share of papers in BIP! popularity top 10%
 
-![Share of papers in BIP! popularity top 10%](topic_comparison_figures/null_hist_pct_pop_top10.png)
+![Share of papers in BIP! popularity top 10%](../figures/topic_comparison_figures/null_hist_pct_pop_top10.png)
 
 ### Share of papers in BIP! influence top 10%
 
-![Share of papers in BIP! influence top 10%](topic_comparison_figures/null_hist_pct_inf_top10.png)
+![Share of papers in BIP! influence top 10%](../figures/topic_comparison_figures/null_hist_pct_inf_top10.png)
 
 ### Share of papers in BIP! impulse top 10%
 
-![Share of papers in BIP! impulse top 10%](topic_comparison_figures/null_hist_pct_imp_top10.png)
+![Share of papers in BIP! impulse top 10%](../figures/topic_comparison_figures/null_hist_pct_imp_top10.png)
 
 ### Share of papers in BIP! citation-count top 10%
 
-![Share of papers in BIP! citation-count top 10%](topic_comparison_figures/null_hist_pct_cc_top10.png)
+![Share of papers in BIP! citation-count top 10%](../figures/topic_comparison_figures/null_hist_pct_cc_top10.png)
 
 ## Main findings
 
