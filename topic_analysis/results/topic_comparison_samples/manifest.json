@@ -11,27 +11,32 @@
     {
       "name": "Research Data Management Practices",
       "n_elixir": 154,
-      "topic_id": "T11937"
+      "topic_id": "T11937",
+      "openalex_n": 265910
     },
     {
       "name": "Genomics and Phylogenetic Studies",
       "n_elixir": 113,
-      "topic_id": "T10015"
+      "topic_id": "T10015",
+      "openalex_n": 260355
     },
     {
       "name": "Scientific Computing and Data Management",
       "n_elixir": 95,
-      "topic_id": "T11986"
+      "topic_id": "T11986",
+      "openalex_n": 62318
     },
     {
       "name": "Bioinformatics and Genomic Networks",
       "n_elixir": 73,
-      "topic_id": "T10887"
+      "topic_id": "T10887",
+      "openalex_n": 61821
     },
     {
       "name": "Protein Structure and Dynamics",
       "n_elixir": 69,
-      "topic_id": "T10044"
+      "topic_id": "T10044",
+      "openalex_n": 220661
     }
   ]
 }

@@ -559,7 +559,7 @@ def wrap_topic(name: str, width: int = 28) -> str:
 
 def write_report(
     path: Path,
-    topics: list[tuple[str, int, str]],
+    topics: list[tuple[str, int, str, int]],
     comparison_rows: list[dict],
     figure_paths: list[Path],
     replicates: int,
@@ -585,15 +585,18 @@ def write_report(
         f"we report the mean and the central 95% range (2.5th–97.5th percentiles) and place the "
         f"ELIXIR value in that range (including whether it falls outside). Plots are in "
         f"[`topic_comparison_figures/`](topic_comparison_figures/). Raw popularity/influence score "
-        f"plots are omitted; we keep the top-10% class shares instead. Seed `{seed}`.",
+        f"plots are omitted; we keep the top-10% class shares instead. Seed `{seed}`. "
+        f"OpenAlex n is the topic’s `works_count` from the OpenAlex topics API "
+        f"(all works with that primary topic).",
         "",
         "### Topics",
         "",
-        "| Topic | ELIXIR n | OpenAlex topic id |",
-        "|---|---:|---|",
+        "| Topic | ELIXIR n | OpenAlex n | OpenAlex topic id |",
+        "|---|---:|---:|---|",
     ]
-    for name, n, tid in topics:
-        lines.append(f"| {name} | {n} | `{tid}` |")
+    for name, n, tid, oa_n in topics:
+        oa_s = f"{oa_n:,}" if oa_n else ""
+        lines.append(f"| {name} | {n} | {oa_s} | `{tid}` |")
 
     forest_files = [p for p in figure_paths if p.name.startswith("forest_")]
     hist_files = [p for p in figure_paths if p.name.startswith("null_hist_")]
@@ -711,7 +714,8 @@ def main() -> None:
     samples_path = SAMPLES_DIR / "samples.csv"
     manifest_path = SAMPLES_DIR / "manifest.json"
     sample_rows: list[dict] = []
-    topic_meta: list[tuple[str, int, str]] = []
+    # (name, n_elixir, topic_id, openalex_n)
+    topic_meta: list[tuple[str, int, str, int]] = []
 
     if args.reuse_samples:
         if not samples_path.exists():
@@ -728,17 +732,38 @@ def main() -> None:
                       "impulse", "imp_class", "cc", "cc_class"]:
                 if not (r.get(k) or "").strip() and row.get(k) not in (None, ""):
                     r[k] = row.get(k, "")
-        # topic meta from manifest or samples
+        # topic meta from manifest or samples; fill OpenAlex works_count from API/manifest
+        raw_topics: list[tuple[str, int, str, int]] = []
         if manifest_path.exists():
             man = json.loads(manifest_path.read_text(encoding="utf-8"))
-            topic_meta = [(t["name"], t["n_elixir"], t["topic_id"]) for t in man.get("topics", [])]
-        if not topic_meta:
+            for t in man.get("topics", []):
+                raw_topics.append((
+                    t["name"], int(t["n_elixir"]), t["topic_id"],
+                    int(t.get("openalex_n") or t.get("works_count") or 0),
+                ))
+        if not raw_topics:
             seen = []
             for r in sample_rows:
                 if r["topic"] not in seen:
                     seen.append(r["topic"])
                     n = next(c for name, c in top if name == r["topic"])
-                    topic_meta.append((r["topic"], n, r.get("topic_id", "")))
+                    raw_topics.append((r["topic"], n, r.get("topic_id", ""), 0))
+        for name, n, tid, oa_n in raw_topics:
+            if not oa_n:
+                try:
+                    _, _, oa_n = resolve_topic_id(name)
+                except Exception as exc:  # noqa: BLE001
+                    print(f"  warning: could not fetch OpenAlex n for {name}: {exc}", flush=True)
+                    oa_n = 0
+            topic_meta.append((name, n, tid, oa_n))
+        # persist OpenAlex n into the samples manifest for later reuse
+        if manifest_path.exists():
+            man = json.loads(manifest_path.read_text(encoding="utf-8"))
+            by_name = {name: oa_n for name, _n, _tid, oa_n in topic_meta}
+            for t in man.get("topics", []):
+                if t.get("name") in by_name:
+                    t["openalex_n"] = by_name[t["name"]]
+            manifest_path.write_text(json.dumps(man, indent=2), encoding="utf-8")
     else:
         for name, n in top:
             tid, display, works_count = resolve_topic_id(name)
@@ -748,7 +773,7 @@ def main() -> None:
             if sum(years.values()) != len(papers):
                 # drop papers without year from stratification target; keep n from counts file
                 print(f"  warning: {len(papers) - sum(years.values())} papers missing year", flush=True)
-            topic_meta.append((name, n, tid))
+            topic_meta.append((name, n, tid, works_count))
 
             pools: dict[int, list[dict]] = {}
             for year, n_y in sorted(years.items()):
@@ -796,8 +821,8 @@ def main() -> None:
                 "with BIP coverage; each replicate is a local RNG draw matching the Elixir year histogram."
             ),
             "topics": [
-                {"name": name, "n_elixir": n, "topic_id": tid}
-                for name, n, tid in topic_meta
+                {"name": name, "n_elixir": n, "topic_id": tid, "openalex_n": oa_n}
+                for name, n, tid, oa_n in topic_meta
             ],
         }
         SAMPLES_DIR.mkdir(parents=True, exist_ok=True)
@@ -805,7 +830,7 @@ def main() -> None:
         print(f"\nWrote {samples_path} and {manifest_path}", flush=True)
 
     # ---- compute replicate stats + comparison
-    elixir_stats = {name: stats_as_floats(topic_stats(groups[name])) for name, _, _ in topic_meta}
+    elixir_stats = {name: stats_as_floats(topic_stats(groups[name])) for name, _, _, _ in topic_meta}
 
     # group samples
     by_topic_rep: dict[tuple[str, int], list[dict]] = defaultdict(list)
@@ -815,7 +840,7 @@ def main() -> None:
     replicate_out = []
     null_values: dict[tuple[str, str], list[float]] = defaultdict(list)
 
-    for name, n, tid in topic_meta:
+    for name, n, tid, _oa_n in topic_meta:
         reps = sorted({int(r["replicate"]) for r in sample_rows if r["topic"] == name})
         for rep in reps:
             papers = by_topic_rep[(name, rep)]
@@ -842,7 +867,7 @@ def main() -> None:
             replicate_out.append(row)
 
     comparison_out = []
-    for name, n, tid in topic_meta:
+    for name, n, tid, _oa_n in topic_meta:
         for stat in STAT_KEYS:
             elx = elixir_stats[name].get(stat)
             summary = summarize_null(null_values[(name, stat)], elx)
