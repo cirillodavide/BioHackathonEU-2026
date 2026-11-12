@@ -94,5 +94,4 @@ python scripts/compare_topic_gender_bip.py --top 5
 | `results/topic_gender_report.md` | Coverage, figures, and stats table |
 
 Unknown = unmatched consortia, missing authors, or `not retrievable` names.
-BIP! indicator bars use female vs male only: bar length is the statistic;
-`(n=…)` is the paper count in that subset.
+BIP! indicator bars use female vs male only (bar length = statistic).

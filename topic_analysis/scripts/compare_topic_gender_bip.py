@@ -147,19 +147,17 @@ def make_count_figures(count_rows: list[dict], topics: list[str], out_dir: Path)
     return paths
 
 
-def format_stat_annotation(stat: str, value: float, n: int) -> str:
-    """Value on the axis scale, plus paper count in parentheses (not on the axis)."""
+def format_stat_annotation(stat: str, value: float) -> str:
+    """Value on the axis scale (no sample size)."""
     if stat.startswith("pct_"):
-        val_s = f"{value:.0f}%" if float(value).is_integer() else f"{value:.1f}%"
-    elif stat.startswith("median_") and stat in {"median_impulse", "median_cc"}:
-        val_s = f"{value:.0f}" if float(value).is_integer() else f"{value:.1f}"
-    else:
-        val_s = f"{value:.3g}"
-    return f"{val_s} (n={n})"
+        return f"{value:.0f}%" if float(value).is_integer() else f"{value:.1f}%"
+    if stat.startswith("median_") and stat in {"median_impulse", "median_cc"}:
+        return f"{value:.0f}" if float(value).is_integer() else f"{value:.1f}"
+    return f"{value:.3g}"
 
 
 def make_indicator_bar_figures(stat_rows: list[dict], topics: list[str], out_dir: Path) -> list[Path]:
-    """Grouped bars: x = BIP! statistic; annotation = value + paper count n."""
+    """Grouped bars: x = BIP! statistic; annotation = value only."""
     import matplotlib.pyplot as plt
     import numpy as np
 
@@ -178,25 +176,23 @@ def make_indicator_bar_figures(stat_rows: list[dict], topics: list[str], out_dir
         y = np.arange(len(topics))
         for i, g in enumerate(GENDER_PLOT):
             vals = []
-            ns = []
             for topic in topics:
                 row = by_key.get((topic, g))
                 v = to_float(row.get(stat)) if row else None
-                n = int(row["n_papers"]) if row else 0
                 vals.append(0.0 if v is None else v)
-                ns.append(n)
             offset = (i - 0.5) * height
             bars = ax.barh(
                 y + offset, vals, height=height,
                 color=GENDER_COLORS[g], label=f"{g.capitalize()} first author",
             )
-            for bar, v, n in zip(bars, vals, ns):
-                if n <= 0:
+            for j, (bar, v) in enumerate(zip(bars, vals)):
+                row = by_key.get((topics[j], g))
+                if not row or int(row["n_papers"]) <= 0:
                     continue
                 ax.text(
-                    bar.get_width() + max(vals) * 0.01,
+                    bar.get_width() + max(vals + [1]) * 0.01,
                     bar.get_y() + bar.get_height() / 2,
-                    format_stat_annotation(stat, v, n),
+                    format_stat_annotation(stat, v),
                     va="center", fontsize=7, color=GENDER_COLORS[g],
                 )
         ax.set_yticks(y)
@@ -205,16 +201,15 @@ def make_indicator_bar_figures(stat_rows: list[dict], topics: list[str], out_dir
         ax.set_xlabel(label)
         ax.grid(axis="x", linestyle=":", alpha=0.5)
         ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.02), ncol=2, fontsize=8, frameon=True)
-        # room for "value (n=…)" annotations to the right of bars
         data_max = max(
             (to_float(by_key[(t, g)].get(stat)) or 0.0)
             for t in topics for g in GENDER_PLOT
             if (t, g) in by_key
         )
         if stat.startswith("pct_"):
-            ax.set_xlim(0, max(100, data_max) * 1.28)
+            ax.set_xlim(0, max(100, data_max) * 1.18)
         else:
-            ax.set_xlim(0, (data_max * 1.28) if data_max > 0 else 1)
+            ax.set_xlim(0, (data_max * 1.18) if data_max > 0 else 1)
         fig.tight_layout()
         path = out_dir / f"bars_{stat}.png"
         fig.savefig(path, dpi=160, bbox_inches="tight")
@@ -288,11 +283,10 @@ def write_report(
         "## BIP! indicator figures",
         "",
         "Grouped bars compare female vs male first-author subsets within each "
-        "topic. The **bar length / x-axis** is the BIP! statistic. The label "
-        "next to each bar shows that same value plus **n = number of papers** "
-        "in that gender×topic subset (sample size used to compute the "
-        "statistic — not an x-axis quantity). Unknown-gender papers are "
-        "excluded from these plots.",
+        "topic. The **bar length / x-axis** is the BIP! statistic; the label "
+        "next to each bar repeats that value. Unknown-gender papers are "
+        "excluded from these plots (subset sizes are in the topics table "
+        "above).",
         "",
     ]
     for p in bar_figs:
