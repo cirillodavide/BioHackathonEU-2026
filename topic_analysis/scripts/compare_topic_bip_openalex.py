@@ -12,7 +12,7 @@ Requires: Python 3.9+, matplotlib
 
 Usage:
   python scripts/compare_topic_bip_openalex.py
-  python scripts/compare_topic_bip_openalex.py --top 5 --replicates 100 --seed 42
+  python scripts/compare_topic_bip_openalex.py --top 5 --replicates 500 --seed 42
   python scripts/compare_topic_bip_openalex.py --reuse-samples
 """
 from __future__ import annotations
@@ -48,6 +48,7 @@ from count_topics import (  # noqa: E402
 DEFAULT_INPUT = ROOT / "data" / "elixir_works_metadata_openalex_bip.csv"
 DEFAULT_COUNTS = ROOT / "results" / "openalex_topic_counts.csv"
 SAMPLES_DIR = ROOT / "results" / "topic_comparison_samples"
+AUTHORS_CSV = SAMPLES_DIR / "samples_authors.csv"
 CACHE_DIR = ROOT / "results" / "cache"
 BIP_CACHE = CACHE_DIR / "bip_scores.jsonl"
 COMPARISON_CSV = ROOT / "results" / "openalex_topic_comparison.csv"
@@ -272,6 +273,124 @@ def openalex_sample(topic_id: str, year: int, n: int, seed: int) -> list[dict]:
     return works
 
 
+def split_person_name(full: str) -> tuple[str, str]:
+    """Best-effort first/last from OpenAlex display/raw name; empty if unclear."""
+    text = (full or "").strip()
+    if not text:
+        return "", ""
+    lower = text.lower()
+    if any(tok in lower for tok in (
+        "consortium", "community", "collaboration", "network", " group", "team",
+        "members", "committee",
+    )):
+        return "", ""
+    # Prefer "Last, First Middle" when a single comma is present
+    if text.count(",") == 1:
+        last, first = [p.strip() for p in text.split(",", 1)]
+        first_tok = first.split()[0] if first.split() else ""
+        last_tok = last.split()[-1] if last.split() else ""
+        if first_tok and last_tok:
+            return first_tok, last_tok
+        return "", ""
+    parts = [p for p in text.replace(",", " ").split() if p]
+    if len(parts) < 2:
+        return "", ""
+    return parts[0], parts[-1]
+
+
+def authorships_from_work(work: dict) -> list[dict]:
+    """Parse OpenAlex work authorships into rows with best-effort first/last."""
+    wid = (work.get("id") or "").rsplit("/", 1)[-1]
+    doi = normalize_doi(work.get("doi") or "")
+    rows = []
+    for i, a in enumerate(work.get("authorships") or [], start=1):
+        author = a.get("author") or {}
+        raw = (a.get("raw_author_name") or "").strip()
+        display = (author.get("display_name") or "").strip()
+        full = display or raw
+        first, last = split_person_name(full) if full else ("", "")
+        oa_id = (author.get("id") or "").rsplit("/", 1)[-1]
+        rows.append({
+            "openalex_work_id": wid,
+            "doi": doi,
+            "author_order": i,
+            "author_position": (a.get("author_position") or "").strip(),
+            "full_name": full,
+            "first_name": first,
+            "last_name": last,
+            "raw_author_name": raw,
+            "oa_author_id": oa_id,
+        })
+    return rows
+
+
+def fetch_works_authorships(work_ids: list[str]) -> dict[str, list[dict]]:
+    """Return {openalex_work_id: [author rows]} via OpenAlex batched works lookups."""
+    out: dict[str, list[dict]] = {}
+    ids = [w for w in work_ids if w]
+    for i in range(0, len(ids), 50):
+        chunk = ids[i:i + 50]
+        # OpenAlex accepts pipe-separated openalex IDs
+        filt = "|".join(chunk)
+        url = (
+            f"{OPENALEX}/works?filter=openalex_id:{urllib.parse.quote(filt, safe='|')}"
+            f"&per-page={len(chunk)}"
+            f"&select=id,doi,authorships"
+        )
+        try:
+            data = http_json(url, sleep=0.12)
+        except Exception as exc:  # noqa: BLE001
+            print(f"  authorship batch failed ({exc}); falling back to singles", flush=True)
+            data = {"results": []}
+            for wid in chunk:
+                try:
+                    one = http_json(
+                        f"{OPENALEX}/works/{wid}?select=id,doi,authorships", sleep=0.12)
+                    if isinstance(one, dict) and one.get("id"):
+                        data["results"].append(one)
+                except Exception:
+                    continue
+        for work in data.get("results") or []:
+            wid = (work.get("id") or "").rsplit("/", 1)[-1]
+            if wid:
+                out[wid] = authorships_from_work(work)
+        if (i // 50 + 1) % 20 == 0 or i + 50 >= len(ids):
+            print(f"  authorships: {min(i + 50, len(ids))}/{len(ids)} works", flush=True)
+    return out
+
+
+def attach_authors_to_samples(sample_rows: list[dict]) -> list[dict]:
+    """Fetch authorships for unique sample works; set authors on samples; return author rows."""
+    work_ids = sorted({(r.get("openalex_work_id") or "").strip() for r in sample_rows
+                       if (r.get("openalex_work_id") or "").strip()})
+    print(f"Fetching authorships for {len(work_ids)} unique OpenAlex works…", flush=True)
+    by_work = fetch_works_authorships(work_ids)
+    for r in sample_rows:
+        wid = (r.get("openalex_work_id") or "").strip()
+        authors = by_work.get(wid) or []
+        names = [a["full_name"] for a in authors if a.get("full_name")]
+        r["authors"] = "; ".join(names)
+        r["n_authors"] = len(authors)
+    # one row per work×author (deduped by work)
+    author_rows: list[dict] = []
+    for wid in work_ids:
+        author_rows.extend(by_work.get(wid) or [])
+    return author_rows
+
+
+def write_authors_csv(path: Path, rows: list[dict]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fields = [
+        "openalex_work_id", "doi", "author_order", "author_position",
+        "full_name", "first_name", "last_name", "raw_author_name", "oa_author_id",
+    ]
+    with path.open("w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields, lineterminator="\n", extrasaction="ignore")
+        w.writeheader()
+        for r in rows:
+            w.writerow(r)
+
+
 def build_year_pool(
     topic_id: str,
     year: int,
@@ -281,8 +400,8 @@ def build_year_pool(
     base_seed: int,
 ) -> list[dict]:
     """Collect unique DOI works with BIP coverage for topic-year."""
-    # Enough headroom for B local draws without huge API cost on sparse years.
-    target = min(1200, max(need * 12, need + 80, 120))
+    # Enough headroom for large B local draws without huge API cost on sparse years.
+    target = min(2000, max(need * 15, need + 100, 150))
     by_doi: dict[str, dict] = {}
     seed = base_seed + year * 1009
     rounds = 0
@@ -435,8 +554,11 @@ def read_top_topics(counts_path: Path, top: int) -> list[tuple[str, int]]:
 
 def write_samples_csv(path: Path, rows: list[dict]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    fields = ["topic", "topic_id", "replicate", "year", "openalex_work_id", "doi", "seed_used",
-              "popularity", "pop_class", "influence", "inf_class", "impulse", "imp_class", "cc", "cc_class"]
+    fields = [
+        "topic", "topic_id", "replicate", "year", "openalex_work_id", "doi", "seed_used",
+        "n_authors", "authors",
+        "popularity", "pop_class", "influence", "inf_class", "impulse", "imp_class", "cc", "cc_class",
+    ]
     with path.open("w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=fields, lineterminator="\n", extrasaction="ignore")
         w.writeheader()
@@ -587,7 +709,10 @@ def write_report(
         f"[`topic_comparison_figures/`](topic_comparison_figures/). Raw popularity/influence score "
         f"plots are omitted; we keep the top-10% class shares instead. Seed `{seed}`. "
         f"OpenAlex n is the topic’s `works_count` from the OpenAlex topics API "
-        f"(all works with that primary topic).",
+        f"(all works with that primary topic). Sample papers include OpenAlex author "
+        f"lists in `topic_comparison_samples/samples.csv` (`authors`) and "
+        f"`samples_authors.csv` (one row per author, with best-effort "
+        f"`first_name`/`last_name` when the name string can be split).",
         "",
         "### Topics",
         "",
@@ -685,10 +810,12 @@ def main() -> None:
     parser.add_argument("--input", type=Path, default=DEFAULT_INPUT)
     parser.add_argument("--counts", type=Path, default=DEFAULT_COUNTS)
     parser.add_argument("--top", type=int, default=5)
-    parser.add_argument("--replicates", type=int, default=100)
+    parser.add_argument("--replicates", type=int, default=500)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--reuse-samples", action="store_true",
                         help="Reload saved sample membership instead of re-sampling")
+    parser.add_argument("--enrich-authors", action="store_true",
+                        help="With --reuse-samples, (re)fetch OpenAlex authorships for sample works")
     parser.add_argument("--skip-plots", action="store_true")
     args = parser.parse_args()
 
@@ -764,6 +891,16 @@ def main() -> None:
                 if t.get("name") in by_name:
                     t["openalex_n"] = by_name[t["name"]]
             manifest_path.write_text(json.dumps(man, indent=2), encoding="utf-8")
+        if args.enrich_authors or any(not (r.get("authors") or "").strip() for r in sample_rows[:20]):
+            author_rows = attach_authors_to_samples(sample_rows)
+            write_authors_csv(AUTHORS_CSV, author_rows)
+            write_samples_csv(samples_path, sample_rows)
+            if manifest_path.exists():
+                man = json.loads(manifest_path.read_text(encoding="utf-8"))
+                man["n_unique_works_with_authors"] = len({r.get("openalex_work_id") for r in author_rows})
+                man["n_author_rows"] = len(author_rows)
+                manifest_path.write_text(json.dumps(man, indent=2), encoding="utf-8")
+            print(f"Wrote authorships -> {AUTHORS_CSV}", flush=True)
     else:
         for name, n in top:
             tid, display, works_count = resolve_topic_id(name)
@@ -804,9 +941,12 @@ def main() -> None:
                         "cc": paper.get("cc", ""),
                         "cc_class": paper.get("cc_class", ""),
                     })
-                if (rep + 1) % 20 == 0:
+                if (rep + 1) % 20 == 0 or (rep + 1) == args.replicates:
                     print(f"  drawn replicate {rep + 1}/{args.replicates}", flush=True)
 
+        SAMPLES_DIR.mkdir(parents=True, exist_ok=True)
+        author_rows = attach_authors_to_samples(sample_rows)
+        write_authors_csv(AUTHORS_CSV, author_rows)
         write_samples_csv(samples_path, sample_rows)
         manifest = {
             "created_utc": datetime.now(timezone.utc).isoformat(),
@@ -816,18 +956,21 @@ def main() -> None:
             "seed": args.seed,
             "excluded_elixir_dois": len(exclude),
             "n_sample_rows": len(sample_rows),
+            "n_unique_works_with_authors": len({r.get("openalex_work_id") for r in author_rows}),
+            "n_author_rows": len(author_rows),
             "sampling_note": (
                 "Year-stratified samples: OpenAlex sample+seed builds per-year candidate pools "
-                "with BIP coverage; each replicate is a local RNG draw matching the Elixir year histogram."
+                "with BIP coverage; each replicate is a local RNG draw matching the Elixir year histogram. "
+                "Author lists come from OpenAlex authorships; first_name/last_name are best-effort "
+                "splits of display_name/raw_author_name (empty when unclear)."
             ),
             "topics": [
                 {"name": name, "n_elixir": n, "topic_id": tid, "openalex_n": oa_n}
                 for name, n, tid, oa_n in topic_meta
             ],
         }
-        SAMPLES_DIR.mkdir(parents=True, exist_ok=True)
         manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-        print(f"\nWrote {samples_path} and {manifest_path}", flush=True)
+        print(f"\nWrote {samples_path}, {AUTHORS_CSV}, and {manifest_path}", flush=True)
 
     # ---- compute replicate stats + comparison
     elixir_stats = {name: stats_as_floats(topic_stats(groups[name])) for name, _, _, _ in topic_meta}

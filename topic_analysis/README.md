@@ -46,11 +46,14 @@ Run the commands below from this folder (`topic_analysis/`).
 
 5. **Score samples and place ELIXIR in the null**  
    ```bash
-   python scripts/compare_topic_bip_openalex.py --top 5 --replicates 100 --seed 42
+   python scripts/compare_topic_bip_openalex.py --top 5 --replicates 500 --seed 42
    ```
-   Recomputes the same statistics as step 2 on every sample. Across the 100
+   Recomputes the same statistics as step 2 on every sample. Across the 500
    draws, reports the OpenAlex mean, the central 95% range (2.5th–97.5th
    percentiles), and whether the ELIXIR value falls outside that band.
+   Sample papers also store OpenAlex author lists (`authors` on
+   `samples.csv`; structured rows in `samples_authors.csv` with best-effort
+   `first_name`/`last_name` when the name can be split).
 
    To recompute stats/plots from saved samples without re-querying APIs:
    ```bash
@@ -65,6 +68,8 @@ Run the commands below from this folder (`topic_analysis/`).
 | `results/openalex_topic_comparison_replicates.csv` | Per-replicate sample statistics |
 | `results/topic_comparison_figures/` | Forest plots (95% band + ELIXIR point) and null histograms |
 | `results/topic_comparison_report.md` | Written-up findings |
+| `results/topic_comparison_samples/samples.csv` | Sample membership (+ joined author names) |
+| `results/topic_comparison_samples/samples_authors.csv` | Per-author rows (`full_name`, best-effort `first_name`/`last_name`) |
 | `results/cache/bip_scores.jsonl` | Cached BIP! API scores used during sampling |
 
 **Forest plots:** grey bar = OpenAlex 95% range, open grey circle = OpenAlex-sample
